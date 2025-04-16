@@ -161,12 +161,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </style>
     <h1 style="text-align:center;font-size:45px;text-decoration:underline;margin-top:50px;">About Us<br></h1>
     <p style="font-size:20px;text-align:center;margin-top:20px;">
-        We are a group of passionate individuals brought together by our love for music.<br>
-        Our society provides a welcoming space for music enthusiasts of all levels to come together, <br>
-        share their passion, and explore the world of music.<br>
-        Whether you're a seasoned musician or someone who simply enjoys listening to music, <br>
-        there's a place for you here.
-        Join us as we embark on a journey to celebrate the joy and beauty of music together.
+        At TAR UMT Graduation Services, we’re here to help you celebrate your big day.<br>
+        We offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment. <br>
+        Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.<br>
+        Thank you for letting us be a part of your celebration! <br>
     <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Active / Past Events</h1>
     <div class="gallery-container" style="margin:20px;">
         <div class="gallery" style="border-radius: 15px">
