@@ -91,7 +91,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <div class="background-image">
         <div class="overlay">
-            <h1 style="font-size:50px;"><b>Welcomeddd To Our Rizzy Tempo Music Society</b></h1>
+            <h1 style="font-size:50px;"><b>Welcome To Our Rizzy Tempo Music Society</b></h1>
         </div>
     </div>
 
