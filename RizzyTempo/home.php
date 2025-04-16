@@ -47,7 +47,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <!-- Navbar -->
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand me-auto" href="home.php"><img class="mslogo" src="img/music.png"
+                <a class="navbar-brand me-auto" href="home.php"><img class="mslogo" src="img2/graduationcap.png"
                                                                      style="height:65px;width:65px;"></a>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                      aria-labelledby="offcanvasNavbarLabel">
@@ -97,7 +97,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <style>
         .background-image {
-            background-image: url('img/background3.jpg');
+            background-image: url('img2/recentgraduates.jpg');
             background-size: cover;
             background-position: center;
             height: 700px;
