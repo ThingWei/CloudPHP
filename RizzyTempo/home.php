@@ -91,7 +91,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <div class="background-image">
         <div class="overlay">
-            <h1 style="font-size:50px;"><b>Welcome To Our Rizzy Tempo Music Society</b></h1>
+            <h1 style="font-size:50px;"><b>Welcome To TAR UMT Graduation Services</b></h1>
         </div>
     </div>
 
@@ -227,12 +227,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div class="rowfoot">
             <div class="colfoot">
                 <img src="img/music.png" class="logofoot">
-                <p class="parafoot">Welcome to Rizzy Tempo Music Society, where passion meets melody and rhythm!
-                    Whether you're a seasoned virtuoso or just beginning your musical journey, our society offers a
-                    harmonious space for creativity, learning, and collaboration.</p>
+                <p class="parafoot">Welcome to TAR UMT Graduation Service, where we’re here to help you celebrate your big day as
+                    we offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment.
+                    Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.
+                </p>
                 <br>
-                <p class="parafoot">Join us as we embark on a symphonic adventure, doesn't matter if you're here to
-                    listen, learn, or lend your talents!</p>
+                <p class="parafoot">Let us help you leave a memorable memory on your family member or friend's life!</p>
             </div>
             <div class="colfoot">
                 <h3>Contact Us<div class="underline"><span class="uline"></span></div>
