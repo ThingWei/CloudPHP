@@ -1,0 +1,107 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 4 Apr 2024, 11:14:15 am
+    Author     : user
+*/
+
+.container-content{
+   justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container-content img {
+    max-width: 100%;
+    height: auto;
+    margin-left: 20px; /* Adjust this value to control the spacing between the paragraph and the image */
+}
+
+.conth1{
+    text-align:center;
+    margin-top:100px;
+    font-size:60px;
+}
+
+.backimg{
+    float:right;
+    margin-top:200px;
+    margin-right:20px;
+    border-radius: 20px;
+}
+
+.contp1{
+    margin-top:50px;
+    margin-left:100px;
+    font-size:45px;
+}
+
+.conth2{
+    margin-top:20px;
+    margin-left:100px;
+}
+
+.contp{
+    margin-top:30px;
+    margin-left:100px;
+    margin-right:600px;
+}
+
+.backimg2{
+    margin-left:250px;
+    width:700px;
+}
+
+.contp9{
+    margin-top:30px;
+    margin-left:100px;
+    margin-right:600px;
+    margin-bottom:100px;
+}
+
+@media (max-width: 815px) {
+
+    .container{
+        width: 80%;
+    }
+
+    .container-content img {
+        margin: 0px 0px 0px 0px;
+        float: none;
+    }
+
+    .container-content h1 {
+        margin: 40px 0px 20px 0px;
+
+    }
+
+    .container-content p {
+        margin: 0px 0px 0px 0px;
+
+    }
+
+    .container-content h2 {
+        margin: 0px 0px 0px 0px;
+    }
+}
+
+@media (max-width: 800px) {
+    .backimg{
+        padding: 20px;
+    }
+    
+    .conth2{
+        padding-top: 40px;
+        padding-bottom: 20px;
+    }
+
+    .backimg2{
+        padding-top: 40px;
+    }
+
+    .contp9{
+        padding-bottom: 40px;
+    }
+}

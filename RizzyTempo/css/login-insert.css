@@ -1,0 +1,67 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 May 2024, 11:35:32 pm
+    Author     : User
+*/
+
+table ,th ,td{
+    border-radius:20px;
+    /* remove position: absolute; as it's not necessary */
+    align-items: center;
+    border-spacing:15px;
+    padding: 10px 15px 10px 15px;
+}
+
+table ,th {
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    text-align: left;
+}
+
+.input-field {
+    width:400px;
+    height:40px;
+    font-size:20px;
+}
+
+h1{
+    text-align: center;
+}
+
+.input-button {
+    width: 270px;
+    height:60px;
+    border-radius:20px;
+    border-spacing:5px;
+    margin-left:50px;
+    font-size:25px;
+
+}
+
+.input-button:hover{
+    background-color: green;
+}
+
+.male{
+    margin-left: 80px;
+}
+
+.female{
+    margin-left:-170px;
+}
+
+input[type="radio"] {
+    transform: scale(1.5);
+}
+
+
+
+
+
+
+
+

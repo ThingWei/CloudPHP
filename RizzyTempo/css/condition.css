@@ -1,0 +1,39 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 4 Apr 2024, 3:54:55 pm
+    Author     : user
+*/
+h1{
+    text-align:center;
+    padding-top: 10px;
+}
+
+div {
+    padding-bottom: 30px;
+}
+
+p{
+    font-size:16px;
+    padding-left:40px;
+    padding-right:40px;
+}
+
+ol {
+    font-size: 19px;
+}
+
+li{
+    font-size:16px;
+    padding-left:25px;
+    padding-right:25px;
+}
+
+input#backbutton {
+    border-color: beige;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+}
+

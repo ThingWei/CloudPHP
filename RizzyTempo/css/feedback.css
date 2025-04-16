@@ -1,0 +1,202 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 4 Apr 2024, 2:03:11 am
+    Author     : user
+*/
+
+
+
+body {
+    position: relative;
+}
+
+video.center {
+    display:block;
+    object-fit:cover;
+    border-radius: 10px;
+}
+
+
+
+.center .stars{
+    height:150px;
+    width:500px;
+    text-align:center;
+    margin-top:20px;
+}
+
+.stars input{
+    display:none;
+}
+
+.stars label{
+    float:right;
+    font-size:80px;
+    color:lightgrey;
+    margin:0 5px;
+    text-shadow:1px 1px #bbb;
+}
+
+.stars label:before{
+    content:' ★';
+    text-shadow: 2.5px 3.5px 4px #828282;
+}
+
+.stars input:checked ~ label{
+    color:gold;
+    text-shadow:1px 1px #c60; 
+}
+.stars:not(:checked) > label:hover,
+.stars:not(:checked) > label:hover ~ label{
+    color:gold;
+}
+
+.stars input:checked > label:hover,
+.stars input:checked > label:hover ~ label{
+    color:gold;
+    text-shadow:1px 1px goldenrod;
+}
+
+.feedback-container{
+    border-radius:2rem;
+    padding-left:2rem 4rem;                                                                                                                                                                                                                                                                                                  box-shadow:black;
+    width:600px;
+    margin-left:100px;
+    margin-right:0px;
+    margin-top:50px;
+    margin-bottom: 50px;
+    padding-right:50px;
+    padding-left:50px;
+    display:block;
+    box-shadow: 2.5px 3.5px 4px #828282;
+}
+
+h1{
+    font-size:30px;
+    margin-top:90px;
+    padding-top: 40px;
+    text-shadow: 2.5px 3.5px 4px #828282;
+    color: rgb(0, 0, 0);
+}
+
+p{
+    font-size:18px;
+}
+
+question{
+    margin:0.5rem 0;
+}
+
+textarea{
+    padding:1px;
+    width:500px;
+    background-color:transparent;
+    border:0.1rem solid ;
+    border-radius:0.5rem;
+    
+}
+
+textarea:active{
+    box-shadow:rgba(50,50,93,0.25) 0px 2px 5px -1px,rgba(0,0,0,0.3) 0px 1px 3px -1px;
+}
+
+label{
+    font-size:1.5rem;
+    margin-left:1rem;
+}
+
+.info-field{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    flex-direction:column;
+    margin:0.5rem 0;
+}
+
+.name{
+   padding:1.3rem 0 0 0;
+   display:flex;
+   flex-direction:column;
+   label{
+    position:relative;
+    font-weight:bold;
+    font-size:1rem;
+    margin-bottom:0.5rem;
+   }
+}
+
+input{
+    border-radius:0.6rem;
+    background-color:transparent;
+    padding:1rem;
+    border:0.1rem solid;
+    padding-right:5px;
+}
+
+
+
+.email{
+    padding:1rem 0 0.5rem 0;
+    display:flex;
+    flex-direction:column;
+    margin-top:0.6rem;
+    label{
+        position:relative;
+        font-weight:bold;
+        font-size:1rem;
+        margin-bottom:0.5rem;
+    }
+}
+
+.accept{
+    display:flex;
+    align-items:center;
+    label{
+        font-size:1.2rem;
+        margin-left:0.7rem;
+        a{
+            color:#1c84ff;
+        }
+       }
+}
+
+button{
+    padding:10px 20px;
+    font-size:20px;
+    background-color:#1c84ff;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    text-align:center;
+    margin-left:50px;
+    width:500px;
+    margin-bottom:50px;
+    margin-top:30px;
+    box-shadow: 2.5px 3.5px 4px #828282;
+}
+
+/* Validation Styles */
+input:focus,select:focus,textarea:focus{
+    background-color:rgb(255,255,180);
+}
+input#nickname:focus:valid,input#emailaddress:focus:valid{
+    background-color:rgb(220,255,220);
+    background-image:url(rb_okay.jpg);
+    background-repeat:no-repeat;
+    background-position:right;
+    background-size:contain;
+
+    /*****OR*************/
+    background:rgb(220,255,220) url(rb_okay.jpg) no-repeat right/contain;
+}
+input#nickname:focus:invalid,input#emailaddress:focus:invalid{
+    background-color:rgb(255,230,230);
+    background-image:url(rb_warning.jpg);
+    background-repeat:no-repeat;
+    background-position:right;
+    background-size:contain;
+}

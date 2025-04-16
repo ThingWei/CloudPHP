@@ -1,0 +1,27 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 13 May 2024, 3:02:30 pm
+    Author     : chinw
+*/
+
+.errorpage{
+    margin-top: 25px;
+}
+
+.error
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.9em;
+    border: 2px solid #FBC2C4;
+    background-color: #FBE3E4;
+    color: #8A1F11;
+    width: 50%;
+    text-align: center;
+    padding: 15px 0 0 0;
+}
+

@@ -1,0 +1,7 @@
+php_gd2.dll
+
+uncomment in php.ini
+
+if not present install the .dll files in the php directory of your xampp/wamp folder
+
+and certain tweaks were added check the code

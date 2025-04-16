@@ -1,0 +1,57 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 May 2024, 11:35:32 pm
+    Author     : User
+*/  
+
+
+table ,tr,td{
+    border: 0.2px solid black;
+    /* remove posipxon: absolute; as it's not necessary */
+    align-items: center;
+    margin-left: 350px;
+    font-size:20px;
+    color:black;
+}
+
+
+h1{
+    text-align: center;
+    font-size: 55px;
+}
+
+.button{
+    width: 250px;
+    height:40px;
+    border-radius:20px;  
+    font-size:20px;
+    margin-left: 20px;
+}
+
+.button:hover{
+    background-color: #00b383;
+}
+
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+.flex{
+    display:flex;
+    margin-left: 450px;
+}
+
+.confirmation{
+    margin-left:550px;
+    font-size:20px;
+    color:red;
+    line-height: 3;
+}
