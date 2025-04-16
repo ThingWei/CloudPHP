@@ -65,7 +65,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <a class="nav-link active mx-lg-2" style='color:white' aria-current="page" href="loginSignUp.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="loginSignUp.php">Events</a>
+                                <a class="nav-link mx-lg-2" aria-current="page" href="loginSignUp.php">Products</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mx-lg-2" aria-current="page" href="loginSignUp.php">Purchased Tickets</a>
@@ -94,13 +94,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <div class="background-image">
         <div class="overlay">
-            <h1 style="font-size:50px;"><b>Welcome To Our Rizzy Tempo Music Society</b></h1>
+        <h1 style="font-size:50px;"><b>Welcome To TAR UMT Graduation Services</b></h1>
         </div>
     </div>
 
     <style>
         .background-image {
-            background-image: url('img/background3.jpg');
+            background-image: url('img2/recentgraduates.jpg');
             background-size: cover;
             background-position: center;
             height: 700px;
@@ -164,12 +164,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </style>
     <h1 style="text-align:center;font-size:45px;text-decoration:underline;margin-top:50px;">About Us<br></h1>
     <p style="font-size:20px;text-align:center;margin-top:20px;">
-        We are a group of passionate individuals brought together by our love for music.<br>
-        Our society provides a welcoming space for music enthusiasts of all levels to come together, <br>
-        share their passion, and explore the world of music.<br>
-        Whether you're a seasoned musician or someone who simply enjoys listening to music, <br>
-        there's a place for you here.
-        Join us as we embark on a journey to celebrate the joy and beauty of music together.
+    At TAR UMT Graduation Services, we’re here to help you celebrate your big day.<br>
+        We offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment. <br>
+        Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.<br>
+        Thank you for letting us be a part of your celebration! <br>
     <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Active / Past Events</h1>
     <div class="gallery-container" style="margin:20px;">
         <div class="gallery" style="border-radius: 15px">
@@ -177,7 +175,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event1.jpg" alt="event1" width="600" height="400"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Jazz Day</div>
+            <div class="desc">Flowers</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
@@ -185,7 +183,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event2.jpg" alt="event2" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Friday Night Live</div>
+            <div class="desc">Graduation Caps</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
@@ -193,7 +191,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event3.jpg" alt="event3" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Jazz Night</div>
+            <div class="desc">Graduation Gowns</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
@@ -201,7 +199,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event4.jpg" alt="event4" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Rock Festival</div>
+            <div class="desc">Gifts</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
@@ -209,16 +207,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event5.jpg" alt="event5" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Retro Music Festival</div>
+            <div class="desc">Photo Frames</div>
         </div>
 
-        <div class="gallery" style="border-radius: 15px">
-            <a target="_blank" href="event.php">
-                <img src="img/event6.jpg" alt="event6" width="600" height="300"
-                    style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-            </a>
-            <div class="desc">Karaoke</div>
-        </div>
 
     </div>
 
@@ -232,12 +223,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div class="rowfoot">
             <div class="colfoot">
                 <img src="img/music.png" class="logofoot">
-                <p class="parafoot">Welcome to Rizzy Tempo Music Society, where passion meets melody and rhythm!
-                    Whether you're a seasoned virtuoso or just beginning your musical journey, our society offers a
-                    harmonious space for creativity, learning, and collaboration.</p>
+                <p class="parafoot">Welcome to TAR UMT Graduation Service, where we’re here to help you celebrate your big day as
+                    we offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment.
+                    Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.</p>
                 <br>
-                <p class="parafoot">Join us as we embark on a symphonic adventure, doesn't matter if you're here to
-                    listen, learn, or lend your talents!</p>
+                <p class="parafoot">Let us help you leave a memorable memory on your family member or friend's life!</p>
             </div>
             <div class="colfoot">
                 <h3>Contact Us<div class="underline"><span class="uline"></span></div>
@@ -254,7 +244,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </h3>
                 <ul class="footnav">
                     <li><a href="loginSignUp.php">Home</a></li>
-                    <li><a href="loginSignUp.php">Events</a></li>
+                    <li><a href="loginSignUp.php">Products</a></li>
                     <li><a href="loginSignUp.php">Purchased Tickets</a></li>
                     <li><a href="loginSignUp.php">About Us</a></li>
                     <li><a href="loginSignUp.php">Feedback</a></li>
@@ -280,7 +270,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
         </div>
         <hr>
-        <p class="parafoot" style="text-align: center; font-size: 16px;">Rizzy Tempo Music Society @ 2024</p>
+        <p class="parafoot" style="text-align: center; font-size: 16px;">TARUMT Graduation Service @ 2025</p>
     </footer>
 </div>
 <!-- End Of Footer -->

@@ -85,48 +85,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div class="container-content">
             <h1 class="conth1"><b>About Us</b></h1>
             <img src="img/background2.jpg" class="backimg">
-            <p class="contp1"><b>Welcome to Rizzy Tempo Music Society !</b>
+            <p class="contp1"><b>Welcome to TARUMT Graduation Services !</b>
             </p>
             <h2 class="conth2">Who We Are?</h2>
-            <p class="contp">At the heart of Tarumt College beats a
-                rhythm,
-                a melody that brings us together, known as the Rizzy Tempo Music Society.
-                Here, passion for music isn't just appreciated; it's celebrated, nurtured, and shared among peers.
-                Whether you've graced stages with your talent or dream of hitting the right notes for the first time,
-                our
-                society is your stage, your studio, and your sanctuary.</p>
+            <p class="contp">At TARUMT University, graduation isn’t just a ceremony — it’s a celebration of achievement,
+                 a milestone of perseverance, and a gateway to the future.
+                At the heart of this proud moment lies TARUMT Graduation Services, 
+                your trusted platform for all graduation-related needs.
+Whether you're a graduate preparing for your big day or a family member supporting their journey, 
+we are here to provide a smooth, meaningful, and memorable experience as you mark this important chapter.
+</p>
             <h2 class="conth2">Our Mission:</h2>
-            <p class="contp">We believe in the power of music to unite,
-                inspire, and educate.
-                Our mission is to create a vibrant, inclusive community where members can explore their musical
-                interests,
-                develop their talents, and showcase their passion.
-                From classical to contemporary and everything in between, Rizzy Tempo Music Society is a place where
-                every
-                genre, every note, and every beat finds a home.
+            <p class="contp">We understand the emotional and symbolic value of graduation. Our mission is to provide every graduating student and their loved ones with a seamless, 
+                accessible, and enriching platform to:
+                Explore and purchase official graduation merchandise,
+                Receive timely updates and support,
+                Celebrate the transition from student life to the next great adventure.
+                From ordering gowns and certificates to personalized memorabilia, TARUMT Graduation Services ensures everything you need is just a click away.
+
+
             </p>
             <h2 class="conth2"> What We Offer ?</h2>
             <p class="contp">
-                <b>Learning and Development:</b> &nbsp;Workshops, masterclasses, and peer-led sessions designed to hone
-                your
-                skills, whether you're picking up an instrument for the first time or looking to perfect your craft.
+                <b>Graduation Essentials:</b> &nbsp;Caps, gowns, sashes, and official regalia — everything you need to walk the stage in pride. Easy browsing and ordering through our online platform.
             </p>
-            <p class="contp"><b>Performance Opportunities:</b>&nbsp;
-                Regular
-                concerts, open mics, and recitals on campus and in the broader community. A chance to shine in the
-                spotlight
-                or support your peers as they take the stage.
+            <p class="contp"><b>Customized Merchandise:</b>&nbsp;
+            Commemorative items including class rings, name-engraved plaques, graduation bears, 
+            photo frames, and more — perfect for gifting or keepsakes.
             </p>
-            <p class="contp"><b>Collaboration and Networking:</b>
-                &nbsp;Join
-                a community of like-minded individuals. Collaborate, form bands, or simply enjoy the camaraderie of
-                fellow
-                music enthusiasts.
+            <p class="contp"><b>Graduation Photos and Videos:</b>
+                &nbsp;Capture the memories of your graduation day with professional photography and videography services. 
+                We partner with skilled photographers to offer packages that include candid shots, family portraits, 
+                and staged photos during the ceremony.
+                We also provide high-quality video recordings of the event so you can relive the special moments whenever you want.
             </p>
-            <p class="contp"><b>Events and Activities:</b>&nbsp; From
-                guest
-                speakers and professional demonstrations to social gatherings and music-related outings, there's always
-                something happening.</p>
+            
             <img class="backimg2" src="img/joinus.jpg" alt="joinus">
 
             <h2 class="conth2">Join Us</h2>
@@ -174,7 +167,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </h3>
                 <ul class="footnav">
                     <li><a href="home.php">Home</a></li>
-                    <li><a href="event.php">Events</a></li>
+                    <li><a href="event.php">Products</a></li>
                     <li><a href="displayTicket.php">Purchased Tickets</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
                     <li><a href="feedback.php">Feedback</a></li>
@@ -200,7 +193,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
         </div>
         <hr>
-        <p class="parafoot" style="text-align: center; font-size: 16px;">Rizzy Tempo Music Society @ 2024</p>
+        <p class="parafoot" style="text-align: center; font-size: 16px;">TARUMT Graduation Service @ 2025</p>
     </footer>
 </div>
 <!-- End Of Footer -->

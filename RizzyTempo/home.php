@@ -62,7 +62,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <a class="nav-link active mx-lg-2" style='color:white' aria-current="page" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="event.php">Events</a>
+                                <a class="nav-link mx-lg-2" aria-current="page" href="event.php">Product</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mx-lg-2" aria-current="page" href="displayTicket.php">Purchased Tickets</a>
@@ -75,6 +75,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mx-lg-2" href="faq.php">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mx-lg-2" href="cart.php">Cart</a>
                             </li>
                         </ul>
                     </div>
@@ -165,14 +168,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         We offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment. <br>
         Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.<br>
         Thank you for letting us be a part of your celebration! <br>
-    <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Active / Past Events</h1>
+    <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Graduation Items</h1>
     <div class="gallery-container" style="margin:20px;">
         <div class="gallery" style="border-radius: 15px">
             <a href="event.php">
-                <img src="img/event1.jpg" alt="event1" width="600" height="400"
+                <img src="img/flowers.jpg" alt="event1" width="600" height="400"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Jazz Day</div>
+            <div class="desc">Flowers</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
@@ -180,7 +183,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event2.jpg" alt="event2" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Friday Night Live</div>
+            <div class="desc">Graduation Caps</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
@@ -188,7 +191,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event3.jpg" alt="event3" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Jazz Night</div>
+            <div class="desc">Graduation Gowns</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
@@ -196,7 +199,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event4.jpg" alt="event4" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Rock Festival</div>
+            <div class="desc">Gifts</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
@@ -204,16 +207,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <img src="img/event5.jpg" alt="event5" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Retro Music Festival</div>
+            <div class="desc">Photo Frames</div>
         </div>
 
-        <div class="gallery" style="border-radius: 15px">
-            <a href="event.php">
-                <img src="img/event6.jpg" alt="event6" width="600" height="300"
-                    style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-            </a>
-            <div class="desc">Karaoke</div>
-        </div>
+       
 
     </div>
 
@@ -249,7 +246,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </h3>
                 <ul class="footnav">
                     <li><a href="home.php">Home</a></li>
-                    <li><a href="event.php">Events</a></li>
+                    <li><a href="event.php">Products</a></li>
                     <li><a href="displayTicket.php">Purchased Tickets</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
                     <li><a href="feedback.php">Feedback</a></li>
@@ -275,7 +272,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
         </div>
         <hr>
-        <p class="parafoot" style="text-align: center; font-size: 16px;">Rizzy Tempo Music Society @ 2024</p>
+        <p class="parafoot" style="text-align: center; font-size: 16px;">TARUMT Graduation Service @ 2025</p>
     </footer>
 </div>
 <!-- End Of Footer -->
