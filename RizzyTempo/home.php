@@ -18,7 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to RT Music Society</title>
+    <title>Welcome to TAR UMT Graduation Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="css/header.css" rel="stylesheet">
@@ -30,33 +30,48 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
 
         body {
-            background: url(img/musicbg.jpg) no-repeat center;
+            background: url('img2/background.png') no-repeat center center fixed;
             background-size: cover;
             width: 100%;
             height: 100%;
+        }
+
+        h1, h2, h3, p {
+            color: white; /* or try #fffae3, #f0f0f0 for softer brightness */
+            text-shadow: 1px 1px 2px black; /* optional: gives text more contrast */
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        .background-container {
+            position: relative;
+            background: url('img2/background.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .background-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* 👈 adjust for light/dark overlay */
+            z-index: 1;
+        }
+
+        .background-container > * {
+            position: relative;
+            z-index: 2;
+            color: white; /* Makes text readable on dark overlay */
         }
 
         .img {
             width: 20px;
             height: 20px;
         }
-    </style>
-</head>
 
-<body>
-    <!-- Navbar -->
-        <?php
-        include 'headerUser.php';
-        ?>
-        <!-- End of Navbar -->
-
-    <div class="background-image">
-        <div class="overlay">
-            <h1 style="font-size:50px;"><b>Welcome To TAR UMT Graduation Services</b></h1>
-        </div>
-    </div>
-
-    <style>
         .background-image {
             background-image: url('img2/recentgraduates.jpg');
             background-size: cover;
@@ -96,10 +111,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         }
 
-
         div.gallery {
             margin: 5px;
-            border: 2px solid black;
+            border: 2px solid white;
             float: left;
             width: 180px;
             margin-right: 15px;
@@ -107,7 +121,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
 
         div.gallery:hover {
-            border: 1px solid white;
+            border: 1px solid black;
         }
 
         div.gallery img {
@@ -120,67 +134,81 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             text-align: center;
         }
     </style>
-    <h1 style="text-align:center;font-size:45px;text-decoration:underline;margin-top:50px;">About Us<br></h1>
-    <p style="font-size:20px;text-align:center;margin-top:20px;">
-        At TAR UMT Graduation Services, we’re here to help you celebrate your big day.<br>
-        We offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment. <br>
-        Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.<br>
-        Thank you for letting us be a part of your celebration! <br>
-    <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Graduation Items</h1>
-    <div class="gallery-container" style="margin:20px;">
-        <div class="gallery" style="border-radius: 15px">
-            <a href="event.php">
-                <img src="img/flowers.jpg" alt="event1" width="600" height="400"
-                    style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-            </a>
-            <div class="desc">Flowers</div>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <?php include 'headerUser.php'; ?>
+    <!-- End of Navbar -->
+
+    <div class="background-image">
+        <div class="overlay">
+            <h1 style="font-size:50px;"><b>Welcome To TAR UMT Graduation Services</b></h1>
         </div>
-
-        <div class="gallery" style="border-radius: 15px">
-            <a href="event.php">
-                <img src="img2/GradCap.png" alt="event2" width="600" height="300"
-                    style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-            </a>
-            <div class="desc">Graduation Caps</div>
-        </div>
-
-        <div class="gallery" style="border-radius: 15px">
-            <a href="event.php">
-                <img src="img2/GradCap.png" alt="event3" width="600" height="300"
-                    style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-            </a>
-            <div class="desc">Graduation Teddy</div>
-        </div>
-
-        <div class="gallery" style="border-radius: 15px">
-            <a href="event.php">
-                <img src="img2/MoneyBanquet.png" alt="event4" width="600" height="300"
-                    style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-            </a>
-            <div class="desc">Money Banquet</div>
-        </div>
-
-        <div class="gallery" style="border-radius: 15px">
-            <a href="event.php">
-                <img src="img2/PhotoPrinting.png" alt="event5" width="600" height="300"
-                    style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-            </a>
-            <div class="desc">Instant Photo Printing Service</div>
-        </div>
-
-       
-
     </div>
 
+    <div class="background-container">
+        <h1 style="text-align:center;font-size:45px;text-decoration:underline;margin-top:50px;">About Us<br></h1>
+        <p style="font-size:20px;text-align:center;margin-top:20px;">
+            At TAR UMT Graduation Services, we’re here to help you celebrate your big day.<br>
+            We offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment. <br>
+            Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.<br>
+            Thank you for letting us be a part of your celebration! 
+        </p>
+        <br/>
 
+        <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Graduation Items</h1>
+
+        <div class="gallery-container" style="margin:20px;">
+            <div class="gallery" style="border-radius: 15px">
+                    <a href="event.php">
+                        <img src="img/flowers.jpg" alt="event1" width="600" height="400"
+                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
+                    </a>
+                    <div class="desc">Flowers</div>
+                </div>
+
+                <div class="gallery" style="border-radius: 15px">
+                    <a href="event.php">
+                        <img src="img2/GradCap.png" alt="event2" width="600" height="300"
+                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
+                    </a>
+                    <div class="desc">Graduation Caps</div>
+                </div>
+
+                <div class="gallery" style="border-radius: 15px">
+                    <a href="event.php">
+                        <img src="img2/GradTeddy.png" alt="event3" width="600" height="300"
+                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
+                    </a>
+                    <div class="desc">Graduation Teddy</div>
+                </div>
+
+                <div class="gallery" style="border-radius: 15px">
+                    <a href="event.php">
+                        <img src="img2/MoneyBanquet.png" alt="event4" width="600" height="300"
+                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
+                    </a>
+                    <div class="desc">Money Banquet</div>
+                </div>
+
+                <div class="gallery" style="border-radius: 15px">
+                    <a href="event.php">
+                        <img src="img2/PhotoPrinting.png" alt="event5" width="600" height="300"
+                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
+                    </a>
+                    <div class="desc">Instant Photo Printing Service</div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="clearfix"></div>
 
     <!-- Footer -->
-<?php
-include 'footerUser.php';
-?>
-<!-- End Of Footer -->
+    <?php include 'footerUser.php'; ?>
+    <!-- End Of Footer -->
+ 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
