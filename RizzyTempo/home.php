@@ -138,7 +138,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <div class="gallery" style="border-radius: 15px">
             <a href="event.php">
-                <img src="img/event2.jpg" alt="event2" width="600" height="300"
+                <img src="img2/GradCap.png" alt="event2" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
             <div class="desc">Graduation Caps</div>
@@ -146,26 +146,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <div class="gallery" style="border-radius: 15px">
             <a href="event.php">
-                <img src="img/event3.jpg" alt="event3" width="600" height="300"
+                <img src="img2/GradCap.png" alt="event3" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Graduation Gowns</div>
+            <div class="desc">Graduation Teddy</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
             <a href="event.php">
-                <img src="img/event4.jpg" alt="event4" width="600" height="300"
+                <img src="img2/MoneyBanquet.png" alt="event4" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Gifts</div>
+            <div class="desc">Money Banquet</div>
         </div>
 
         <div class="gallery" style="border-radius: 15px">
             <a href="event.php">
-                <img src="img/event5.jpg" alt="event5" width="600" height="300"
+                <img src="img2/PhotoPrinting.png" alt="event5" width="600" height="300"
                     style="border-top-left-radius: 15px;border-top-right-radius: 15px">
             </a>
-            <div class="desc">Photo Frames</div>
+            <div class="desc">Instant Photo Printing Service</div>
         </div>
 
        
