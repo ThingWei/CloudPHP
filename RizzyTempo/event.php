@@ -31,7 +31,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             }
 
             body {
-                background: url(img/musicbg.jpg) no-repeat center;
+                background-color: lightgray;
                 background-size: cover;
                 width: 100%;
             }
@@ -58,48 +58,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         ?>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand me-auto" href="home.php"><img class="mslogo" src="img/music.png"
-                                                                     style="height:65px;width:65px;"></a>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                     aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="mslogo" src="img/music.png">
-                            &nbsp; RT Music Society</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="home.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active mx-lg-2" style='color:white;' aria-current="page" href="event.php">Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="displayTicket.php">Purchased Tickets</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="aboutus.php">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="feedback.php">Feedback</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="faq.php">FAQ</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="profile.php"><img class="profilepic" src="img/profile.png"></a>
-                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                </button>
-            </div>
-        </nav>
+        <?php
+        include 'headerUser.php';
+        ?>
         <!-- End of Navbar -->
 
         <p class="gap">&nbsp;</p>
@@ -122,45 +83,45 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         if ($result->num_rows > 0) {
             // Record found
             echo '<div id="container">';
-            echo '<h1 style="margin: auto; text-align: center; padding-bottom: 20px;text-decoration:underline;">Active Events</h1>';
-            echo '<table class="d-flex justify-content-center">';
+            echo '<h1 style="margin: auto; text-align: center; padding-bottom: 20px;text-decoration:underline;">Our Products</h1>';
+            echo '<div class="d-flex justify-content-end mb-3">
+        <input type="text" id="searchBox" class="form-control w-25" placeholder="Search event...">
+    </div>';
+    echo '<div class="container"><div class="row" id="productGrid">';
 
-            // Start looping through each row
-            while ($row = $result->fetch_object()) {
-                printf('
-            <tr>
-            <td style="margin-top: 10px;"><div class="custom-card"><div class="img-box"><img src="%s"></div>
-            <div class="custom-content"><div class="content_text"><h2>%s</h2><p>%s</p></div>
-            <a href="eventdets.php?eventName=%s">Read More</a></div></div></td>',
-                        $row->eventBanner,
-                        $row->eventName,
-                        $row->headline,
-                        $row->eventName
-                    );
-
-                // Fetch the next row for the second value in array
-                $row = $result->fetch_object();
-
-                // Check if there's another row available
-                if ($row !== null) {
-                    // Output the second item
-                    printf('
-                <td style="margin-top: 10px;"><div class="custom-card"><div class="img-box"><img src="%s"></div>
-                <div class="custom-content"><div class="content_text"><h2>%s</h2><p>%s</p></div>
-                <a href="eventdets.php?eventName=%s">Read More</a></div></div></td>',
-                            $row->eventBanner,
-                            $row->eventName,
-                            $row->headline,
-                            $row->eventName
-                    );
-                } else {
-                    // If there are no more rows, close the row
-                    echo "</tr>";
-                }
-            }
-
-            // Close table and container
-            echo '</table>';
+    $count = 0;
+    while ($row = $result->fetch_object()) {
+        echo '
+            <div class="col-md-4 mb-4 product-item">
+                <div class="card h-100 shadow-sm">
+                    <img src="' . $row->eventBanner . '" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">' . $row->eventName . '</h5>
+                        
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="eventdets.php?eventName=' . urlencode($row->eventName) . '" class="btn btn-outline-primary w-50 me-2">
+                                <i class="bi bi-eye"></i> View
+                            </a>
+                            <form method="POST" action="cart.php" class="w-50">
+                                <input type="hidden" name="eventName" value="' . htmlspecialchars($row->eventName) . '">
+                               
+    <input type="hidden" name="ticketType" value="<?= $ticketType ?>">
+    <input type="hidden" name="price" value="<?= $price ?>">
+    <input type="hidden" name="eventBanner" value="' . htmlspecialchars($row->eventBanner) . '">
+    
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" name="add_to_cart" class="btn btn-outline-success w-100">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+        $count++;
+    }
+    
+    echo '</div></div>';
             echo '</div>';
 
             // Free result set and close connection
@@ -174,62 +135,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- End of content -->
 
         <!-- Footer -->
-<div class="foot">
-    <footer>
-        <div class="rowfoot">
-            <div class="colfoot">
-                <img src="img/music.png" class="logofoot">
-                <p class="parafoot">Welcome to Rizzy Tempo Music Society, where passion meets melody and rhythm!
-                    Whether you're a seasoned virtuoso or just beginning your musical journey, our society offers a
-                    harmonious space for creativity, learning, and collaboration.</p>
-                <br>
-                <p class="parafoot">Join us as we embark on a symphonic adventure, doesn't matter if you're here to
-                    listen, learn, or lend your talents!</p>
-            </div>
-            <div class="colfoot">
-                <h3>Contact Us<div class="underline"><span class="uline"></span></div>
-                </h3>
-                <p class="parafoot">77, Lorong Lembah</p>
-                <p class="parafoot">Permai 3, 11200 </p>
-                <p class="parafoot">Tanjung Bungah,</p>
-                <p class="parafoot">Pulau Pinang, Malaysia</p>
-                <p class="email-id">penang@tarc.edu.my</p>
-                <h4><a class="callus" href="tel:+04-899 5230">(+6) 04-899 5230</a></h4>
-            </div>
-            <div class="colfoot">
-                <h3>Navigation<div class="underline"><span class="uline"></span></div>
-                </h3>
-                <ul class="footnav">
-                    <li><a href="home.php">Home</a></li>
-                    <li><a href="event.php">Events</a></li>
-                    <li><a href="displayTicket.php">Purchased Tickets</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
-                    <li><a href="feedback.php">Feedback</a></li>
-                    <li><a href="faq.php">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="colfoot">
-                <h3 style="font-size: 14px;" class="fblow">Find Us Thru Our Social Media Below!<div
-                        class="underline"><span class="uline"></span></div>
-                </h3>
-                <div>
-                    <a href="https://www.instagram.com/"><button id="insta" style="background-image: url(img/instalogo.png);background-size: cover; width: 45px;
-                                                                 height: 43px; box-sizing: border-box;"></button></a>
-                    <a href="https://www.facebook.com/"><button id="facebook" style="background-image: url(img/facebooklogo.png);background-size: cover; width: 45px;
-                                                                height: 43px; box-sizing: border-box;"></button></a>
-                    <a href="https://twitter.com/"><button id="twitter" style="background-image: url(img/twitterlogo.png);background-size: cover; width: 45px;
-                                                           height: 43px; box-sizing: border-box;"></button></a>
-                    <a href="https://mail.google.com/"><button id="email" style="background-image: url(img/maillogo.png);background-size: cover; width: 45px;
-                                                               height: 43px; box-sizing: border-box;"></button></a>
-                    <a href="https://www.whatsapp.com/"><button id="phone" style="background-image: url(img/whatsapplogo.png);background-size: cover; width: 45px;
-                                                                height: 43px; box-sizing: border-box;"></button></a>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <p class="parafoot" style="text-align: center; font-size: 16px;">Rizzy Tempo Music Society @ 2024</p>
-    </footer>
-</div>
+        <?php
+include 'footerUser.php';
+?>
 <!-- End Of Footer -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -237,3 +145,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </body>
 
 </html>
+
+<script>
+    document.getElementById('searchBox').addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        document.querySelectorAll('.product-item').forEach(item => {
+            const title = item.querySelector('.card-title').textContent.toLowerCase();
+            item.style.display = title.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+</script>

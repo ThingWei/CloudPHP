@@ -81,80 +81,7 @@ if (isset($_POST["submit"])) {
     // Remove null value
     $errors = array_filter($error);
 
-    $eventName = trim($_GET['eventTicketName']);
-    $type = trim($_GET['ticketType']);
 
-    $sql3 = "SELECT * FROM event WHERE eventName = '$eventName'";
-    $getevent = $con->query($sql3);
-    if ($row = $getevent->fetch_object()) {
-        $ticket = $row->eventName;
-        $headline = $row->headline;
-        $descrip = $row->description;
-        $banner = $row->eventBanner;
-        $date = $row->dateOfEvent;
-        $time = $row->time;
-        $loc = $row->location;
-    }
-    
-    $sql2 = "SELECT * FROM ticket WHERE eventTicketName = '$eventName' AND ticketType = '$type'";
-    $getticket = $con->query($sql2);
-    if ($row = $getticket->fetch_object()) {
-        $tick = $row->eventTicketName;
-        $ticktype = $row->ticketType;
-        $price = $row->price;
-    }
-
-    if (empty($errors)) {
-        // GOOD, no error, proceed to insert record
-        // Use MySQLi prepared statement for the INSERT query
-        $query = "INSERT INTO payment (email, eventName, ticketType, price, cardNumber) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $con->prepare($query);
-        $stmt->bind_param("sssss", $uemail, $eventName, $type, $price, $cardNumber);
-        $result = $stmt->execute();
-
-        $eventName = trim($_GET["eventTicketName"]);
-        $eventtable = str_replace(' ', '_', $eventName);
-        $lowercasetable = strtolower($eventtable);
-
-        $sql2 = "INSERT INTO `$lowercasetable` (username, email, gender) VALUES (?,?,?) ";
-        $insert = $con->prepare($sql2);
-        $insert->bind_param("sss", $uname, $uemail, $ugender);
-
-        //step 3:execute sql
-        $insert->execute();
-
-        $receipt = "INSERT INTO receipt (email, eventName, ticketType, price, date, time, location) VALUES ('$uemail', '$ticket','$type', '$price','$date','$time','$loc')";
-        $inreceipt = $con->query($receipt);
-        
-        // Check for errors
-        if (!$result) {
-            $errors = "Failed to create payment: " . mysqli_error($con);
-        } else {
-            // Execute the SQL statement
-            if (mysqli_affected_rows($con) > 0) {
-
-                $eventName = trim($_GET["eventTicketName"]);
-                $ticketType = trim($_GET["ticketType"]);
-                // Record inserted
-                printf('<script>alert("Payment Completed! Thanks for supporting us.");document.location.href="receipt.php?eventTicketName=%s&ticketType=%s"</script>', $eventName, $ticketType);
-            } else {
-                // Record unable to insert
-                $errors = "Failed to create payment: no rows affected.";
-            }
-        }
-
-        // Close the database connection
-        mysqli_close($con);
-    } else {
-
-        $eventName = trim($_GET["eventTicketName"]);
-        $ticketType = trim($_GET["ticketType"]);
-
-        foreach ($errors as $value) {
-            echo "<script>alert('$value');</script>";
-        }
-        printf('<script>window.location.href="payment.php?eventTicketName=%s&ticketType=%s"</script>', $eventName, $ticketType);
-    }
 }
 ?>
 
@@ -172,355 +99,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- Bootstrap Css -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <style>
-            * {
-                padding: 0;
-                margin: 0;
-                box-sizing: border-box;
-                font-family: Century Gothic Std, AppleGothic, Arial, sans-serif;
-            }
-
-            body {
-                background: url(img/musicbg.jpg) no-repeat center;
-                background-size: cover;
-                width: 100%;
-            }
-
-            .everything {
-                display: flex;
-                margin-left: 35px;
-            }
-
-            .background {
-                width: 40%;
-                height: 100vh;
-                background: url('img/musicPhoto.png')no-repeat;
-                background-repeat: cover;
-                background-position: center;
-            }
-
-            .container {
-                background-color: white;
-                backdrop-filter: blur(50px);
-                max-width: 900px;
-                max-height: 800px;
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-                padding: 2rem 1.5rem;
-                border-radius: 20px;
-                font-size: 20px;
-                user-select: none;
-                color: black;
-                border: 1px solid;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                gap: 20px;
-            }
-
-            .left {
-                flex-basis: 50%;
-            }
-
-            .right {
-                flex-basis: 50%;
-            }
-
-            form {
-                padding: 1.5rem;
-            }
-
-            form input[type="text"] {
-                width: 100%;
-                padding: 1.2rem 0.7rem;
-                margin-top: 1rem;
-                outline: none;
-                border-radius: 20px;
-                font-size: 15px;
-            }
-
-            #fnBox,
-            #emailBox {
-                width: 100%;
-                margin-right: 50px;
-            }
-
-            #zip {
-                display: flex;
-                column-gap: 20px;
-                margin-top: 0.5rem;
-            }
-
-            #zip select {
-                padding: 1.2rem 1rem;
-                outline: none;
-                border-radius: 20px;
-                font-size: 15px;
-            }
-
-            #zip input[type="number"] {
-                padding: 1.2rem 0.5rem;
-                margin-right: 80px;
-                outline: none;
-                width: 80%;
-                border-radius: 20px;
-            }
-
-            #cardNumberBox {
-                width: 100%;
-                padding: 1.2rem 0.7rem;
-                margin-top: 1rem;
-                outline: none;
-                border-radius: 20px;
-                font-size: 15px;
-
-            }
-
-            #monthBox {
-                width: 100%;
-                padding: 1.2rem 0.7rem;
-                margin-top: 1rem;
-                outline: none;
-                border-radius: 20px;
-                font-size: 15px;
-            }
-
-            input[type="submit"] {
-                width: 86%;
-                padding: 0.7rem 2rem;
-                background-color: black;
-                color: white;
-                outline: none;
-                margin: 0.5rem;
-                font-size: 2rem;
-                border-radius: 20px;
-            }
-
-            input[type="submit"]:hover {
-                background: green;
-            }
-
-            .x {
-                color: black;
-                cursor: pointer;
-                position: absolute;
-                right: 20px;
-                top: 1px;
-                font-size: 70px;
-                border: none;
-                background: rgba(1, 1, 1, 0);
-            }
-
-            .x:hover {
-                color: green;
-            }
-
-            .container .column {
-                display: flex;
-                column-gap: 20px;
-            }
-
-            #region {
-                width: 200px;
-            }
-
-            #poscode {
-                width: 200px;
-                border-radius: 20px;
-                height: 58px;
-                margin-top: 16px;
-                padding-left: 10px;
-            }
-
-            #inputBox:focus:valid,
-            #region:focus:valid,
-            #poscode:focus:valid,
-            #fnBox:focus:valid {
-                background-color: rgb(220, 255, 220);
-                background-image: url('img/cg_valid.png');
-                background-repeat: no-repeat;
-                background-position: 96%;
-                background-size: 25px;
-            }
-
-            #inputBox:focus:invalid,
-            #region:focus:invalid,
-            #poscode:focus:invalid,
-            #fnBox:focus:invalid {
-                background-color: rgb(255, 232, 232);
-                background-image: url('img/cg_invalid.png');
-                background-repeat: no-repeat;
-                background-position: 96%;
-                background-size: 25px;
-            }
-
-
-
-            label {
-                font-size: 20px;
-            }
-
-            p {
-                font-size: 17px;
-                margin: 10px 0;
-                display: inline-block;
-                padding: 5px 25px;
-            }
-
-            header .title {
-                display: flex;
-                align-items: center;
-                /* Align items vertically */
-                justify-content: space-between;
-                /* Separate titles to each end */
-                background-color: black;
-                height: 100px;
-                padding-left: 50px;
-                padding-right: 50px;
-
-            }
-
-            @keyframes back {
-                100% {
-                    background-position: 2000px 0;
-                }
-            }
-
-            .title h1 {
-                font-size: 65px;
-                margin: 0;
-                /* Remove default margin */
-                color: transparent;
-                -webkit-text-stroke: 1px #fff;
-                background: url('img/back.png');
-                -webkit-background-clip: text;
-                background-position: 0 0;
-                animation: back 20s linear infinite;
-            }
-
-            .title2 {
-                color: white;
-                font-size: 35px;
-                margin: 0;
-                /* Remove default margin */
-            }
-
-            .movementTitle {
-                display: flex;
-                /* Set to flex container */
-                align-items: center;
-                /* Align items vertically */
-            }
-
-            .title2 {
-                margin-left: 800px;
-                /* Adjust margin for spacing */
-                margin-bottom: 100px;
-            }
-
-            @keyframes moveTitle {
-                0% {
-                    transform: translateX(-40%);
-                }
-
-                50% {
-                    transform: translateX(50%);
-                }
-
-                100% {
-                    transform: translateX(-40%);
-                }
-            }
-
-            .movementTitle .title2 {
-                position: absolute;
-                animation: moveTitle 18s linear infinite;
-            }
-
-            @keyframes moving {
-                0% {
-                    left: -20px;
-                }
-
-                100% {
-                    left: 100%;
-                }
-            }
-            .receipt {
-                background-color: #fff;
-                border-radius: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-                padding: 30px;
-                text-align: center;
-                max-width: 500px;
-                width: 100%;
-                position: relative;
-            }
-            .receipt::before {
-                content: '';
-                position: absolute;
-                top: -20px;
-                left: calc(50% - 20px);
-                width: 40px;
-                height: 40px;
-                background-color: #FF5722;
-                border-radius: 50%;
-                box-shadow: 0 0 20px rgba(255, 87, 34, 0.5);
-            }
-            .receipt h2 {
-                color: #333;
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
-            .receipt p {
-                margin: 10px 0;
-            }
-            .receipt .highlight {
-                color: #FF5722;
-                font-weight: bold;
-            }
-            .receipt .header {
-                background-color: #FF5722;
-                color: #fff;
-                border-radius: 20px 20px 0 0;
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-            .receipt .footer {
-                background-color: #f8f8f8;
-                border-radius: 0 0 20px 20px;
-                padding: 20px;
-                margin-top: 20px;
-            }
-            .yearBox{
-                width:150px;
-                height:50px;
-                border-radius:20px;
-                padding-left: 45px;
-                margin-left: 30px;
-            }
-
-            .monthBox{
-                width:150px;
-                height:50px;
-                border-radius:20px;
-                padding-left: 45px;
-                margin-left: 13px;
-            }
-
-            .cvv{
-                width:150px;
-                height:50px;
-                border-radius:20px;
-                padding-left: 45px;
-                margin-left: 70px;
-            }
-        </style>
+        <link rel="stylesheet" href="css/payment.css">
     </head>
     <body>    
         <header>
             <div class="title">
-                <h1><b>RT Music Society</b></h1>
+                <h1><b>TARUMT Service</b></h1>
             </div>
 
             <div class="movementTitle">
@@ -538,34 +122,81 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <h2><b>Invoice</b></h2>
                         </div>
                         <?php
-                        // Create connection
 
-                        $eventName = trim($_GET["eventTicketName"]);
-                        $ticketType = trim($_GET["ticketType"]);
 
-                        $sql = "SELECT ticket.eventTicketName, ticket.ticketType, ticket.price,
-                                event.dateOfEvent, event.time, event.location FROM ticket
-                                INNER JOIN event ON ticket.eventTicketName = event.eventName
-                                WHERE ticket.eventTicketName = '$eventName' AND ticket.ticketType = '$ticketType'";
+if (!isset($_SESSION['user_email'])) {
+    header("Location: login.php");
+    exit();
+}
 
-                        // Execute query
-                        $result = $con->query($sql);
+$user_email = $_SESSION['user_email'];
 
-                        // Display data
-                        if ($result->num_rows > 0) {
-                            $row = $result->fetch_assoc();
-                            echo '<p><strong>Event Name :</strong> ' . $row["eventTicketName"] . '</p>';
-                            echo '<p><strong>Ticket Type :</strong> ' . $row["ticketType"] . '</p>';
-                            echo '<p><strong>Price      :</strong> RM' . number_format($row["price"], 2) . '</p>';
-                            echo '<p><strong>Event Date :</strong> ' . $row["dateOfEvent"] . '</p>';
-                            echo '<p><strong>Event Time :</strong> ' . $row["time"] . '</p>';
-                            echo '<p><strong>Location :</strong> ' . $row["location"] . '</p>';
-                        }
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$db   = 'music_society';
 
-                        // Close connection
-                        $result->free();
-                        $con->close();
-                        ?>
+$con = new mysqli($host, $user, $pass, $db);
+
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+}
+
+$sql = "
+    SELECT 
+        c.cartID, 
+        c.eventName,  
+        c.eventBanner, 
+        c.quantity, 
+        e.productPrice AS price,
+        e.headline
+    FROM cart c
+    JOIN event e ON c.eventName = e.eventName
+    WHERE c.user_email = ?
+";
+
+$stmt = $con->prepare($sql);
+$stmt->bind_param("s", $user_email);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$total = 0;
+?>
+
+<div class="container mt-5">
+   
+
+    <?php if ($result->num_rows > 0): ?>
+        <?php while ($row = $result->fetch_assoc()):
+            $subtotal = $row['price'] * $row['quantity'];
+            $total += $subtotal;
+        ?>
+           
+                    <img src="<?= htmlspecialchars($row['eventBanner']) ?>" alt="Banner" style="width: 100px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 15px;">
+                    <h5 class="mb-0"><?= htmlspecialchars($row['eventName']) ?></h5>
+                
+                
+                <p><strong>Price:</strong> RM<?= number_format($row['price'], 2) ?></p>
+                <p><strong>Quantity:</strong> <?= $row['quantity'] ?></p>
+                <p><strong>Subtotal:</strong> RM<?= number_format($subtotal, 2) ?></p>
+                
+            
+        <?php endwhile; ?>
+
+    <?php else: ?>
+        <div class="alert alert-info text-center">Your cart is empty.</div>
+    <?php endif; ?>
+
+</div>
+
+<?php
+$stmt->close();
+$con->close();
+?>
+
+
+
+
                         <div class="footer">
                             <p>Please double check your order!</p>
                         </div>

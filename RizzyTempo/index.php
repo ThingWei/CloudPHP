@@ -50,15 +50,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <!-- Navbar -->
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand me-auto" href="loginSignUp.php"><img class="mslogo" src="img/music.png"
+                <a class="navbar-brand me-auto" href="loginSignUp.php"><img class="mslogo" src="img2/graduationcap.png"
                                                                      style="height:65px;width:65px;"></a>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                      aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="mslogo" src="img/music.png">
-                            &nbsp; RT Music Society</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
+                    
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                             <li class="nav-item">
@@ -222,7 +218,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <footer>
         <div class="rowfoot">
             <div class="colfoot">
-                <img src="img/music.png" class="logofoot">
+                <img src="img2/graduationcap.png" class="logofoot">
                 <p class="parafoot">Welcome to TAR UMT Graduation Service, where we’re here to help you celebrate your big day as
                     we offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment.
                     Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.</p>

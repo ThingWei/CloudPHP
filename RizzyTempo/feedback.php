@@ -80,48 +80,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand me-auto" href="home.php"><img class="mslogo" src="img/music.png"
-                                                                     style="height:65px;width:65px;"></a>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                     aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="mslogo" src="img/music.png">
-                            &nbsp; RT Music Society</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="home.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="event.php">Events</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="displayTicket.php">Purchased Tickets</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="aboutus.php">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active mx-lg-2" style='color:white' href="feedback.php">Feedback</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="faq.php">FAQ</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="profile.php"><img class="profilepic" src="img/profile.png"></a>
-                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                </button>
-            </div>
-        </nav>
+        <?php
+        include 'headerUser.php';
+        ?>
         <!-- End of Navbar -->
 
         <?php
@@ -224,62 +185,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <p class="gap">&nbsp;</p>
 
         <!-- Footer -->
-        <div class="foot">
-            <footer>
-                <div class="rowfoot">
-                    <div class="colfoot">
-                        <img src="img/music.png" class="logofoot">
-                        <p class="parafoot">Welcome to Rizzy Tempo Music Society, where passion meets melody and rhythm!
-                            Whether you're a seasoned virtuoso or just beginning your musical journey, our society offers a
-                            harmonious space for creativity, learning, and collaboration.</p>
-                        <br>
-                        <p class="parafoot">Join us as we embark on a symphonic adventure, doesn't matter if you're here to
-                            listen, learn, or lend your talents!</p>
-                    </div>
-                    <div class="colfoot">
-                        <h3>Contact Us<div class="underline"><span class="uline"></span></div>
-                        </h3>
-                        <p class="parafoot">77, Lorong Lembah</p>
-                        <p class="parafoot">Permai 3, 11200 </p>
-                        <p class="parafoot">Tanjung Bungah,</p>
-                        <p class="parafoot">Pulau Pinang, Malaysia</p>
-                        <p class="email-id">penang@tarc.edu.my</p>
-                        <h4><a class="callus" href="tel:+04-899 5230">(+6) 04-899 5230</a></h4>
-                    </div>
-                    <div class="colfoot">
-                        <h3>Navigation<div class="underline"><span class="uline"></span></div>
-                        </h3>
-                        <ul class="footnav">
-                            <li><a href="home.php">Home</a></li>
-                            <li><a href="event.php">Events</a></li>
-                            <li><a href="displayTicket.php">Purchased Tickets</a></li>
-                            <li><a href="aboutus.php">About Us</a></li>
-                            <li><a href="feedback.php">Feedback</a></li>
-                            <li><a href="faq.php">FAQ</a></li>
-                        </ul>
-                    </div>
-                    <div class="colfoot">
-                        <h3 style="font-size: 14px;" class="fblow">Find Us Thru Our Social Media Below!<div
-                                class="underline"><span class="uline"></span></div>
-                        </h3>
-                        <div>
-                            <a href="https://www.instagram.com/"><button id="insta" style="background-image: url(img/instalogo.png);background-size: cover; width: 45px;
-                                                                         height: 43px; box-sizing: border-box;"></button></a>
-                            <a href="https://www.facebook.com/"><button id="facebook" style="background-image: url(img/facebooklogo.png);background-size: cover; width: 45px;
-                                                                        height: 43px; box-sizing: border-box;"></button></a>
-                            <a href="https://twitter.com/"><button id="twitter" style="background-image: url(img/twitterlogo.png);background-size: cover; width: 45px;
-                                                                   height: 43px; box-sizing: border-box;"></button></a>
-                            <a href="https://mail.google.com/"><button id="email" style="background-image: url(img/maillogo.png);background-size: cover; width: 45px;
-                                                                       height: 43px; box-sizing: border-box;"></button></a>
-                            <a href="https://www.whatsapp.com/"><button id="phone" style="background-image: url(img/whatsapplogo.png);background-size: cover; width: 45px;
-                                                                        height: 43px; box-sizing: border-box;"></button></a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <p class="parafoot" style="text-align: center; font-size: 16px;">Rizzy Tempo Music Society @ 2024</p>
-            </footer>
-        </div>
+        <?php
+    include 'footerUser.php';
+    ?>
         <!-- End Of Footer -->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

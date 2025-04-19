@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <link href="css/event1.css" rel="stylesheet" type="text/css" />
         <style>
             body {
-                background: url(img/musicbg.jpg) no-repeat center;
+                background-color: lightgray;
                 background-size: cover;
                 width: 100%;
             }
@@ -131,66 +131,59 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         <a href="event.php"><button class="return"><img class="return" src="img/goback.png"></button></a>
         <div class="container">
-            <div class="flip-card" style="border-radius:15px;">
-                <div class="flip-card-inner" style="border-radius:15px;">
-                    <div class="flip-card-front" style="border-radius:15px;">
-                        <img src="<?php echo isset($eventBanner) ? $eventBanner : ""; ?>" alt="" style="width: 500px; height: 700px; border-radius:15px;" />
-                    </div>
-                    <div class="flip-card-back" style="padding:20px">
-                        <br>
-                        <h2 style="margin-top:20px;"><b><?php echo isset($eventName) ? $eventName : ""; ?></b></h2>
-                        <p style="margin-top:10px;"><?php echo isset($description) ? $description : ""; ?></p>
-                        <p>Date: <b><?php echo isset($dateOfEvent) ? $dateOfEvent : ""; ?></b></p>
-                        <p>Time: <b><?php echo isset($time) ? $time : ""; ?></b></p>
-                        <p>Location: <b><?php echo isset($location) ? $location : ""; ?></b></p>
-                        <p>Are you interested in Joining us as a team to Organize events?<br>
-                            Send us an application through the button below!</p>
-                        <a href="FormVolunteer.php" class="btn btn-primary">Volunteer Form</a>
-                    </div>
-                </div>
-            </div>
-            <br>
+        <div class="container mt-5 bg-white p-4 rounded shadow" style="max-width: 900px;">
+    <div class="row">
+        <!-- Event Banner -->
+        <div class="col-md-6 text-center">
+            <img src="<?php echo isset($eventBanner) ? $eventBanner : 'img/default.jpg'; ?>" alt="Event Banner" class="img-fluid rounded" style="max-height: 500px; object-fit: cover;">
+        </div>
 
+        <!-- Event Details -->
+        <div class="col-md-6">
+            <h2 class="mb-3"><?php echo isset($eventName) ? $eventName : "Event Title"; ?></h2>
+            <p class="text-muted"><?php echo isset($description) ? $description : "Event description here..."; ?></p>
+            <p><strong>Date:</strong> <?php echo isset($dateOfEvent) ? $dateOfEvent : "TBA"; ?></p>
+            <p><strong>Time:</strong> <?php echo isset($time) ? $time : "TBA"; ?></p>
+            <p><strong>Location:</strong> <?php echo isset($location) ? $location : "TBA"; ?></p>
+
+            <!-- Pricing and Buttons -->
             <?php
-            echo '<div class="flip-card " style="border-radius:15px;">';
-            echo '<div class="flip-card-inner" style="border-radius:15px;">';
-            echo '<div class="flip-card-front" style="border-radius:15px;">';
-            echo '<img src="img/jazzticket2.jpg" alt="ticket"';
-            echo 'style=" width: 500px;height: 700px;border-radius:15px;" />';
-            echo '</div>';
-            echo '<div class="flip-card-back">';
-            echo '<h1 style="padding-top:60px"><u>Ticket Counter</u></h1>';
-            echo '<br>';
             $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
             if ($con->connect_error) {
                 die("Connection failed: " . $con->connect_error);
             }
 
-            $found = 0;
             $sql2 = "SELECT * FROM ticket WHERE eventTicketName = '$eventName'";
             $result2 = $con->query($sql2);
-            while ($row = $result2->fetch_object()) {
-                $found++;
-                printf('
-                <div class="ticket" id="standard-ticket">
-                <h3 style="font-size:25px;margin-top:30px;"><b>%s</b></h3>
-                <p style="font-size:20px;">RM%s</p>
-                <a href="payment.php?eventTicketName=%s&ticketType=%s"><button type="submit" name="btnSubmit"
-                class="btn btn-primary">Buy Ticket</button></a>
-                </div>
-                    ', $row->ticketType, $row->price, $eventName, $row->ticketType);
+            if ($row = $result2->fetch_object()) {
+                echo "<h4 class='text-success mt-4'>From RM$row->price</h4>";
+            
+                // Buy Now form
+                echo "<form action='payment.php' method='GET' class='w-50'>";
+                echo "<input type='hidden' name='eventTicketName' value='" . htmlspecialchars($eventName) . "'>";
+                echo "<input type='hidden' name='ticketType' value='" . htmlspecialchars($row->ticketType) . "'>";
+                echo "<button type='submit' class='btn btn-primary w-100'>Buy Now</button>";
+                echo "</form>";
+            
+                // Add to Cart form (separate!)
+                echo "<form method='POST' action='cart.php' class='w-50 mt-2'>";
+                echo "<input type='hidden' name='eventTicketName' value='" . htmlspecialchars($eventName) . "'>";
+                echo "<input type='hidden' name='ticketType' value='" . htmlspecialchars($row->ticketType) . "'>";
+                echo "<input type='hidden' name='quantity' value='1'>";
+                echo "<button type='submit' name='add_to_cart' class='btn btn-outline-success w-100'>
+                        <i class='bi bi-cart-plus'></i> Add to Cart
+                      </button>";
+                echo "</form>";
             }
-            if ($found<1){
-                echo '<div style="font-size:30px;padding:20px">No Ticket Available for booking for this event. Please check back later.</div>';
+            else {
+                echo "<p class='text-danger mt-4'>No tickets available for this event right now.</p>";
             }
             $result2->free();
             $con->close();
-
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
             ?>
-
+        </div>
+    </div>
+</div>
         </div>
 
         <h1>&nbsp;</h1>

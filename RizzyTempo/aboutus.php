@@ -37,48 +37,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <body>
     <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand me-auto" href="home.php"><img class="mslogo" src="img/music.png"
-                                                                     style="height:65px;width:65px;"></a>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                     aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="mslogo" src="img/music.png">
-                            &nbsp; RT Music Society</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="home.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="event.php">Events</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="displayTicket.php">Purchased Tickets</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active mx-lg-2" style='color:white;' href="aboutus.php">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="feedback.php">Feedback</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="faq.php">FAQ</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="profile.php"><img class="profilepic" src="img/profile.png"></a>
-                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                </button>
-            </div>
-        </nav>
+    <?php
+        include 'headerUser.php';
+        ?>
         <!-- End of Navbar -->
 
     <div class="container mt-5 pt-5">

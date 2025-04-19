@@ -12,45 +12,40 @@ define("DB_NAME", "music_society");
 
 function checkEventName($eventname) {
     if ($eventname == null) {
-        return "Please fill in <b>Event Name</b>. ";
+        return "Please fill in <b>Product Name</b>. ";
     }
 }
 
 function checkHeadline($headline) {
     if ($headline == null) {
-        return "Please fill in <b>Headline</b> for this Event. ";
+        return "Please fill in <b>Headline</b> for this Product. ";
     }
 }
 
 function checkDesc($description) {
     if ($description == null) {
-        return "Please fill in <b>Description</b> for this Event. ";
+        return "Please fill in <b>Description</b> for this Product. ";
     }
 }
 
 function checkBanner($banner) {
     if ($banner == null) {
-        return "Please Drop an <b>Event Banner</b> for this Event. ";
+        return "Please Drop an <b>Event Banner</b> for this Product. ";
     }
 }
 
-function checkDateOfEvent($dateofevent) {
-    if ($dateofevent == null) {
-        return "Please input <b>date</b> for this Event. ";
+function checkProductPrice($productprice) {
+    if ($productprice == null) {
+        return "Please input <b>price</b> for this Product. ";
     }
 }
 
-function checkEventTime($eventtime) {
-    if ($eventtime == null) {
-        return "Please input <b>time</b> for this Event. ";
+function checkProductType($producttype) {
+    if ($producttype == null) {
+        return "Please input <b>time</b> for this Product. ";
     }
 }
 
-function checkLocation($location) {
-    if ($location == null) {
-        return "Please input <b>location</b> for this Event. ";
-    }
-}
 
 // Function to return all gender options
 function getGender() {
