@@ -26,7 +26,7 @@ $sql = "
         c.eventBanner, 
         c.quantity, 
         e.productPrice AS price 
-    FROM receipt r
+    FROM cart c
     JOIN event e ON c.eventName = e.eventName
     WHERE c.user_email = ?
 ";
@@ -120,9 +120,13 @@ $stmt->close();
                                     <label class="form-label mb-1">Subtotal</label>
                                     <p class="fw-semibold mb-0">RM <?= number_format($item['price'] * $item['quantity'], 2) ?></p>
                                 </div>
+                                
+                                <!-- CLAIMED / TO BE CLAIMED -->
+                                <div class="text-center mx-2" style="width: 120px;">
+                                    <p style="color:red; margin:0">claimed</p>    
+                                </div>
 
                                 <div class="text-center">
-                                    <a href="#"><button type="submit" class="btn btn-outline-primary me-2">Leave a review!</button></a>
                                     <a href="receipt.php"><button type="submit" class="btn btn-outline-primary me-2">View Receipt</button></a>
                                 </div>
                             </div>
