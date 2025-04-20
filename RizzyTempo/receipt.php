@@ -33,7 +33,7 @@ $result2->free();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <title>Event Ticket Receipt</title>
+        <title>Receipt</title>
         <style>
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -104,7 +104,7 @@ $result2->free();
         <div class="receipt-container">
             <div class="receipt">
                 <div class="header">
-                    <h2>Event Ticket Receipt</h2>
+                    <h2>Thank you</h2>
                 </div>
                 <?php
                 require_once 'helper.php';
@@ -116,35 +116,31 @@ $result2->free();
                 if ($con->connect_error) {
                     die("Connection failed: " . $con->connect_error);
                 }
-                $eventName = trim($_GET["eventTicketName"]);
-                $ticketType = trim($_GET["ticketType"]);
-                $sql = "SELECT * FROM receipt WHERE email = '$uemail' AND eventName = '$eventName' AND ticketType = '$ticketType'";
+                $eventName = $_GET['eventName'] ?? '';
+                $sql = "SELECT * FROM receipt WHERE email = '$uemail' AND eventName = '$eventName' ";
 
-                // Execute query
+                
                 $result = $con->query($sql);
 
-                // Display data
+               
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
-                    echo '<p><strong>Username :</strong> ' . $uname . '</p>';
-                    echo '<p><strong>Event Name :</strong> ' . $row["eventName"] . '</p>';
-                    echo '<p><strong>Ticket Type :</strong> ' . $row["ticketType"] . '</p>';
+                    
+                    echo '<p><strong>Product Name :</strong> ' . $row["eventName"] . '</p>';
                     echo '<p><strong>Price      :</strong> RM' . number_format($row["price"], 2) . '</p>';
-                    echo '<p><strong>Event Date :</strong> ' . $row["date"] . '</p>';
-                    echo '<p><strong>Event Time :</strong> ' . $row["time"] . '</p>';
-                    echo '<p><strong>Location :</strong> ' . $row["location"] . '</p>';
+                    
                 }
 
-                // Close connection
+              
                 $result->free();
                 $con->close();
                 ?>
                 <div class="footer">
-                    <p>Thank you for your purchase!<br>You may print out or present this receipt to receptionist before entering the premier.</p>
+                    <p>Thank you for your purchase!<br>You may print out or present this receipt.</p>
                 </div>
-                <button type="button" name='print' class='btn btn-primary' onclick='print()'>Print Ticket</button>
+                <button type="button" name='print' class='btn btn-primary' onclick='print()'>Print Receipt</button>
                 <button type="button" name="btnBack" class="btn btn-primary"
-                        onclick='window.location.href = "displayTicket.php"'>Back</button>
+                        onclick='window.location.href = "home.php"'>Back</button>
             </div>
         </div>
 

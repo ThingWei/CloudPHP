@@ -79,10 +79,56 @@ if (isset($_POST["submit"])) {
     }
 
     // Remove null value
+    
     $errors = array_filter($error);
 
+    if (!empty($errors)) {
+        echo "<script>";
+        foreach ($errors as $msg) {
+            echo "alert('" . addslashes($msg) . "');";
+        }
+        echo "</script>";
+    }
 
+    if (empty($errors)) {
+        // safe to proceed with DB insert
+        $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if ($con->connect_error) {
+            die("Connection failed: " . $con->connect_error);
+        }
+
+        // Get cart details
+        $sql = "SELECT c.eventName, c.quantity, e.productPrice AS price
+                FROM cart c
+                JOIN event e ON c.eventName = e.eventName
+                WHERE c.user_email = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("s", $useremail);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Insert payment
+        $insertSQL = "INSERT INTO payment (email, eventName, price, cardNumber) VALUES (?, ?, ?, ?)";
+        $insertStmt = $con->prepare($insertSQL);
+
+        while ($row = $result->fetch_assoc()) {
+            $eventName = $row['eventName'];
+            $price = $row['price'] * $row['quantity'];
+            $insertStmt->bind_param("ssds", $useremail, $eventName, $price, $cardNumber);
+            $insertStmt->execute();
+        }
+
+        $insertStmt->close();
+        $stmt->close();
+
+        // Clear cart
+        $con->query("DELETE FROM cart WHERE user_email = '$useremail'");
+
+        echo "<script>alert('Payment successful!'); window.location.href='receipt.php?eventName=" . urlencode($eventName) . "';</script>";
+    }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +141,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Payment</title>
-        <script src="payment.js"></script>
+        
         <!-- Bootstrap Css -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -131,12 +177,9 @@ if (!isset($_SESSION['user_email'])) {
 
 $user_email = $_SESSION['user_email'];
 
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db   = 'music_society';
 
-$con = new mysqli($host, $user, $pass, $db);
+
+$con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
@@ -164,29 +207,24 @@ $total = 0;
 ?>
 
 <div class="container mt-5">
-   
-
     <?php if ($result->num_rows > 0): ?>
         <?php while ($row = $result->fetch_assoc()):
             $subtotal = $row['price'] * $row['quantity'];
             $total += $subtotal;
         ?>
-           
+            
                     <img src="<?= htmlspecialchars($row['eventBanner']) ?>" alt="Banner" style="width: 100px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 15px;">
+                    <div class="mb-4 ps-3">
                     <h5 class="mb-0"><?= htmlspecialchars($row['eventName']) ?></h5>
-                
-                
                 <p><strong>Price:</strong> RM<?= number_format($row['price'], 2) ?></p>
                 <p><strong>Quantity:</strong> <?= $row['quantity'] ?></p>
                 <p><strong>Subtotal:</strong> RM<?= number_format($subtotal, 2) ?></p>
+            </div>
                 
-            
         <?php endwhile; ?>
-
     <?php else: ?>
         <div class="alert alert-info text-center">Your cart is empty.</div>
     <?php endif; ?>
-
 </div>
 
 <?php
@@ -203,7 +241,7 @@ $con->close();
                     </div>
                 </div>
             </div>
-            <form id="payment" method='post' action=''>
+            <form id="payment" method='post' action='payment.php'>
                 <div class="container">
                     <div class="left">
                         <h1>Billing Address</h1>
@@ -218,6 +256,10 @@ $con->close();
                         <div class="input-box">
                             <label>Address</label>
                             <input type="text" id="inputBox" name="address" placeholder="Enter street address"/>
+                            <?php if (!empty($error['address'])): ?>
+        <span style="color: red;"><?php echo $error['address']; ?></span>
+    <?php endif; ?>
+    <br><br>
                             <input type="text" id="inputBox" name="address2" placeholder="Enter street address line 2"/>
                             <div class="column">
                                 <input type="text" id="inputBox" name="country" placeholder="Enter your country"/>
@@ -280,7 +322,7 @@ $con->close();
                     <br><br>
                     <label>
                         CVV  
-                        <input id="cvvBox" name="cvv" class="cvv" type="number" onkeyup="checkCvvNumber()" placeholder="CVV" value="<?php echo isset($cvv) ? $cvv : ''; ?>" required>
+                        <input id="cvvBox" name="cvv" class="cvv"  onkeyup="checkCvvNumber()" placeholder="CVV" value="<?php echo isset($cvv) ? $cvv : ''; ?>" required>
                         <p id="response"></p>
                     </label>
                     <br><br>
@@ -297,7 +339,7 @@ $con->close();
     function checkCardNumber() {
         var cardNumberBox = document.getElementById("cardNumberBox");
         var message = document.getElementById("message");
-
+        cardNumberBox.value = cardNumberBox.value.replace(/\D/g, '');
         if (cardNumberBox.value.length == 16) {
             message.innerHTML = "Valid card number";
             cardNumberBox.style.borderColor = "green";
@@ -305,7 +347,7 @@ $con->close();
             message.style.top = "120%";
             return true;
         } else {
-            message.innerHTML = "Not a valid card number";
+            message.innerHTML = "Card Number must be 16 digits";
             cardNumberBox.style.borderColor = "red";
             message.style.backgroundColor = "#ff4d4d";
             message.style.top = "120%";
@@ -316,7 +358,7 @@ $con->close();
     function checkCvvNumber() {
         var cvvNumberBox = document.getElementById("cvvBox");
         var response = document.getElementById("response");
-
+        cvvNumberBox.value = cvvNumberBox.value.replace(/\D/g, '');
         if (cvvNumberBox.value.length == 3) {
             response.innerHTML = "Valid CVV number";
             cvvNumberBox.style.borderColor = "green";
@@ -324,7 +366,7 @@ $con->close();
             response.style.top = "120%";
             return true;
         } else {
-            response.innerHTML = "Invalid CVV number";
+            response.innerHTML = "CVV Number must be 3 digits";
             cvvNumberBox.style.borderColor = "red";
             response.style.backgroundColor = "#ff4d4d";
             response.style.top = "120%";

@@ -50,28 +50,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     $eventName = $_POST['eventName'];
-    $ticketType = $_POST['ticketType'];
+    
     $price = $_POST['price'];
     $eventBanner = $_POST['eventBanner']; // or get it from DB
     $quantity = intval($_POST['quantity']);
     $email = $_SESSION['user_email'];
 
     // Check if item already exists in DB for this user
-    $check = $conn->prepare("SELECT quantity FROM cart WHERE user_email = ? AND eventName = ? AND ticketType = ?");
-    $check->bind_param("sss", $email, $eventName, $ticketType);
+    $check = $conn->prepare("SELECT quantity FROM cart WHERE user_email = ? AND eventName = ?");
+    $check->bind_param("ss", $email, $eventName);
     $check->execute();
     $check->store_result();
 
     if ($check->num_rows > 0) {
         // If exists, update quantity
-        $update = $conn->prepare("UPDATE cart SET quantity = quantity + ? WHERE user_email = ? AND eventName = ? AND ticketType = ?");
-        $update->bind_param("isss", $quantity, $email, $eventName, $ticketType);
+        $update = $conn->prepare("UPDATE cart SET quantity = quantity + ? WHERE user_email = ? AND eventName = ? ");
+        $update->bind_param("iss", $quantity, $email, $eventName, );
         $update->execute();
         $update->close();
     } else {
         // Insert new cart item
-        $insert = $conn->prepare("INSERT INTO cart (user_email, eventName, eventBanner, ticketType, price, quantity) VALUES (?, ?, ?, ?, ?, ?)");
-        $insert->bind_param("ssssdi", $email, $eventName, $eventBanner, $ticketType, $price, $quantity);
+        $insert = $conn->prepare("INSERT INTO cart (user_email, eventName, eventBanner,  price, quantity) VALUES (?, ?, ?, ?, ?)");
+        $insert->bind_param("sssdi", $email, $eventName, $eventBanner, $price, $quantity);
         $insert->execute();
         $insert->close();
     }
@@ -87,7 +87,7 @@ $sql = "
     SELECT 
         c.cartID, 
         c.eventName, 
-        c.ticketType, 
+         
         c.eventBanner, 
         c.quantity, 
         e.productPrice AS price 
