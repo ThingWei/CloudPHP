@@ -10,7 +10,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                    <img class="mslogo" src="img/music.png"> &nbsp; RT Music Society
+                    <img class="mslogo" src="img2/graduationcap.png"> 
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -30,9 +30,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2 <?= $currentPage == 'feedback.php' ? 'active text-white' : '' ?>" href="feedback.php">Feedback</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2 <?= $currentPage == 'faq.php' ? 'active text-white' : '' ?>" href="faq.php">FAQ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2 <?= $currentPage == 'cart.php' ? 'active text-white' : '' ?>" href="cart.php">Cart</a>
