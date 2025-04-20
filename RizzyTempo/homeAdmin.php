@@ -179,7 +179,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <div class="card">
                         <div class="card-inner">
-                            <p class="text-primary">Number of Active Event(s)</p>
+                            <p class="text-primary">Number of Product(s) Available</p>
                             <span class="material-icons-outlined text-red">event</span>
                         </div>
                         <span class="text-primary font-weight-bold"><?php echo isset($totalNumEvent) ? $totalNumEvent : ""; ?></span>
@@ -187,7 +187,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     
                     <div class="card" style='border-left: 7px solid #458B74'>
                         <div class="card-inner">
-                            <p class="text-primary">Number of Ticket(s) Sold</p>
+                            <p class="text-primary">Number of Product(s) Sold</p>
                             <span class="material-icons-outlined text-green">payment</span>
                         </div>
                         <span class="text-primary font-weight-bold"><?php echo isset($totalNumPay) ? $totalNumPay : ""; ?></span>
