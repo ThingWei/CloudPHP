@@ -61,12 +61,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <style>
             body {
                 background-color: #f0f0f0;
-                padding: 20px;
                 margin-top: 120px;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
             .profile-container {
                 display: flex;
+                padding-top: 20px;
                 flex-direction: row; /* Force horizontal layout */
                 flex-wrap: nowrap; /* Prevent wrapping to new line */
                 gap: 20px;
