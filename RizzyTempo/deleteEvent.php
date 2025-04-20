@@ -169,19 +169,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 $headline = $row->headline;
                 $description = $row->description;
                 $banner = $row->eventBanner;
-                $dateofevent = $row->dateOfEvent;
-                $time = $row->time;
-                $location = $row->location;
                 printf('
             <tr>
             <td style="margin-top: 10px;"><div class="custom-card"><div class="img-box"><img src="%s"></div>
-            <div class="custom-content"><div class="content_text"><h2>%s</h2><p>%s</p></div>
+            <div class="custom-content"><div class="content_text"><h2>%s</h2></div>
             <form method="post">
             <input type="hidden" name="deleteEvent" value="%s">
             <button type="submit" name="btnDelete" class="createbtn" style="margin-top:15px" onclick="%s">Delete Event</button></form></div></div></td>',
                         $banner,
                         $eventname,
-                        $headline,
                         $eventname,
                         $message
                 );
@@ -195,19 +191,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $headline = $row->headline;
                     $description = $row->description;
                     $banner = $row->eventBanner;
-                    $dateofevent = $row->dateOfEvent;
-                    $time = $row->time;
-                    $location = $row->location;
                     // Output the second item
                     printf('
             <td style="margin-top: 10px;"><div class="custom-card"><div class="img-box"><img src="%s"></div>
-            <div class="custom-content"><div class="content_text"><h2>%s</h2><p>%s</p></div>
+            <div class="custom-content"><div class="content_text"><h2>%s</h2></div>
             <form method="post">
             <input type="hidden" name="deleteEvent" value="%s">
             <button type="submit" name="btnDelete" class="createbtn" style="margin-top:15px" onclick="%s">Delete Event</button></form></div></div></td>',
                             $banner,
                             $eventname,
-                            $headline,
                             $eventname,
                             $message
                     );
@@ -238,15 +230,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             //Step 1:create connection with DB
             $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-            $oldtable = str_replace(' ', '_', $eventName);
-            $lowercasetable = strtolower($oldtable);
             //Step 2:sql statement 
             $sql = "DELETE FROM event WHERE eventName = ?";
-            $sql2 = "DROP TABLE $lowercasetable";
 
             //Step 3:process sql
             $stmt = $con->prepare($sql);
-            $dltbl = $con->query($sql2);
 
             $stmt->bind_param('s', $eventName);
 
@@ -264,7 +252,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             } else {
                 echo "<script>alert('Deletion failed, Please try again later.');document.location='eventsAdmin.php';</script>";
             }
-            $dltbl->close();
             $stmt->close();
             $con->close();
         }
