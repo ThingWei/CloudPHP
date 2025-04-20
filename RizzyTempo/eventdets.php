@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <p>&nbsp;</p>
 
         <a href="event.php"><button class="return"><img class="return" src="img/goback.png"></button></a>
-        <div class="container my-5">
+     
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
@@ -99,27 +99,28 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     <div class="col-md-6">
                         <img src="<?php echo isset($eventBanner) ? $eventBanner : 'img/default.jpg'; ?>" 
                              alt="Event Banner" 
-                             class="img-fluid h-100 w-100 object-fit-cover" 
-                             style="object-fit: cover;">
+                             class="img-fluid w-100 h-100" 
+                             style="object-fit: cover; max-height: 100%;">
                     </div>
 
                     <!-- Right: Event Info -->
-                    <div class="col-md-6 p-4 d-flex flex-column justify-content-between">
-                        <div>
+                    <div class="col-md-6 p-5 d-flex flex-column justify-content-between bg-light">
+                        <div class="d-flex flex-column gap-3">
+
                             <h2 class="fw-bold">
                                 <?php echo isset($eventName) ? htmlspecialchars($eventName) : "Product Name"; ?>
                             </h2>
-                            <br/>
+
                             <p class="text-muted">
                                 <?php echo isset($headline) ? htmlspecialchars($headline) : "Product headline here..."; ?>
                             </p>
-                            <br/>
+
                             <p class="text-muted">
-                            <?php echo isset($description) ? htmlspecialchars($description) : "Product description here..."; ?>
+                                <?php echo isset($description) ? htmlspecialchars($description) : "Product description here..."; ?>
                             </p>
-                            <br/>
+
                             <p class="text-muted">
-                            <?php echo isset($productType) ? htmlspecialchars($productType) : "Product Type here..."; ?>
+                                <?php echo isset($productType) ? htmlspecialchars($productType) : "Product Type here..."; ?>
                             </p>
 
                             <?php
@@ -139,10 +140,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
                                 if ($row = $result->fetch_object()) {
                                     $price = $row->productPrice;
-                                    echo "<h4 class='text-success fw-semibold mt-3'>RM $price</h4>";
+                                    echo "<h4 class='text-success fw-semibold'>RM $price</h4>";
 
                                     // Buy Now
-                                    echo "<form action='payment.php' method='GET' class='mb-2'>";
+                                    echo "<form action='payment.php' method='GET' class='mb-3'>";
                                     echo "<input type='hidden' name='eventName' value='" . htmlspecialchars($eventName) . "'>";
                                     echo "<button type='submit' class='btn btn-primary w-100'>Buy Now</button>";
                                     echo "</form>";
@@ -158,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                                           </button>';
                                     echo '</form>';
                                 } else {
-                                    echo "<p class='text-danger mt-3'>Out of stock.</p>";
+                                    echo "<p class='text-danger'>Out of stock.</p>";
                                 }
 
                                 $stmt->close();
@@ -173,7 +174,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 </div>
             </div>
         </div>
-    </div>    
 </div>
         <h1>&nbsp;</h1>
         <p>&nbsp;</p>
