@@ -59,111 +59,34 @@ if (empty($_GET)) {
                 width: 100%;
             }
 
+            .infotable {
+                overflow: auto;
+                white-space: nowrap;
+                margin-bottom: 80px;
+                background-color: white;
+            }
+
+            .action {
+                font-size: 10px;
+                padding: 5px;
+                border: none;
+                background-color: #009970;
+                color: #fff;
+                border-radius: 15px;
+                transition: 0.3s background-color;
+                text-decoration: none;
+            }
+
+            .action:hover {
+                background-color: #00b383;
+            }
+
             .return {
                 border: 0;
                 width: 60px;
                 height: 60px;
                 background: transparent;
                 margin-left: 20px;
-            }
-
-            /* === Table Wrapper === */
-            .infotable {
-                overflow: auto;
-                white-space: nowrap;
-                margin: 0 auto 100px auto;
-                padding: 20px;
-                background-color: white;
-                border-radius: 10px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            }
-
-            /* === Sort Header Pill === */
-            .sort-pill {
-                display: inline-block;
-                background-color: #f8f9fa;
-                padding: 8px 16px;
-                border-radius: 20px;
-                transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-                cursor: pointer;
-            }
-
-            .sort-pill a {
-                text-decoration: none;
-                color: #000;
-                font-weight: 500;
-            }
-
-            .sort-pill:hover {
-                transform: scale(1.07);
-                background-color: #e0e0e0;
-            }
-
-            /* tr hover */
-            table tbody tr:hover {
-                background-color: #f9f9f9;
-                transform: scale(1.01);
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                transition: all 0.2s ease-in-out;
-                cursor:default;
-            }
-            /* === Action Buttons(update/delete) === */
-            .action {
-                font-size: 14px;
-                padding: 6px 14px;
-                border: none;
-                background-color: #00b383;
-                color: white;
-                border-radius: 15px;
-                transition: all 0.3s ease-in-out;
-                margin-right: 5px;
-                text-decoration: none;
-                display: inline-block;
-            }
-
-            .action:hover {
-                background-color: #009970;
-                transform: scale(1.05);
-            }
-            .action-delete {
-                font-size: 14px;
-                padding: 6px 14px;
-                border: none;
-                background-color:rgb(235, 0, 0);
-                color: white;
-                border-radius: 15px;
-                transition: all 0.3s ease-in-out;
-                margin-right: 5px;
-                text-decoration: none;
-                display: inline-block;
-            }
-            .action-delete:hover {
-                background-color:rgb(200, 0, 0);
-                transform: scale(1.05);
-            }
-
-            /*Checkbox cursor*/
-            input[type="checkbox"] {
-                cursor: pointer;
-                transform: scale(1.2);
-                accent-color: #009970; /* Custom checkbox color (modern browsers) */
-            }
-
-            /* === Delete Checked Button === */
-            input[type="submit"][name="btnDelete"] {
-                margin-top: 20px;
-                padding: 10px 20px;
-                background-color: #dc3545;
-                color: white;
-                border: none;
-                border-radius: 10px;
-                font-size: 16px;
-                transition: all 0.2s ease-in-out;
-            }
-
-            input[type="submit"][name="btnDelete"]:hover {
-                background-color: #c82333;
-                transform: scale(1.05);
             }
         </style>
     </head>
@@ -217,23 +140,20 @@ if (empty($_GET)) {
                                 <tr>
                                     <th></th>
                                     <?php
-                                    // Display table headers
+// Display table headers
                                     foreach ($header as $key => $value) {
                                         if ($key == $sort) {
                                             printf("<th scope='col'>
-                                                <div class='sort-pill'>
-                                                    <a href='?sort=%s&order=%s&email=%s'>%s</a>
-                                                    <img src='img/%s' style='width: 14px; height: 14px; margin-left: 5px;'/>
-                                                </div>
-                                                </th>", $key, ($order == 'ASC') ? 'DESC' : 'ASC',
-                                                $email,
-                                                $value,
-                                                ($order == 'ASC') ? 'asc.png' : 'desc.png');
+                                                <a href='?sort=%s&order=%s&email=%s'>%s</a>
+                                                <img src='img/%s'/>
+                                                </th>",
+                                                    $key, ($order == 'ASC') ? 'DESC' : 'ASC',
+                                                    $email,
+                                                    $value,
+                                                    ($order == 'ASC') ? 'asc.png' : 'desc.png'); // You need to provide the image file names for sorting indication
                                         } else {
                                             printf("<th scope='col'>
-                                                <div class='sort-pill'>
-                                                    <a href='?sort=%s&order=ASC&email=%s'>%s</a>
-                                                </div>
+                                                <a href='?sort=%s&order=ASC&email=%s'>%s</a>
                                                 </th>", $key, $email, $value);
                                         }
                                     }
@@ -266,7 +186,7 @@ if (empty($_GET)) {
                                         <td>%s</td>
                                         <td class='text-center'>
                                             <a href='updateVolunteer.php?username=%s' class='action'>Update</a>
-                                            <a href='deleteVolunteer.php?username=%s' class='action-delete'>Delete</a>
+                                            <a href='deleteVolunteer.php?username=%s' class='action'>Delete</a>
                                         </td>
                                     </tr>", $row->username, $row->username, $genderValue, $row->email, $row->username, $row->username);
                                     }
