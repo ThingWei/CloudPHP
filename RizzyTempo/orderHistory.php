@@ -17,71 +17,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // DELETE ITEM
-    if (isset($_POST['remove'])) {
-        $cartID = intval($_POST['remove']);
-        $delete = $conn->prepare("DELETE FROM cart WHERE cartID = ?");
-        $delete->bind_param("i", $cartID);
-        $delete->execute();
-        $delete->close();
-
-        header("Location: cart.php");
-        exit();
-    }
-
-    // UPDATE QUANTITIES
-    if (isset($_POST['update']) && isset($_POST['quantities'])) {
-        foreach ($_POST['quantities'] as $cartID => $newQty) {
-            $newQty = intval($newQty);
-            if ($newQty > 0) {
-                $update = $conn->prepare("UPDATE cart SET quantity = ? WHERE cartID = ?");
-                $update->bind_param("ii", $newQty, $cartID);
-                $update->execute();
-                $update->close();
-            }
-        }
-
-        header("Location: cart.php");
-        exit();
-    }
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
-    $eventName = $_POST['eventName'];
-    
-    $price = $_POST['price'];
-    $eventBanner = $_POST['eventBanner']; // or get it from DB
-    $quantity = intval($_POST['quantity']);
-    $email = $_SESSION['user_email'];
-
-    // Check if item already exists in DB for this user
-    $check = $conn->prepare("SELECT quantity FROM cart WHERE user_email = ? AND eventName = ?");
-    $check->bind_param("ss", $email, $eventName);
-    $check->execute();
-    $check->store_result();
-
-    if ($check->num_rows > 0) {
-        // If exists, update quantity
-        $update = $conn->prepare("UPDATE cart SET quantity = quantity + ? WHERE user_email = ? AND eventName = ? ");
-        $update->bind_param("iss", $quantity, $email, $eventName, );
-        $update->execute();
-        $update->close();
-    } else {
-        // Insert new cart item
-        $insert = $conn->prepare("INSERT INTO cart (user_email, eventName, eventBanner,  price, quantity) VALUES (?, ?, ?, ?, ?)");
-        $insert->bind_param("sssdi", $email, $eventName, $eventBanner, $price, $quantity);
-        $insert->execute();
-        $insert->close();
-    }
-
-    $check->close();
-
-    header("Location: cart.php");
-    exit();
-}
-
 $email = $_SESSION['user_email'];
 $sql = "
     SELECT 
@@ -91,7 +26,7 @@ $sql = "
         c.eventBanner, 
         c.quantity, 
         e.productPrice AS price 
-    FROM cart c
+    FROM receipt r
     JOIN event e ON c.eventName = e.eventName
     WHERE c.user_email = ?
 ";
@@ -113,7 +48,7 @@ $stmt->close();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Cart</title>
+    <title>Order History</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -162,7 +97,7 @@ $stmt->close();
     <?php if (empty($cartItems)): ?>
         <div class="alert alert-info text-center">Your order history is empty. Click <a href="event.php">here</a> to start browsing!</div>
     <?php else: ?>
-        <form method="post" action="cart.php">
+        
             <div class="row g-4">
                 <?php foreach ($cartItems as $index => $item): ?>
                     <div class="col-md-12">
@@ -178,7 +113,7 @@ $stmt->close();
 
                                 <div class="text-center mx-2">
                                     <label class="form-label mb-1">Quantity</label>
-                                    <input type="number" name="quantities[<?= $item['cartID'] ?>]" value="<?= $item['quantity'] ?>" min="1" class="form-control text-center" style="width: 80px;">
+                                    <p class="fw-semibold mb-0"><?= number_format($item['quantity']) ?></p>
                                 </div>
 
                                 <div class="text-center mx-2">
@@ -187,7 +122,8 @@ $stmt->close();
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" name="remove" value="<?= $item['cartID'] ?>" class="btn btn-outline-danger">Remove</button>
+                                    <a href="#"><button type="submit" class="btn btn-outline-primary me-2">Leave a review!</button></a>
+                                    <a href="receipt.php"><button type="submit" class="btn btn-outline-primary me-2">View Receipt</button></a>
                                 </div>
                             </div>
                         </div>
@@ -195,14 +131,6 @@ $stmt->close();
                 <?php endforeach; ?>
             </div>
 
-            <div class="text-end mt-4">
-                <h4 class="fw-bold">Total: RM <?= number_format($total, 2) ?></h4>
-                <div class="mt-3">
-                    <button type="submit" name="update" class="btn btn-outline-primary me-2">Update Cart</button>
-                    <a href="payment.php" class="btn btn-success">Proceed to Payment</a>
-                </div>
-            </div>
-        </form>
     <?php endif; ?>
 </div>
 

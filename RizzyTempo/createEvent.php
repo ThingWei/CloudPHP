@@ -113,16 +113,13 @@ if (isEventNameDuplicate($eventname, $con)) {
                         (eventName,headline,description,eventBanner,productPrice,productType) VALUES
                          (?,?,?,?,?,?)";
 
-                    $newtable = str_replace(' ', '_', $eventname);
-
-                    $sql2 = "CREATE TABLE $newtable (username VARCHAR(50), email VARCHAR(50),
-                             gender CHAR(1), FOREIGN KEY (email) REFERENCES user(email))";
+                    
                     //step 2.1 run sql
                     //NOTE: $con->query($sql);<< is for sql without "?"
                     //NOTE: $con->prepare($sql);<<is for sql with "?"
                     //parameter
                     $stmt = $con->prepare($sql);
-                    $crtbl = $con->query($sql2);
+                    
                     //step 2.2 supply data into the "?" parameter in the sql 
                     //NOTE:s-string ,i-integer ,d-double,b-blob
                     $stmt->bind_param("ssssss", $eventname, $headline, $description, $banner,$productPrice, $productType);
@@ -133,15 +130,15 @@ if (isEventNameDuplicate($eventname, $con)) {
                     if ($stmt->affected_rows > 0) {
 
                         // Display the alert box; note the Js tags within echo, it performs the magic
-                        echo "<script>alert('Event has been created.');document.location='eventsAdmin.php';</script>";
+                        echo "<script>alert('$eventname has been created.');document.location='eventsAdmin.php';</script>";
                     }
 
                     $stmt->close();
-                    $crtbl->close();
+                    
                     $con->close();
 
                     // Display the alert box; note the Js tags within echo, it performs the magic
-                    echo "<script>alert('Event has been CREATED!');</script>";
+                    echo "<script>alert('$eventname has been CREATED!');</script>";
                 } else {
                     //Not good ,display error msg
                     echo"<ul class='error'>";
