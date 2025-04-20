@@ -122,6 +122,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             padding: 5px;
             text-align: center;
         }
+        
+        .login-button {
+            background-color: #009970;
+            color: #fff;
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.3s background-color;
+        }
+
+        .login-button:hover {
+            background-color: #00b383;
+        }
     </style>
 </head>
 
