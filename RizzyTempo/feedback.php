@@ -7,6 +7,20 @@ if (!isset($_SESSION['user_email'])) {
     header('Location: index.php');
     exit();
 }
+
+$con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+$useremail = $_SESSION['user_email'];
+
+$sql = "SELECT * FROM user WHERE email = '$useremail'";
+$result = $con->query($sql);
+if ($row = $result->fetch_object()) {
+    $uname = $row->username;
+    $uemail = $row->email;
+    $ugender = $row->gender;
+}
+
+$result->free();
 ?>
 
 <!DOCTYPE html>
@@ -16,202 +30,177 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <html>
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to TAR UMT Graduation Service</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="css/header.css" rel="stylesheet">
-    <link href="css/footer.css" rel="stylesheet">
-    <link href="css/hometry.css" rel="stylesheet">
-    <style>
-        .navbar {
-            box-sizing: content-box;
-        }
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Feedback</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body {
-            background: url('img2/background.png') no-repeat center center fixed;
-            background-size: cover;
-            width: 100%;
-            height: 100%;
-        }
+        <link href="css/header.css" rel="stylesheet">
+        <link href="css/footer.css" rel="stylesheet">
+        
+        <style>
+            body {
+                background: url('img2/background.png') no-repeat center center fixed;
+                background-size: cover;
+                width: 100%;
+            }
 
-        h1, h2, h3, p {
-            color: white; /* or try #fffae3, #f0f0f0 for softer brightness */
-            text-shadow: 1px 1px 2px black; /* optional: gives text more contrast */
-        }
+            .error, .info {
+                padding: 5px;
+                margin: 5px;
+                font-size: 0.9em;
+                list-style-position: inside;
+            }
 
-        body, html {
-            height: 100%;
-        }
+            .error {
+                border: 2px solid #FBC2C4;
+                background-color: #FBE3E4;
+                color: #8A1F11;
+            }
 
-        .background-container {
-            position: relative;
-            background: url('img2/background.png') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-        }
+            .info {
+                border: 2px solid #92CAE4;
+                background-color: #D5EDF8;
+                color: #205791;
+            }
 
-        .background-container::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* 👈 adjust for light/dark overlay */
-            z-index: 1;
-        }
+            .form-outline label {
+                position: relative;
+                top: 0;
+                font-weight: bold;
+                margin-bottom: 5px;
+                display: block;
+            }
 
-        .background-container > * {
-            position: relative;
-            z-index: 2;
-            color: white; /* Makes text readable on dark overlay */
-        }
+            .stars {
+                display: flex;
+                justify-content: center;
+                flex-direction: row-reverse;
+                gap: 5px;
+            }
 
-        .img {
-            width: 20px;
-            height: 20px;
-        }
+            .stars input {
+                display: none;
+            }
 
-        .background-image {
-            background-image: url('img2/recentgraduates.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 700px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+            .stars label {
+                font-size: 2rem;
+                color: #ccc;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
 
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+            .stars input:checked ~ label,
+            .stars label:hover,
+            .stars label:hover ~ label {
+                color: #ffc107;
+            }
 
-        .overlay h1 {
-            font-size: 25px;
-            text-align: center;
-            color: white;
-        }
+            .submitBtn {
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+    </head>
 
-        .overlay h1:hover {
-            color: #E1C564;
-        }
+    <body>
+        <!-- Navbar -->
+        <?php include 'headerUser.php'; ?>
+        <!-- End of Navbar -->
 
-        .gallery-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
+        <?php require_once 'helper.php'; ?>
 
-        }
 
-        div.gallery {
-            margin: 5px;
-            border: 2px solid white;
-            float: left;
-            width: 180px;
-            margin-right: 15px;
+        <p class="gap">&nbsp;</p>
+        <p class="gap">&nbsp;</p>
 
-        }
 
-        div.gallery:hover {
-            border: 1px solid black;
-        }
+        <div class="mx-0 mx-sm-auto" style="max-width: 600px; margin: auto; margin-top: 5%;">
+            <div class="card" style="border-radius: 50px;">
+                <div class="card-body">
+                    <form class="px-2" action="" method="POST">
+                        <h2 class="text-center mb-3" style="margin-top: 10%;"><strong>Please Give Your Feedback</strong></h2>
 
-        div.gallery img {
-            width: 100%;
-            height: 250px;
-        }
+                        <?php
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            $rating = isset($_POST["rate"]) ? $_POST["rate"] : null;
+                            $name = trim($_POST["txtUsername"]);
+                            $email = trim($_POST["txtEmail"]);
+                            $description = trim($_POST["txtDescription"]);
 
-        div.desc {
-            padding: 5px;
-            text-align: center;
-        }
-    </style>
-</head>
+                            $error["rate"] = checkRating($rating);
+                            $error["username"] = checkUsername($name);
+                            $error["email"] = checkingEmail($email);
+                            $error["description"] = checkDescription($description);
 
-<body>
-    <!-- Navbar -->
-    <?php include 'headerUser.php'; ?>
-    <!-- End of Navbar -->
+                            $error = array_filter($error);
 
-    <div class="background-image">
-        <div class="overlay">
-            <h1 style="font-size:50px;"><b>Welcome To TAR UMT Graduation Services</b></h1>
-        </div>
-    </div>
+                            if (empty($error)) {
+                                insertFeedbackData($rating, $name, $email, $description);
+                                echo "<div class='info'>Feedback Submitted Successfully</div>";
+                            } else {
+                                echo "<ul class='error'>";
+                                foreach ($error as $value) {
+                                    echo "<li>$value</li>";
+                                }
+                                echo "</ul>";
+                            }
+                        }
+                        ?>
 
-    <div class="background-container">
-        <h1 style="text-align:center;font-size:45px;text-decoration:underline;margin-top:50px;">About Us<br></h1>
-        <p style="font-size:20px;text-align:center;margin-top:20px;">
-            At TAR UMT Graduation Services, we’re here to help you celebrate your big day.<br>
-            We offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment. <br>
-            Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.<br>
-            Thank you for letting us be a part of your celebration! 
-        </p>
-        <br/>
+                        <!-- Star Rating -->
+                        <div class="stars mb-4">
+                            <input type="radio" id="star5" name="rate" value="5"><label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star4" name="rate" value="4"><label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star3" name="rate" value="3"><label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star2" name="rate" value="2"><label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star1" name="rate" value="1"><label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+                        </div>
 
-        <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Graduation Items</h1>
+                        <!-- Username -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="username">Username</label>
+                            <input type="text" id="username" name="txtUsername" class="form-control" value="<?php echo isset($uname) ? $uname : ''; ?>" maxlength="50" placeholder="Tan Ah Gaw" />
+                        </div>
 
-        <div class="gallery-container" style="margin:20px;">
-            <div class="gallery" style="border-radius: 15px">
-                    <a href="event.php">
-                        <img src="img/flowers.jpg" alt="event1" width="600" height="400"
-                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-                    </a>
-                    <div class="desc">Flowers</div>
-                </div>
+                        <!-- Email -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="emailaddress">Email</label>
+                            <input type="text" id="emailaddress" name="txtEmail" class="form-control" value="<?php echo isset($uemail) ? $uemail : ''; ?>" maxlength="50" placeholder="tanahgaw@example.com" />
+                        </div>
 
-                <div class="gallery" style="border-radius: 15px">
-                    <a href="event.php">
-                        <img src="img2/GradCap.png" alt="event2" width="600" height="300"
-                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-                    </a>
-                    <div class="desc">Graduation Caps</div>
-                </div>
+                        <!-- Feedback Textarea -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form4Example6">What could we improve?</label>
+                            <textarea class="form-control" id="form4Example6" name="txtDescription" rows="4" maxlength="300" placeholder="Your feedback here..."></textarea>
+                        </div>
 
-                <div class="gallery" style="border-radius: 15px">
-                    <a href="event.php">
-                        <img src="img2/GradTeddy.png" alt="event3" width="600" height="300"
-                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-                    </a>
-                    <div class="desc">Graduation Teddy</div>
-                </div>
+                        <!-- Terms -->
+                        <div class="mb-3">
+                            <input type="checkbox" id="accept" name="terms" value="accept" required />
+                            <label for="accept">I accept the <a href="condition.php">terms and conditions</a></label>
+                        </div>
 
-                <div class="gallery" style="border-radius: 15px">
-                    <a href="event.php">
-                        <img src="img2/MoneyBanquet.png" alt="event4" width="600" height="300"
-                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-                    </a>
-                    <div class="desc">Money Banquet</div>
-                </div>
-
-                <div class="gallery" style="border-radius: 15px">
-                    <a href="event.php">
-                        <img src="img2/PhotoPrinting.png" alt="event5" width="600" height="300"
-                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
-                    </a>
-                    <div class="desc">Instant Photo Printing Service</div>
+                        <!-- Submit Buttons -->
+                        <div class="submitBtn">
+                            <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="clearfix"></div>
+        <p class="gap">&nbsp;</p>
 
-    <!-- Footer -->
-    <?php include 'footerUser.php'; ?>
-    <!-- End Of Footer -->
- 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        <!-- Footer -->
+        <?php include 'footerUser.php'; ?>
+        <!-- End Of Footer -->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-</body>
+    </body>
 
 </html>
