@@ -85,7 +85,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             echo '<div id="container">';
             echo '<h1 style="margin: auto; text-align: center; padding-bottom: 20px;text-decoration:underline;">Our Products</h1>';
             echo '<div class="d-flex justify-content-end mb-3">
-        <input type="text" id="searchBox" class="form-control w-25" placeholder="Search event...">
+        <input type="text" id="searchBox" class="form-control w-25" placeholder="Search Product...">
     </div>';
     echo '<div class="container"><div class="row" id="productGrid">';
 
@@ -104,8 +104,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </a>
                             <form method="POST" action="cart.php" class="w-50">
                                 <input type="hidden" name="eventName" value="' . htmlspecialchars($row->eventName) . '">
-                               
-    <input type="hidden" name="ticketType" value="<?= $ticketType ?>">
+
     <input type="hidden" name="price" value="<?= $price ?>">
     <input type="hidden" name="eventBanner" value="' . htmlspecialchars($row->eventBanner) . '">
     
