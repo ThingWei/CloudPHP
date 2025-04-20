@@ -218,7 +218,7 @@ header .title {
     color: transparent;
     -webkit-text-stroke: 1px #fff;
     background: url('img/back.png');
-    -webkit-background-clip: text;
+    
     background-position: 0 0;
     animation: back 20s linear infinite;
 }
@@ -339,4 +339,11 @@ header .title {
     border-radius:20px;
     padding-left: 45px;
     margin-left: 70px;
+}
+
+
+input.disable-spinner::-webkit-inner-spin-button,
+input.disable-spinner::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
 }
