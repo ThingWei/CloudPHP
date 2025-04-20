@@ -114,19 +114,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                 border-radius: 50%;
                 object-fit: cover;
             }
-            .btn-follow {
-                background-color: #3b7fdb;
-                color: white;
-                border: none;
-                padding: 8px 30px;
-                margin-right: 10px;
-            }
-            .btn-message {
-                background-color: transparent;
-                color: white;
-                border: 1px solid #555;
-                padding: 8px 25px;
-            }
             .detail-row {
                 padding: 15px 0;
                 border-bottom: 1px solid #444;
@@ -202,72 +189,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         crossorigin="anonymous"></script>
 
     </body>
-    <script>
-        var video = document.getElementById('video');
-        var canvas = document.createElement('canvas');
-        var userImg = document.getElementById('img0');
-
-        function startCapture() {
-            // Access webcam
-            navigator.mediaDevices.getUserMedia({video: true})
-                    .then(function (stream) {
-                        video.srcObject = stream;
-                        video.play();
-                        video.style.display = 'block'; // Show the video element
-                        document.getElementById('start-btn').style.display = 'none'; // Hide the start button
-                        document.getElementById('capture-btn').style.display = 'block'; // Show the capture button
-                    })
-                    .catch(function (err) {
-                        console.log('Error accessing webcam:', err);
-                    });
-        }
-
-        function capturePhoto() {
-            var context = canvas.getContext('2d');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            var imageDataURL = canvas.toDataURL('image/png');
-            userImg.src = imageDataURL;
-            // Save captured image data to local storage
-            localStorage.setItem('capturedImage', imageDataURL);
-            stopCapture();
-        }
-
-        function stopCapture() {
-            var stream = video.srcObject;
-            var tracks = stream.getTracks();
-            tracks.forEach(function (track) {
-                track.stop();
-            });
-            video.srcObject = null;
-            video.style.display = 'none'; // Hide the video element
-            document.getElementById('start-btn').style.display = 'block'; // Show the start button
-            document.getElementById('capture-btn').style.display = 'none'; // Hide the capture button
-        }
-
-        function changeprofile(imageSrc) {
-            userImg.src = imageSrc;
-            localStorage.setItem('lastProfileImage', imageSrc);
-            localStorage.removeItem('capturedImage'); // Remove captured image data when a profile image is selected
-        }
-
-        window.onload = function () {
-            var lastProfileImage = localStorage.getItem('lastProfileImage');
-            if (lastProfileImage) {
-                userImg.src = lastProfileImage;
-            } else {
-                // If no last profile image is set, use the default profile image
-                userImg.src = 'image/profile.png';
-            }
-
-            // retrieve captured image data from local storage
-            var capturedImage = localStorage.getItem('capturedImage');
-            if (capturedImage) {
-                userImg.src = capturedImage;
-            }
-        };
-    </script>
+    
 
 
 </html>
