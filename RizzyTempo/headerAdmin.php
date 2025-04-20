@@ -5,11 +5,11 @@ $currentPage = basename($_SERVER['PHP_SELF']); // e.g., "homeAdmin.php"
 
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand me-auto" href="homeAdmin.php"><img class="mslogo" src="img/music.png"></a>
+        <a class="navbar-brand me-auto" href="homeAdmin.php"><img class="mslogo" src="img2/graduationcap.png"></a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
              aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="mslogo" src="img/music.png">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="mslogo" src="img2/graduationcap.png">
                     &nbsp; RT Music Society</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>

@@ -53,106 +53,106 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
 
         <?php
-        require_once 'helper.php';
-        //connect php to database
-        //NOTE: the sequence of the parameter in myspli
-        //must be followed
-        $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+            require_once 'helper.php';
+            //connect php to database
+            //NOTE: the sequence of the parameter in myspli
+            //must be followed
+            $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-        //NOTE:
-        //-> will only appear and used in database access
-        //=> used in associative array
-        if ($con->connect_error) {
-            die("Connection failed: " . $con->connect_error);
-        }
+            //NOTE:
+            //-> will only appear and used in database access
+            //=> used in associative array
+            if ($con->connect_error) {
+                die("Connection failed: " . $con->connect_error);
+            }
 
-        //sql statement
-        //SELECT * FROM Student ORDER BY StudentName ASC;
-        $sql = "SELECT * FROM user";
+            //sql statement
+            //SELECT * FROM Student ORDER BY StudentName ASC;
+            $sql = "SELECT * FROM user";
 
-        //ask coonection to run sql query 
-        $result = $con->query($sql);
+            //ask coonection to run sql query 
+            $result = $con->query($sql);
 
-        if ($result->num_rows > 0) {
-            //record found
-            //why while loop? while i can still access the record
-            //we will retreive 
-            //fetch_object() - take record 1 by 1 from $result 
+            if ($result->num_rows > 0) {
+                //record found
+                //why while loop? while i can still access the record
+                //we will retreive 
+                //fetch_object() - take record 1 by 1 from $result 
 
-            $totalNumUser = $result->num_rows;
+                $totalNumUser = $result->num_rows;
 
-            $result->free();
-            $con->close();
-        } else {
-            //no record return
-        }
-        //connect php to database
-        //NOTE: the sequence of the parameter in myspli
-        //must be followed
-        $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                $result->free();
+                $con->close();
+            } else {
+                //no record return
+            }
+            //connect php to database
+            //NOTE: the sequence of the parameter in myspli
+            //must be followed
+            $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-        //NOTE:
-        //-> will only appear and used in database access
-        //=> used in associative array
-        if ($con->connect_error) {
-            die("Connection failed: " . $con->connect_error);
-        }
+            //NOTE:
+            //-> will only appear and used in database access
+            //=> used in associative array
+            if ($con->connect_error) {
+                die("Connection failed: " . $con->connect_error);
+            }
 
-        //sql statement
-        //SELECT * FROM Student ORDER BY StudentName ASC;
-        $sql = "SELECT * FROM event";
+            //sql statement
+            //SELECT * FROM Student ORDER BY StudentName ASC;
+            $sql = "SELECT * FROM event";
 
-        //ask coonection to run sql query 
-        $result = $con->query($sql);
+            //ask coonection to run sql query 
+            $result = $con->query($sql);
 
-        if ($result->num_rows > 0) {
-            //record found
-            //why while loop? while i can still access the record
-            //we will retreive 
-            //fetch_object() - take record 1 by 1 from $result 
+            if ($result->num_rows > 0) {
+                //record found
+                //why while loop? while i can still access the record
+                //we will retreive 
+                //fetch_object() - take record 1 by 1 from $result 
 
-            $totalNumEvent = $result->num_rows;
+                $totalNumEvent = $result->num_rows;
 
-            $result->free();
-            $con->close();
-        } else {
-            //no record return
-        }
-        
-        $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                $result->free();
+                $con->close();
+            } else {
+                //no record return
+            }
+            
+            $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-        //NOTE:
-        //-> will only appear and used in database access
-        //=> used in associative array
-        if ($con->connect_error) {
-            die("Connection failed: " . $con->connect_error);
-        }
+            //NOTE:
+            //-> will only appear and used in database access
+            //=> used in associative array
+            if ($con->connect_error) {
+                die("Connection failed: " . $con->connect_error);
+            }
 
-        //sql statement
-        //SELECT * FROM Student ORDER BY StudentName ASC;
-        $sql = "SELECT * FROM payment";
+            //sql statement
+            //SELECT * FROM Student ORDER BY StudentName ASC;
+            $sql = "SELECT * FROM payment";
 
-        //ask coonection to run sql query 
-        $result = $con->query($sql);
+            //ask coonection to run sql query 
+            $result = $con->query($sql);
 
-        if ($result->num_rows > 0) {
-            //record found
-            //why while loop? while i can still access the record
-            //we will retreive 
-            //fetch_object() - take record 1 by 1 from $result 
+            if ($result->num_rows > 0) {
+                //record found
+                //why while loop? while i can still access the record
+                //we will retreive 
+                //fetch_object() - take record 1 by 1 from $result 
 
-            $totalNumPay = $result->num_rows;
+                $totalNumPay = $result->num_rows;
 
-            $result->free();
-            $con->close();
-        } else {
-            //no record return
-        }
+                $result->free();
+                $con->close();
+            } else {
+                //no record return
+            }
         ?>
+
+
         <!-- Navbar -->
-        <?php
-    include 'headerAdmin.php';
-    ?>
+        <?php include 'headerAdmin.php'; ?>
         <!-- End of Navbar -->
 
         <h1>&nbsp;</h1>
@@ -200,9 +200,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
         <!-- Footer -->
-        <?php 
-        include 'footerAdmin.php';
-        ?>
+        <?php include 'footerAdmin.php'; ?>
         <!-- End Of Footer -->
         
         <!-- Scripts -->
