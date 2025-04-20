@@ -49,296 +49,266 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 
         <style>
-            @import url('https //fonts.googleapis.com/css family=poppins');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Poppins', sans-serif;
-            }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
 
-            body {
-                background: #020410;
-                overflow: hidden;
-            }
+    html, body {
+        height: 100%;
+    }
 
-            .background {
-                width: 100%;
-                height: 100vh;
-                background: url('img/background.png')no-repeat;
-                background-repeat: cover;
-                background-position: center;
-                filter: blur(15px);
-            }
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: url('img2/recentgraduates.jpg') no-repeat center center;
+        background-size: cover;
+        filter: blur(15px);
+        z-index: -1;
+    }
 
-            .container {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 75%;
-                height: 600px;
-                background: url('img/background.png')no-repeat;
-                background-size: cover;
-                background-position: center;
-                border-radius: 10px;
-                margin-top: 20px;
-            }
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75%;
+        height: 600px;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('img2/recentgraduates.jpg') no-repeat center center;
+        background-size: cover;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 
-            .container .content {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 70%;
-                height: 100%;
-                background: transparent;
-                padding: 80px;
-                color: #e4e4e4;
-                display: flex;
-                justify-content: space-between;
-                flex-direction: column;
-            }
+    .container .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: transparent;
+        padding: 20px;
+        color: #e4e4e4;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
-            .logo {
-                font-size: 70px;
-                margin-left: -10px;
-                color: transparent;
-                -webkit-text-stroke: 1px #fff;
-                background: url('img/back.png');
-                -webkit-background-clip: text;
-                background-position: 0 0;
-                animation: back 20s linear infinite;
-            }
+    .logo {
+        font-size: 70px;
+        color: transparent;
+        -webkit-text-stroke: 1px #fff;
+        background: url('img/back.png');
+        -webkit-background-clip: text;
+        background-position: 0 0;
+        animation: back 20s linear infinite;
+    }
 
-            @keyframes back {
-                100% {
-                    background-position: 2000px 0;
-                }
-            }
+    @keyframes back {
+        100% {
+            background-position: 2000px 0;
+        }
+    }
 
-            .text-sci h2 {
-                font-size: 40px;
-                line-height: 1;
-            }
+    .text-sci h2 {
+        font-size: 40px;
+        line-height: 1;
+    }
 
-            .text-sci h2 span {
-                font-size: 25px;
-            }
+    .text-sci h2 span {
+        font-size: 25px;
+    }
 
-            .text-sci p {
-                font-size: 20px;
-                margin: 20px 0;
-                word-spacing: 1.5px;
-            }
+    .text-sci p {
+        font-size: 20px;
+        margin: 20px 0;
+        word-spacing: 1.5px;
+    }
 
-            .social-icons a i {
-                font-size: 22px;
-                color: #e4e4e4;
-                margin-right: 10px;
-                transition: .5s ease;
-            }
+    .social-icons a i {
+        font-size: 22px;
+        color: #e4e4e4;
+        margin-right: 10px;
+        transition: .5s ease;
+    }
 
-            .social-icons a:hover i {
-                transform: scale(1.2);
-            }
+    .social-icons a:hover i {
+        transform: scale(1.2);
+    }
 
-            .container .logreg-box {
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 40%;
-                height: 100%;
-                overflow: hidden;
-            }
+    .logreg-box {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        overflow: hidden;
+        display: flex;
+        transition: transform 0.6s ease;
+    }
 
-            .logreg-box .form-box {
-                position: absolute;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: 100%;
-                background: transparent;
-                backdrop-filter: blur(20px);
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-                color: #e4e4e4;
-            }
+    .form-box {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        backdrop-filter: blur(20px);
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: #e4e4e4;
+        transition: transform 0.6s ease;
+    }
 
-            .logreg-box .form-box.login {
-                transform: translateX(0);
-                transition: transform .6s ease;
-                transition-delay: .7s;
-            }
+    .form-box.login {
+        transform: translateX(0%);
+    }
 
-            .logreg-box.active .form-box.login {
-                transform: translateX(430px);
-                transition-delay: 0s;
-            }
+    .logreg-box.active .form-box.login {
+        transform: translateX(-100%);
+    }
 
+    .form-box.register {
+        transform: translateX(100%);
+    }
 
-            .logreg-box .form-box.register {
-                transform: translateX(430px);
-                transition: transform .5s ease;
-                transition-delay: 0s;
-            }
+    .logreg-box.active .form-box.register {
+        transform: translateX(0%);
+    }
 
-            .logreg-box.active .form-box.register {
-                transform: translateX(0);
-                transition-delay: .7s;
-            }
+    .form-box h2 {
+        font-size: 32px;
+        text-align: center;
+    }
 
-            .form-box h2 {
-                font-size: 32px;
-                text-align: center;
-            }
+    .input-box {
+        position: relative;
+        width: 340px;
+        height: 50px;
+        border-bottom: 2px solid #e4e4e4;
+        margin: 20px 0;
+    }
 
-            .form-box .input-box {
-                position: relative;
-                width: 340px;
-                height: 50px;
-                border-bottom: 2px solid #e4e4e4;
-                margin: 20px 0;
+    .input-box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: #e4e4e4;
+        font-weight: 500;
+        padding-right: 28px;
+    }
 
-            }
+    .input-box label {
+        position: absolute;
+        top: 40%;
+        left: 0;
+        transform: translateY(-40%);
+        font-size: 16px;
+        font-weight: 500;
+        pointer-events: none;
+        transition: 0.5s ease;
+    }
 
+    .input-box input:focus ~ label,
+    .input-box input:valid ~ label {
+        top: -5px;
+    }
 
-            .input-box input {
-                width: 100%;
-                height: 100%;
-                background: transparent;
-                border: none;
-                outline: none;
-                font-size: 16px;
-                color: #e4e4e4;
-                font-weight: 500;
-                padding-right: 28px;
+    .input-box .icon {
+        position: absolute;
+        top: 13px;
+        right: 0;
+        font-size: 19px;
+    }
 
-            }
+    .form-box .remember-forgot {
+        font-size: 14.5px;
+        font-weight: 500;
+        margin: -15px 0 15px;
+        display: flex;
+        justify-content: space-between;
+    }
 
+    .remember-forgot label input {
+        accent-color: #e4e4e4;
+        margin-right: 3px;
+    }
 
-            .input-box label {
-                position: absolute;
-                top: 40%;
-                left: 0;
-                transform: translateY(-40%);
-                font-size: 16px;
-                font-weight: 500;
-                pointer-events: none;
-                transition: .5s ease;
-            }
+    .remember-forgot a {
+        color: #e4e4e4;
+        text-decoration: none;
+    }
 
-            .input-box input:focus~label,
-            .input-box input:valid~label {
-                top: -5px;
-            }
+    .remember-forgot a:hover {
+        text-decoration: underline;
+    }
 
+    .btn {
+        width: 100%;
+        height: 45px;
+        background: #3d1602;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        color: #e4e4e4;
+        font-weight: 500;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
 
+    .form-box .login-register {
+        font-size: 14.5px;
+        font-weight: 500;
+        text-align: center;
+        margin-top: 20px;
+    }
 
-            .input-box .icon {
-                position: absolute;
-                top: 13px;
-                right: 0;
-                font-size: 19px;
+    .login-register p a {
+        color: #e4e4e4;
+        font-weight: 600;
+        text-decoration: none;
+    }
 
-            }
+    .login-register p a:hover {
+        text-decoration: underline;
+        color: blue;
+    }
 
-            .form-box .remember-forgot {
-                font-size: 14.5px;
-                font-weight: 500;
-                margin: -15px 0 15px;
-                display: flex;
-                justify-content: space-between;
-            }
+    .captcha {
+        width: 70%;
+        background: black;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+    }
 
-            .remember-forgot label input {
-                accent-color: #e4e4e4;
-                margin-right: 3px;
-            }
+    .form-box.register .btn {
+        width: 90%;
+    }
 
-            .remember-forgot a {
-                color: #e4e4e4;
-                text-decoration: none;
-            }
+    .form-box.register .btn:hover,
+    .form-box.login .btn:hover {
+        background-color: lawngreen;
+    }
 
-            .remember-forgot a:hover {
-                text-decoration: underline;
-            }
+    .col-md-6.form-group {
+        left: -15px;
+    }
+</style>
 
-            .btn {
-                width: 100%;
-                height: 45px;
-                background: #3d1602;
-                border: none;
-                outline: none;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 16px;
-                color: #e4e4e4;
-                font-weight: 500;
-                box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-            }
-
-            .form-box .login-register {
-                font-size: 14.5px;
-                font-weight: 500;
-                text-align: center;
-                margin-top: 20px;
-
-            }
-
-            .login-register p a {
-                color: #e4e4e4;
-                font-weight: 600;
-                text-decoration: none;
-            }
-
-            .login-register p a:hover {
-                text-decoration: underline;
-                color: blue;
-            }
-
-            html,
-            body {
-                width: 100vw;
-                height: 100vh;
-            }
-
-            div {
-                width: 100%;
-                height: 100%
-            }
-
-            .captcha {
-                width: 70%;
-                background: black;
-                text-align: center;
-                font-size: 24px;
-                font-weight: 700;
-
-            }
-
-            .form-box.register {
-                padding-left: 40px;
-            }
-
-            .form-box.register .btn {
-                width: 90%;
-            }
-
-            .form-box.register .btn:hover {
-                background-color: lawngreen;
-            }
-
-            .form-box.login .btn:hover {
-                background-color: lawngreen;
-            }
-
-            .col-md-6.form-group {
-                left: -15px;
-            }
-        </style>
     </head>
     <body>        
 
@@ -348,14 +318,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
             <div class="content">
                 <p>&nbsp;</p>
 
-                <h2 class="logo">RT Music Society</h2>
+                <h2 class="logo">TAR UMT Graduation Service</h2>
 
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
 
                 <div class="text-sci">
-                    <h2><b>Welcome</b><br><span>to Join Our Music Society!</span></h2>
-                    <p>Music can't live without you</p>
+                    <h2><b>Welcome</b><br><span>to Join Our TAR UMT Graduation Service!</span></h2>
+                    <p>Leave memorable memories for you to look back on in the future</p>
                 </div>
             </div>
 
@@ -440,8 +410,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                             <div class="captcha"><?php echo $rand; ?></div>
                         </div>
 
-                        <div class="remember-forgot">
-                            <label><input type="checkbox">I agree to the terms & conditions</label>
+                        <div class="col-md-12 form-group remember-forgot" style="clear: both; margin-top: 10px;">
+                            <label><input type="checkbox" required> I agree to the terms & conditions</label>
                         </div>
 
 

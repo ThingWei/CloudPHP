@@ -29,7 +29,6 @@
                     <li><a href="#.php">Your Order</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
                     <li><a href="feedback.php">Feedback</a></li>
-                    <li><a href="faq.php">FAQ</a></li>
                 </ul>
             </div>
             <div class="colfoot">

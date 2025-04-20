@@ -2,7 +2,7 @@
             <footer>
                 <div class="rowfoot">
                     <div class="colfoot">
-                        <img src="img/music.png" class="logofoot">
+                        <img src="img2/graduationcap.png" class="logofoot">
                         <p class="parafoot">Welcome to TAR UMT Graduation Service, where we’re here to help you celebrate your big day as
                     we offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment.
                     Whether you're graduating or supporting someone who is, we’ve got just the thing to make it memorable.</p>
