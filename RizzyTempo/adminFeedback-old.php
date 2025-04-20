@@ -37,74 +37,15 @@ $description = isset($_GET["description"]) ? $_GET["description"] : "%";
                 width: 100%;
             }
 
-            .table {
-                margin: auto;
-                margin-top: 150px;
-                width: 90%;
-                background-color: white;
+            table {
+                margin: auto; /* Center the table */
+                margin-top: 200px;
+                border: 1px solid #ccc;
                 border-radius: 20px;
-                overflow: hidden;
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                margin-bottom: 500px;
             }
-
-            th, td {
-                vertical-align: middle !important;
-                text-align: center;
-                padding: 12px;
-            }
-
-            th a {
-                text-decoration: none;
-                color: #007bff;
-                transition: 0.2s ease-in-out;
-                font-weight: bold;
-            }
-
-            th a:hover {
-                color: #0056b3;
-                text-decoration: underline;
-            }
-
-            tr:hover {
-                background-color: #f0f8ff;
-                transform: scale(1.01);
-                transition: all 0.2s ease-in-out;
-            }
-
-            input[type='checkbox'] {
-                cursor: pointer;
-                transform: scale(1.2);
-                accent-color: #007bff;
-            }
-
-            .management-heading {
-                font-size: 32px;
-                padding: 20px;
-                font-weight: bold;
-                background-color: #009970;
-                color: white;
-                border-top-left-radius: 20px;
-                border-top-right-radius: 20px;
-            }
-
             .button-container {
                 text-align: left;
-                padding: 15px 30px;
-            }
-
-            input[type="submit"] {
-                background-color: #dc3545;
-                color: white;
-                border: none;
-                padding: 10px 25px;
-                font-size: 16px;
-                border-radius: 20px;
-                transition: 0.3s ease;
-            }
-
-            input[type="submit"]:hover {
-                background-color: #c82333;
-                transform: scale(1.05);
             }
         </style>
     </head>

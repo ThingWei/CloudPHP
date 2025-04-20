@@ -172,6 +172,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 width:30px;
                 height:30px;
             }
+
+            .sort-pill {
+                border-collapse: separate;
+                display: grid;
+                background-color:#343a40;
+                padding: 0px;
+                border-radius: 20px;
+                transition: transform 0.2s ;
+                cursor: pointer;
+            }
+
+            .sort-pill a {
+                text-decoration: none;
+                color: white;
+                font-weight: 500;
+            }
+
+            .sort-pill:hover {
+                transform: scale(1.02);
+                background-color:#343a40;
+            }
+
+            /*Checkbox cursor*/
+            input[type="checkbox"] {
+                cursor: pointer;
+                transform: scale(1.2);
+                accent-color: #009970; /* Custom checkbox color (modern browsers) */
+            }
         </style>
 
     </head>
@@ -238,8 +266,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     //check if the user sort based on
                                     //a specific column?
                                     printf("<th>
-                                <a href='?sort=%s&order=%s&program=%s'>%s</a>
-                                <img src='img/%s'/>
+                                    <div class='sort-pill'>
+                                        <a href='?sort=%s&order=%s&program=%s'>%s</a>&nbsp;
+                                        <img src='img/%s'/>
+                                        </div>
                                 </th>", $key, ($order == 'ASC') ? "DESC" : "ASC",
                                             $program,
                                             $value,
@@ -247,9 +277,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 } else {
                                     //default ,the page run for the first time ,user never click to sort thee record
                                     printf("<th>
-                            <a href='?sort=%s&order=ASC&program=%s'>%s</a>
-                                
-                                </th>", $key, $program, $value);
+                                    <div class='sort-pill'>
+                                    <a href='?sort=%s&order=ASC&program=%s'>%s</a>
+                                    </div>
+                                    </th>", $key, $program, $value);
                                 }
                             }
                             ?>
