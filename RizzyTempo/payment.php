@@ -272,7 +272,7 @@ $con->close();
                         </div>
                     </div>
                     <div class="right">
-                    <button class='x' onclick="location = 'event.php'">×</button>
+                    <button class='x' onclick="location = 'cart.php'">×</button>
                     <h1>Payment Details</h1>
 
                     <br><br>
