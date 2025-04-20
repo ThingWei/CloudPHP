@@ -76,8 +76,25 @@ if (!isset($_SESSION['admin_email'])) {
                 $productType = $_POST["productType"];
                 
 
+                $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
                 //validation
-                $error["eventName"] = checkEventName($eventname);
+                function isEventNameDuplicate($eventname, $con) {
+                    $sql = "SELECT * FROM event WHERE eventName = ?";
+                    $stmt = $con->prepare($sql);
+                    $stmt->bind_param("s", $eventname);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                
+                    return $result->num_rows > 0; // true if found
+                }
+
+// Check if event name already exists
+if (isEventNameDuplicate($eventname, $con)) {
+    $error["eventName"] = "Event name already exists. Please choose a different name.";
+} else {
+    $error["eventName"] = checkEventName($eventname);
+}
                 $error["headline"] = checkHeadline($headline);
                 $error["description"] = checkDesc($description);
                 $error["base64-banner"] = checkBanner($banner);
@@ -90,8 +107,6 @@ if (!isset($_SESSION['admin_email'])) {
 
                 if (empty($error)) {
                     //GOOD ,proceed to insert record 
-
-                    $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
                     //step 2:sql statement 
                     $sql = "INSERT INTO event
@@ -149,15 +164,15 @@ if (!isset($_SESSION['admin_email'])) {
                             <form action="" method="post">
                                 <label for="eventName">Product Name:</label>
                                 <input style="margin-bottom: 1rem !important;" type="text" name="eventName"
-                                       class="form-control py-2" placeholder="e.g Voice Of The MS">
+                                       class="form-control py-2" placeholder="e.g Flower Bouquet">
                                 <label for="headline">Product headline:</label>
                                 <input style="margin-bottom: 1rem !important;" type="text" name="headline"
                                        class="form-control py-2"
-                                       placeholder="e.g It's the time of the year again for the rerun of Voice Of The MS!">
+                                       placeholder="e.g Good flowers for your loved ones!">
                                 <label for="description">Product Description:</label>
                                 <textarea style="margin-bottom: 1rem !important;" type="text" name="description"
                                           class="form-control py-2" rows="6"
-                                          placeholder="e.g join us if you're confident in showing your talent to everyone!..."></textarea>
+                                          placeholder="e.g A very cute flowers for your loved ones"></textarea>
                                 <label for="">Product Banner:</label>
                                 <div class="d-flex justify-content-center">
                                     <label for="input-file" id="drop-area">
@@ -216,6 +231,8 @@ if (!isset($_SESSION['admin_email'])) {
         crossorigin="anonymous"></script>
         <script src="dragdrop.js"></script>
         <script>
+
+
                function base64(obj) {
     if (!obj.files || !obj.files[0]) {
         alert("No file selected");
