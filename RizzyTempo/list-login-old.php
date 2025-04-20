@@ -69,6 +69,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 font-size:18px;
                 padding:10px;
             }
+            tr{
+                border-radius: 20px;
+            }
+            th {
+                background-color: black;
+            }
 
             th a{
                 color:white;
@@ -82,50 +88,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 background-color: white;
 
             }
-            table {
-                border-collapse: separate !important;
-                border-spacing: 0;
-                width: 100%;
-                overflow: hidden;
-                border-radius: 12px;
-                background-color: white;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            }
 
-            th {
-                background-color: #343a40;
-                color: white;
-                padding: 12px;
-                text-align: left;
-                font-weight: bold;
-            }
-
-            td {
-                padding: 12px;
-                vertical-align: middle;
-                border-top: 1px solid #dee2e6;
-            }
-
-            tr:first-child td:first-child {
-                border-top-left-radius: 12px;
-            }
-
-            tr:first-child td:last-child {
-                border-top-right-radius: 12px;
-            }
-
-            tr:last-child td:first-child {
-                border-bottom-left-radius: 12px;
-            }
-
-            tr:last-child td:last-child {
-                border-bottom-right-radius: 12px;
-            }
-
-            tr:hover {
-                background-color:rgb(198, 197, 197);
-                transition: 0.2s;
-            }
             h1{
                 text-align: center;
             }
@@ -140,65 +103,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             }
 
             .button:hover{
-                transform: scale(1.5);
                 background-color: #00b383;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                transition: all 0.2s ease-in-out;
-            }
-            .delete {
-                background-color: #dc3545; /* Bootstrap red */
-                border: none;
-                color: white;
-                padding: 8px 16px;
-                border-radius: 8px;
-                cursor: pointer;
-                font-size: 16px;
-                transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
             }
 
-            .delete a {
-                color: white;
-                text-decoration: none;
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-
-            .delete:hover {
-                transform: scale(1.1);
-                background-color: #c82333; /* darker red on hover */
-            }
             img{
                 width:30px;
                 height:30px;
-            }
-
-            .sort-pill {
-                border-collapse: separate;
-                display: grid;
-                background-color:#343a40;
-                padding: 0px;
-                border-radius: 20px;
-                transition: transform 0.2s ;
-                cursor: pointer;
-            }
-
-            .sort-pill a {
-                text-decoration: none;
-                color: white;
-                font-weight: 500;
-            }
-
-            .sort-pill:hover {
-                transform: scale(1.02);
-                background-color:#343a40;
-            }
-
-            /*Checkbox cursor*/
-            input[type="checkbox"] {
-                cursor: pointer;
-                transform: scale(1.2);
-                accent-color: #009970; /* Custom checkbox color (modern browsers) */
             }
         </style>
 
@@ -254,8 +164,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
         ?>
         <div class = "d-flex justify-content-center">
-        <div class="container" style="max-width: 90%; margin: 0 auto;">
-        <div class="card shadow rounded" style="padding: 20px;">
+            <div class="container"  style="overflow: auto;white-space: wrap; margin-left: 150px">
                 <form action="" method="POST">
                     <table border="1" cellpadding="5" cellspacing="0">
                         <tr>
@@ -266,10 +175,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     //check if the user sort based on
                                     //a specific column?
                                     printf("<th>
-                                    <div class='sort-pill'>
-                                        <a href='?sort=%s&order=%s&program=%s'>%s</a>&nbsp;
-                                        <img src='img/%s'/>
-                                        </div>
+                                <a href='?sort=%s&order=%s&program=%s'>%s</a>
+                                <img src='img/%s'/>
                                 </th>", $key, ($order == 'ASC') ? "DESC" : "ASC",
                                             $program,
                                             $value,
@@ -277,10 +184,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 } else {
                                     //default ,the page run for the first time ,user never click to sort thee record
                                     printf("<th>
-                                    <div class='sort-pill'>
-                                    <a href='?sort=%s&order=ASC&program=%s'>%s</a>
-                                    </div>
-                                    </th>", $key, $program, $value);
+                            <a href='?sort=%s&order=ASC&program=%s'>%s</a>
+                                
+                                </th>", $key, $program, $value);
                                 }
                             }
                             ?>
@@ -317,13 +223,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 printf("
                                 <tr>
                                 <td><input type='checkbox' name='checkDelete[]' value='%s' /></td>
-                                <td>%s</td> 
+                                <td style='border-radius: 20px;'>%s</td> 
                                 <td>%s</td>
                                 <td style='text-align:center'>%s</td>
                                 <td>%s</td>
                                             
                                 <td>
-                                <button class='delete'><a href='delete-login.php?id=%s'>Delete</a></button>
+                                <a href='delete-login.php?id=%s'>Delete</a>
                                 </td>
                                 
                                 </tr>
@@ -346,11 +252,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     </table>
                     <br/>
-                    <input type="submit" value="Delete Checked" name="btnDelete" class="btn btn-danger mx-2" onclick="return confirm('This will delete all checked records.\nAre you sure?')" />
-                    <input type="button" value="Create New User Account" name="btnInsert" class="btn btn-success" onclick="location.href='insert-login.php';" />
+                    <input style="padding-left:5px;padding-right:5px;" type="submit" value="Deleted Checked" name="btnDelete" class="button" onclick="confirm('This will delete all checked records.\nAre you sure?')"/>
+                    <input style="padding-left:5px;padding-right:5px;" type="button" value="Create new user account" name="btnInsert" class="button" onclick="location.href = 'insert-login.php';"/>
                 </form>
             </div>
-        </div>
         </div>
 
         <h1>&nbsp;</h1>
