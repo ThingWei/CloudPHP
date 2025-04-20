@@ -140,7 +140,7 @@ $result2->free();
                 </div>
                 <button type="button" name='print' class='btn btn-primary' onclick='print()'>Print Receipt</button>
                 <button type="button" name="btnBack" class="btn btn-primary"
-                        onclick='window.location.href = "home.php"'>Back</button>
+                        onclick='window.location.href = "orderHistory.php"'>Back</button>
             </div>
         </div>
 
