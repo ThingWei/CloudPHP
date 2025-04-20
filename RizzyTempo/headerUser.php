@@ -23,7 +23,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <a class="nav-link mx-lg-2 <?= $currentPage == 'event.php' ? 'active text-white' : '' ?>" href="event.php">Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2 <?= $currentPage == 'yourorder.php' ? 'active text-white' : '' ?>" href="yourorder.php">Your Order</a>
+                        <a class="nav-link mx-lg-2 <?= $currentPage == 'orderHistory.php' ? 'active text-white' : '' ?>" href="orderHistory.php">Order History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2 <?= $currentPage == 'aboutus.php' ? 'active text-white' : '' ?>" href="aboutus.php">About Us</a>
