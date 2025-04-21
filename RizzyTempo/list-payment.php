@@ -13,8 +13,7 @@ if (!isset($_SESSION['admin_email'])) {
 //value - display test in the html table <th>
 $header = array(
     "email" => "User Email",
-    "eventName" => "Event Name",
-    "ticketType" => "Ticket Type",
+    "eventName" => "Product Name",
     "price" => "Price",
 );
 
@@ -108,18 +107,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
 
         <!-- Navbar -->
-        <?php
-    include 'headerAdmin.php';
-    ?>
+        <?php include 'headerAdmin.php'; ?>
         <!-- End of Navbar -->
 
         <h1>&nbsp;</h1>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
 
-        <?php
-        require_once 'helper.php';
-        ?>
+        <?php require_once 'helper.php'; ?>
         <h1>Ticket Sales Record</h1>
 
         <?php
@@ -213,23 +208,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <tr>
                                 <td>%s</td> 
                                 <td>%s</td>
-                                <td>%s</td>
+                               
                                 <td>RM %s</td>
                                 
                                 </tr>
                                     "
                                     , $row->email
                                     , $row->eventName
-                                    , $row->ticketType
                                     , $row->price
                             );
                         }
-                        printf("<tr><td colspan='5'>%d record(s) returned .</td></tr>", $result->num_rows);
+                        printf("<tr><td colspan='4'>%d record(s) returned .</td></tr>", $result->num_rows);
 
                         $result->free();
                         $con->close();
                     } else {
-                        echo '<tr><td colspan="4" style="text-align:center"> No Payment has been made yet.</td></tr>';
+                        echo '<tr><td colspan="3" style="text-align:center"> No Payment has been made yet.</td></tr>';
                     }
                     ?>
 
@@ -239,9 +233,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <p>&nbsp;</p>
         <!-- Footer -->
-        <?php 
-        include 'footerAdmin.php';
-        ?>
+        <?php include 'footerAdmin.php'; ?>
         <!-- End Of Footer -->
 
         <!-- Scripts -->
