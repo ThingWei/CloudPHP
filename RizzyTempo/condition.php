@@ -9,80 +9,82 @@ if (!isset($_SESSION['user_email'])) {
 }
 ?>
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
 <html>
-    <head>
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
-        <title>Term And Condition</title>
-        <link href="css/condition.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
-        <style>
-            h1{
-    text-align:center;
-    padding-top: 10px;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - TARUMT Graduation Service</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('img2/background.png') no-repeat center center fixed;
+                background-size: cover;
+                width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px;
+        }
+        .container-box {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #004080;
+        }
+        p, li {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        #backbutton {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        #backbutton:hover {
+            background-color: #0059b3;
+        }
+    </style>
+</head>
+<body>
 
-div {
-    padding-bottom: 30px;
-}
-
-p{
-    font-size:16px;
-    padding-left:40px;
-    padding-right:40px;
-}
-
-ol {
-    font-size: 19px;
-}
-
-li{
-    font-size:16px;
-    padding-left:25px;
-    padding-right:25px;
-}
-
-input#backbutton {
-    border-color: beige;
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;
-}
-
-
-        </style>
-         <div class="container" style="width:800px;height:700px;;background-color:grey;margin-left:400px;">
-             <h1>Term And Condition</h1>
-        <p>Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Rizzy Tempo Music Society's relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.</p>
-        <p>The term Rizzy Tempo Music Society or 'us' or 'we' refers to the owner of the website whose registered office is 77, Lorong Lembah Permai 3, 11200 Tanjung Bungah,Pulau Pinang, Malaysia
- The term 'you' refers to the user or viewer of our website.</p>
-        <ol>The use of this website is subject to the following terms of use:</ol>
-        <li>The content of the pages of this website is for your general information and use only. It is subject to change without notice. </li>
-        <li>This website uses cookies to monitor browsing preferences. If you do allow cookies to be used, the following personal information may be stored by us for use by third parties: [insert list of information].</li>
-        <li>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.
-        </li>
-        <li>Your use of any information or materials on this website is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your specific requirements</li>
-        <li>This website contains material which is owned by or licensed to us. This material includes, but is not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.
-        </li>
-        <li>All trade marks reproduced in this website which are not the property of, or licensed to, the operator are acknowledged on the website.
-        </li>
-        <li>Unauthorised use of this website may give rise to a claim for damages and/or be a criminal offence.</li>
-        <li>From time to time this website may also include links to other websites. These links are provided for your convenience to provide further information. They do not signify that we endorse the website(s). We have no responsibility for the content of the linked website(s).
-        </li>
-        <li>Your use of this website and any dispute arising out of such use of the website is subject to the laws of Malaysia.
-        </li>
-        <br>
-        <input type="button" onclick="back()" value="Back" id="backbutton" style="margin-left:20px;">
-        <script>
-            function back(){
-                window.open("feedback.php");
-            }
-        </script>
-        </div>
+    <div class="container-box">
+        <h1>Terms and Conditions</h1>
+        <p>Welcome to the TARUMT Graduation Service portal. By using this platform, you agree to the following terms and conditions, which govern the use of services provided by TAR UMT related to graduation event bookings and associated services.</p>
         
-    </body>
+        <p>The term <strong>TARUMT</strong>, <strong>we</strong>, or <strong>our</strong> refers to the management team of TAR UMT Graduation Services. The term <strong>you</strong> refers to the user or viewer of this portal.</p>
+        
+        <ol>
+            <li>All information provided on this portal is subject to change without prior notice.</li>
+            <li>The platform may use cookies for session tracking and personalization purposes. You agree to this by using the site.</li>
+            <li>TARUMT is not liable for any inaccuracies in event details, schedules, or personal data entries.</li>
+            <li>Users are responsible for ensuring that the data they enter during booking is accurate and up to date.</li>
+            <li>All content, including logos, layout, and event materials, is owned by TARUMT and reproduction without permission is prohibited.</li>
+            <li>Unauthorized use or tampering with the system may result in legal action or account suspension.</li>
+            <li>The platform may link to external sites for graduation merchandise or services. TARUMT holds no responsibility over external content.</li>
+            <li>Your use of this portal is subject to the laws of Malaysia, and any disputes will be resolved under Malaysian jurisdiction.</li>
+        </ol>
+
+        <div class="text-start mt-4">
+            <input type="button" onclick="back()" value="Back" id="backbutton">
+        </div>
+    </div>
+
+    <script>
+        function back() {
+            window.location.href = "feedback.php";
+        }
+    </script>
+
+</body>
 </html>

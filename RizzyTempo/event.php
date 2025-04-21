@@ -83,7 +83,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         if ($result->num_rows > 0) {
             // Record found
             echo '<div id="container">';
-            echo '<h1 style="margin: auto; text-align: center; padding-bottom: 20px;text-decoration:underline;">Our Products</h1>';
+            echo '<h1 style="margin: auto; text-align: center; padding-bottom: 20px;">Our Products</h1>';
             echo '<div class="d-flex justify-content-end mb-3">
         <input type="text" id="searchBox" class="form-control w-25" placeholder="Search Product...">
     </div>';

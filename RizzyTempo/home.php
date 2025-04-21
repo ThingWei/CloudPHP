@@ -148,7 +148,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </div>
 
     <div class="background-container">
-        <h1 style="text-align:center;font-size:45px;text-decoration:underline;margin-top:50px;">About Us<br></h1>
+        <h1 style="text-align:center;font-size:45px;margin-top:50px;">About Us<br></h1>
         <p style="font-size:20px;text-align:center;margin-top:20px;">
             At TAR UMT Graduation Services, we’re here to help you celebrate your big day.<br>
             We offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment. <br>
@@ -157,7 +157,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </p>
         <br/>
 
-        <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Graduation Items</h1>
+        <h1 style="text-align:center;font-size:45px;">Graduation Items</h1>
 
         <div class="gallery-container" style="margin:20px;">
             <div class="gallery" style="border-radius: 15px">

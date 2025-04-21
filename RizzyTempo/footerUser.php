@@ -26,7 +26,7 @@
                 <ul class="footnav">
                     <li><a href="home.php">Home</a></li>
                     <li><a href="event.php">Products</a></li>
-                    <li><a href="#.php">Your Order</a></li>
+                    <li><a href="orderHistory.php">Order History</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
                     <li><a href="feedback.php">Feedback</a></li>
                 </ul>
