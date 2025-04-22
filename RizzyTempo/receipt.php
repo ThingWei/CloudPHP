@@ -116,8 +116,11 @@ $result2->free();
                 if ($con->connect_error) {
                     die("Connection failed: " . $con->connect_error);
                 }
-                $eventName = $_GET['eventName'] ?? '';
-                $sql = "SELECT * FROM receipt WHERE email = '$uemail' AND eventName = '$eventName' ";
+
+                $id = $_GET['receiptID'] ?? '';
+                $sql = "SELECT receipt.*, event.eventBanner FROM receipt 
+                JOIN event ON receipt.eventName = event.eventName
+                WHERE email = '$uemail' AND receiptID = '$id'";
 
                 
                 $result = $con->query($sql);
@@ -126,9 +129,17 @@ $result2->free();
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     
-                    echo '<p><strong>Product Name :</strong> ' . $row["eventName"] . '</p>';
-                    echo '<p><strong>Price      :</strong> RM' . number_format($row["price"], 2) . '</p>';
-                    
+                    echo "<img src='".htmlspecialchars($row['eventBanner'])."' alt='Banner' class='img-thumbnail' style='width: 120px; height: 75px; object-fit: cover;'>";
+                    echo "<h3 class='mb-0' style='padding: 20px;'><strong>" .htmlspecialchars($row['eventName']). "</strong></h3>";
+                    echo "<p><strong>Price:</strong> RM " .number_format($row['price'], 2). "</p>";
+                    echo "<p><strong>Quantity:</strong> " .$row['quantity']. "</p>";
+                    echo "<p><strong>Subtotal:</strong> RM " .number_format($row['price'] * $row['quantity'], 2). "</p>";
+                    if ($row['claimStatus'] === "TO BE CLAIMED"){
+                        echo "<p style='color:red; margin:0'>" .htmlspecialchars($row['claimStatus']) ."</p>";
+                    } else {
+                        echo "<p style='color:green; margin:0'>" .htmlspecialchars($row['claimStatus']) ."</p>";
+                    }
+                        
                 }
 
               

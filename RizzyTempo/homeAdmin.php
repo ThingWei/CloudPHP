@@ -174,7 +174,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <p class="text-primary">Number of Member(s)</p>
                             <span class="material-icons-outlined text-blue">assignment_ind</span>
                         </div>
-                        <span class="text-primary font-weight-bold"><?php echo isset($totalNumUser) ? $totalNumUser : ""; ?></span>
+                        <span class="text-primary font-weight-bold"><?php echo isset($totalNumUser) ? $totalNumUser : "0"; ?></span>
                     </div>
 
                     <div class="card">
@@ -182,7 +182,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <p class="text-primary">Number of Product(s) Available</p>
                             <span class="material-icons-outlined text-red">event</span>
                         </div>
-                        <span class="text-primary font-weight-bold"><?php echo isset($totalNumEvent) ? $totalNumEvent : ""; ?></span>
+                        <span class="text-primary font-weight-bold"><?php echo isset($totalNumEvent) ? $totalNumEvent : "0"; ?></span>
                     </div>
                     
                     <div class="card" style='border-left: 7px solid #458B74'>
@@ -190,7 +190,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <p class="text-primary">Number of Product(s) Sold</p>
                             <span class="material-icons-outlined text-green">payment</span>
                         </div>
-                        <span class="text-primary font-weight-bold"><?php echo isset($totalNumPay) ? $totalNumPay : ""; ?></span>
+                        <span class="text-primary font-weight-bold"><?php echo isset($totalNumPay) ? $totalNumPay : "0"; ?></span>
                     </div>
 
                 </div>

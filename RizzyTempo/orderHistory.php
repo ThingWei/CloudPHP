@@ -20,23 +20,21 @@ if ($conn->connect_error) {
 $email = $_SESSION['user_email'];
 $sql = "
     SELECT 
-        c.cartID, 
-        c.eventName, 
+        r.receiptID,
+        r.eventName, 
          
-        c.eventBanner, 
-        c.quantity, 
-        e.productPrice AS price 
-    FROM cart c
-    JOIN event e ON c.eventName = e.eventName
-    WHERE c.user_email = ?
+        e.eventBanner, 
+        r.quantity, 
+        e.productPrice AS price,
+        r.claimStatus
+    FROM receipt r
+    JOIN event e ON r.eventName = e.eventName
+    WHERE r.email = ?
 ";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
-
-$cartItems = [];
-$total = 0;
 
 while ($row = $result->fetch_assoc()) {
     $cartItems[] = $row;
@@ -123,11 +121,15 @@ $stmt->close();
                                 
                                 <!-- CLAIMED / TO BE CLAIMED -->
                                 <div class="text-center mx-2" style="width: 120px;">
-                                    <p style="color:red; margin:0">claimed</p>    
+                                    <?php if ($item['claimStatus'] === "TO BE CLAIMED"): ?>
+                                        <p style="color:red; margin:0"><?= htmlspecialchars($item['claimStatus']) ?></p>
+                                    <?php elseif ($item['claimStatus'] === "CLAIMED"): ?>
+                                        <p style="color:green; margin:0"><?= htmlspecialchars($item['claimStatus']) ?></p>
+                                    <?php endif; ?>
                                 </div>
 
                                 <div class="text-center">
-                                    <a href="receipt.php"><button type="submit" class="btn btn-outline-primary me-2">View Receipt</button></a>
+                                    <a href="receipt.php?receiptID=<?= number_format($item['receiptID']) ?>"><button type="submit" class="btn btn-outline-primary me-2">View Receipt</button></a>
                                 </div>
                             </div>
                         </div>
