@@ -38,7 +38,6 @@ $result = $stmt->get_result();
 
 while ($row = $result->fetch_assoc()) {
     $cartItems[] = $row;
-    $total += $row['price'] * $row['quantity'];
 }
 $stmt->close();
 ?>
