@@ -317,7 +317,7 @@ function checkName($name) {
     if ($name == null) {
         return "Please enter your Name.";
     } else if (strlen($name) > 30) {
-        return"Your <b>Name</b> exceeded 30 character.";
+        return"Your Name exceeded 30 character.";
     } else if (!preg_match('/^[A-Za-z @\.]+$/', $name)) {
         return "Invalid name";
     }
@@ -325,28 +325,28 @@ function checkName($name) {
 
 function checkingEmail($email) {
     if ($email == null) {
-        return "Please enter your <b>email</b>. ";
+        return "Please enter your email. ";
     } else if (!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $email)) {
-        return"Invalid <b>email format</b>,please try again.";
+        return"Invalid email format,please try again.";
     }
 }
 
 function checkEmail($email) {
     if ($email == null) {
-        return "Please enter your <b>email</b>. ";
+        return "Please enter your email. ";
     } else if (!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $email)) {
-        return"Invalid <b>email format</b>,please try again.";
+        return"Invalid email format,please try again.";
     } else if (checkSameEmail($email) == true) {
         //check duplicated student id
-        return "Same <b>email format</b> detected!";
+        return "Same email format detected!";
     }
 }
 
 function checkEmail3($email) {
     if ($email == null) {
-        return "Please enter your <b>email</b>. ";
+        return "Please enter your email. ";
     } else if (!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $email)) {
-        return"Invalid <b>email format</b>,please try again.";
+        return"Invalid email format ,please try again.";
     } else if (checkSameEmail($email) == false) {
         //check duplicated student id
         return "Unable to find this email from database";
@@ -383,15 +383,15 @@ function checkSameEmail($email) {
 
 function checkPassword($password) {
     if ($password == null) {
-        return "Please enter your <b>password</b>.";
+        return "Please enter your password.";
     } else if (strlen($password) < 8) {
-        return "Your <b>password</b> must be at least 8 characters long.";
+        return "Your password must be at least 8 characters long.";
     } else if (!preg_match('/[a-z]/', $password)) {
-        return "Your <b>password</b> must contain at least one lowercase letter.";
+        return "Your password must contain at least one lowercase letter.";
     } else if (!preg_match('/\d/', $password)) {
-        return "Your <b>password</b> must contain at least one digit.";
+        return "Your password must contain at least one digit.";
     } else if (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $password)) {
-        return "Your <b>password</b> must contain at least one special character.";
+        return "Your password must contain at least one special character.";
     }
 }
 

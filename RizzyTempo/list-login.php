@@ -15,7 +15,7 @@ $header = array(
     "username" => "User Name",
     "email" => "Email",
     "gender" => "Gender",
-    "userPw" => "Password"
+    // "userPw" => "Password"
 );
 
 //retrieve order, sort from URL
@@ -313,7 +313,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <td>%s</td> 
                                 <td>%s</td>
                                 <td style='text-align:center'>%s</td>
-                                <td>%s</td>
+                                
                                             
                                 <td class='text-center'>
                                 <a href='delete-login.php?id=%s'class='action-delete'>Delete</a>
@@ -324,7 +324,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         , $row->username
                                         , $row->email
                                         , $row->gender
-                                        , $row->userPw
+                                        // , $row->userPw
                                         , $row->username //query string
                                 );
                             }
