@@ -229,6 +229,8 @@ if (empty($_GET)) {
                                                 $email,
                                                 $value,
                                                 ($order == 'ASC') ? 'asc.png' : 'desc.png');
+                                                
+                                                
                                         } else {
                                             printf("<th scope='col'>
                                                 <div class='sort-pill'>

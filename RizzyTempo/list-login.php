@@ -56,149 +56,136 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href="css/footer.css" rel="stylesheet" type="text/css"/>
 
         <style>
-            container{
-                display: block;
-                margin-left:auto;
-                margin-right:auto;
+            
+            .navbar {
+                box-sizing: content-box;
             }
 
-            table ,th ,td{
-                border: 1px solid black;
-                /* remove posipxon: absolute; as it's not necessary */
-                align-items: center;
-                font-size:18px;
-                padding:10px;
-            }
-
-            th a{
-                color:white;
-            }
-
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-
-            tr:nth-child(odd) {
-                background-color: white;
-
-            }
-            table {
-                border-collapse: separate !important;
-                border-spacing: 0;
+            body {
+                background-color: lightgray;
+                font-family: Arial,sans-serif;
+                background-size: cover;
                 width: 100%;
-                overflow: hidden;
-                border-radius: 12px;
+            }
+
+            .return {
+                border: 0;
+                width: 60px;
+                height: 60px;
+                background: transparent;
+                margin-left: 20px;
+            }
+
+            /* === Table Wrapper === */
+            .infotable {
+                overflow: auto;
+                white-space: nowrap;
+                margin: 0 auto 100px auto;
+                padding: 20px;
                 background-color: white;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             }
 
-            th {
-                background-color: #343a40;
-                color: white;
-                padding: 12px;
-                text-align: left;
-                font-weight: bold;
-            }
-
-            td {
-                padding: 12px;
-                vertical-align: middle;
-                border-top: 1px solid #dee2e6;
-            }
-
-            tr:first-child td:first-child {
-                border-top-left-radius: 12px;
-            }
-
-            tr:first-child td:last-child {
-                border-top-right-radius: 12px;
-            }
-
-            tr:last-child td:first-child {
-                border-bottom-left-radius: 12px;
-            }
-
-            tr:last-child td:last-child {
-                border-bottom-right-radius: 12px;
-            }
-
-            tr:hover {
-                background-color:rgb(198, 197, 197);
-                transition: 0.2s;
-            }
-            h1{
-                text-align: center;
-            }
-
-            .button{
-                height:40px;
-                border-radius:20px;
-                border-spacing:5px;
-                margin-left:200px;
-                font-size:20px;
-
-            }
-
-            .button:hover{
-                transform: scale(1.5);
-                background-color: #00b383;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                transition: all 0.2s ease-in-out;
-            }
-            .delete {
-                background-color: #dc3545; /* Bootstrap red */
-                border: none;
-                color: white;
-                padding: 8px 16px;
-                border-radius: 8px;
-                cursor: pointer;
-                font-size: 16px;
-                transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            }
-
-            .delete a {
-                color: white;
-                text-decoration: none;
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-
-            .delete:hover {
-                transform: scale(1.1);
-                background-color: #c82333; /* darker red on hover */
-            }
-            img{
-                width:30px;
-                height:30px;
-            }
-
+            /* === Sort Header Pill === */
             .sort-pill {
-                border-collapse: separate;
-                display: grid;
-                background-color:#343a40;
-                padding: 0px;
+                display: inline-block;
+                background-color: #f8f9fa;
+                padding: 8px 16px;
                 border-radius: 20px;
-                transition: transform 0.2s ;
+                transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
                 cursor: pointer;
             }
 
             .sort-pill a {
                 text-decoration: none;
-                color: white;
+                color: #000;
                 font-weight: 500;
             }
 
             .sort-pill:hover {
-                transform: scale(1.02);
-                background-color:#343a40;
+                transform: scale(1.07);
+                background-color: #e0e0e0;
             }
 
+            /* tr hover */
+            table tbody tr:hover {
+                background-color: #f9f9f9;
+                transform: scale(1.01);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                transition: all 0.2s ease-in-out;
+                cursor:default;
+            }
+            /* === Action Buttons(update/delete) === */
+            .action {
+                font-size: 14px;
+                padding: 6px 14px;
+                border: none;
+                background-color: #00b383;
+                color: white;
+                border-radius: 15px;
+                transition: all 0.3s ease-in-out;
+                margin-right: 5px;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .action:hover {
+                background-color: #009970;
+                transform: scale(1.05);
+            }
+            .action-delete {
+                font-size: 14px;
+                padding: 6px 14px;
+                border: none;
+                background-color:rgb(235, 0, 0);
+                color: white;
+                border-radius: 15px;
+                transition: all 0.3s ease-in-out;
+                margin-right: 5px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .action-delete:hover {
+                background-color:rgb(200, 0, 0);
+                transform: scale(1.05);
+            }
+            .action-create {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #00b383;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                transition: all 0.2s ease-in-out;
+            }
+            .action-create:hover {
+                background-color:#009970;
+                transform: scale(1.05);
+            }
             /*Checkbox cursor*/
             input[type="checkbox"] {
                 cursor: pointer;
                 transform: scale(1.2);
                 accent-color: #009970; /* Custom checkbox color (modern browsers) */
+            }
+
+            /* === Delete Checked Button === */
+            input[type="submit"][name="btnDelete"] {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                transition: all 0.2s ease-in-out;
+            }
+
+            input[type="submit"][name="btnDelete"]:hover {
+                background-color: #c82333;
+                transform: scale(1.05);
             }
         </style>
 
@@ -218,7 +205,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         require_once 'helper.php';
         ?>
-        <h1>List User Account Detail</h1>
+        <!-- <h1>List User Account Detail</h1> -->
 
         <?php
         //check if the user click on the delete button?
@@ -254,10 +241,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
         ?>
         <div class = "d-flex justify-content-center">
-        <div class="container" style="max-width: 90%; margin: 0 auto;">
-        <div class="card shadow rounded" style="padding: 20px;">
+        <!-- <div class="container" style="max-width: 90%; margin: 0 auto;"> -->
+        <!-- <div class="card shadow rounded" style="padding: 20px;"> -->
+        <div style="width: 80%; text-align: center;">
+        <h1 style="padding-bottom: 15px;margin-top:10px;">List User</h1>
                 <form action="" method="POST">
-                    <table border="1" cellpadding="5" cellspacing="0">
+                <div class="infotable">
+                    <table class="table">
+                    <thead>
                         <tr>
                             <th></th>
                             <?php
@@ -284,10 +275,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 }
                             }
                             ?>
-                            <th></th>
+                            
                         </tr>
-
+                        </thead>
+                        <tbody class="table-group-divider">
                         <?php
+                        //connect the database
                         $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
                         mysqli_set_charset($con, 'utf8');
 
@@ -322,8 +315,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <td style='text-align:center'>%s</td>
                                 <td>%s</td>
                                             
-                                <td>
-                                <button class='delete'><a href='delete-login.php?id=%s'>Delete</a></button>
+                                <td class='text-center'>
+                                <a href='delete-login.php?id=%s'class='action-delete'>Delete</a>
                                 </td>
                                 
                                 </tr>
@@ -335,7 +328,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         , $row->username //query string
                                 );
                             }
-                            printf("<tr><td colspan='7'>%d record(s) returned .</td></tr>", $result->num_rows);
+                            printf("<tr><td colspan='7' style='text-align:left;'>%d record(s) returned .</td></tr>", $result->num_rows);
 
                             $result->free();
                             $con->close();
@@ -343,14 +336,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             //no record return
                         }
                         ?>
-
+                    </tbody>
                     </table>
                     <br/>
-                    <input type="submit" value="Delete Checked" name="btnDelete" class="btn btn-danger mx-2" onclick="return confirm('This will delete all checked records.\nAre you sure?')" />
-                    <input type="button" value="Create New User Account" name="btnInsert" class="btn btn-success" onclick="location.href='insert-login.php';" />
+                    <input type="submit" value="Delete Checked" name="btnDelete" class="action-delete"  onclick="return confirm('This will delete all checked records.\nAre you sure?')" />
+                    <input type="button" value="Create New User Account" name="btnInsert" class="action-create" onclick="location.href='insert-login.php';" />
+                </div>
+                <br/>
                 </form>
             </div>
-        </div>
         </div>
 
         <h1>&nbsp;</h1>
