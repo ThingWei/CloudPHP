@@ -47,56 +47,68 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href="css/header.css" rel="stylesheet" type="text/css"/>
         <link href="css/footer.css" rel="stylesheet" type="text/css"/>
         <style>
+            .navbar {
+                box-sizing: content-box;
+            }
+
             body {
                 background-color: lightgray;
+                font-family: Arial,sans-serif;
                 background-size: cover;
                 width: 100%;
-                height: 100%;
-
-            }
-            table ,th ,td{
-                border: 1px solid black;
-                /* remove posipxon: absolute; as it's not necessary */
-                align-items: center;
-                font-size:18px;
-                padding: 10px;
             }
 
-            th {
-                text-align: center;
-                background-color: black;
+            .return {
+                border: 0;
+                width: 60px;
+                height: 60px;
+                background: transparent;
+                margin-left: 20px;
             }
 
-            th a{
-                color:white;
-            }
-
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-
-            tr:nth-child(odd) {
+            /* === Table Wrapper === */
+            .infotable {
+                overflow: auto;
+                white-space: nowrap;
+                margin: 0 auto 100px auto;
+                padding: 20px;
                 background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             }
 
-            h1{
-                text-align: center;
+            /* === Sort Header Pill === */
+            .sort-pill {
+                display: inline-block;
+                background-color: #f8f9fa;
+                padding: 8px 16px;
+                border-radius: 20px;
+                transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+                cursor: pointer;
             }
 
-            .button{
-                width: 250px;
-                height:40px;
-                border-radius:20px;
-                border-spacing:5px;
-                margin-left:60px;
-                font-size:20px;
-
+            .sort-pill a {
+                text-decoration: none;
+                color: #000;
+                font-weight: 500;
             }
 
-            .button:hover{
-                background-color: #00b383;
+            .sort-pill:hover {
+                transform: scale(1.07);
+                background-color: #e0e0e0;
             }
 
+            /* tr hover */
+            table tbody tr:hover {
+                background-color: #f9f9f9;
+                transform: scale(1.01);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                transition: all 0.2s ease-in-out;
+                cursor:default;
+            }
+            
+
+            /* image scale */
             img{
                 width:30px;
                 height:30px;
@@ -115,7 +127,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <p>&nbsp;</p>
 
         <?php require_once 'helper.php'; ?>
-        <h1>Ticket Sales Record</h1>
+     
 
         <?php
         //check if the user click on the delete button?
@@ -151,32 +163,42 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
         ?>
         <div class = "d-flex justify-content-center">
-            <form action="" method="POST">
-                <table border="1" cellpadding="5" cellspacing="0">
+        <div style="width: 60%; text-align: center;">
+        <h1 style="padding-bottom: 15px;margin-top:10px;">Ticket Sales Record</h1>
+                <form action='' method='POST'>
+                    <div class="infotable">
+                        <table class="table">
+                    <thead>
                     <tr>
+                        <th style="text-align: center;">No.</th>
                         <?php
+                        
                         foreach ($header as $key => $value) {
                             if ($key == $sort) {
                                 //check if the user sort based on
                                 //a specific column?
-                                printf("<th>
-                                <a href='?sort=%s&order=%s&program=%s'>%s</a>
-                                <img src='img/%s'/>
+                                printf("<th scope='col'>
+                                <div class='sort-pill'>
+                                    <a href='?sort=%s&order=%s&program=%s'>%s</a>
+                                    <img src='img/%s'/>
+                                </div>
                                 </th>", $key, ($order == 'ASC') ? "DESC" : "ASC",
                                         $program,
                                         $value,
                                         ($order == 'ASC') ? 'asc.png' : 'desc.png');
                             } else {
                                 //default ,the page run for the first time ,user never click to sort thee record
-                                printf("<th>
+                                printf("<th scope='col'>
+                                <div class='sort-pill'>
                             <a href='?sort=%s&order=ASC&program=%s'>%s</a>
-                                
+                                </div>
                                 </th>", $key, $program, $value);
                             }
                         }
                         ?>
                     </tr>
-
+                    </thead>
+                    <tbody>
                     <?php
                     $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
                     mysqli_set_charset($con, 'utf8');
@@ -202,10 +224,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         //why while loop? while i can still access the record
                         //we will retreive 
                         //fetch_object() - take record 1 by 1 from $result 
+                        $count=1;
 
                         while ($row = $result->fetch_object()) {
+                            
+
                             printf("
                                 <tr>
+                                <td>$count</td>
                                 <td>%s</td> 
                                 <td>%s</td>
                                
@@ -217,18 +243,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     , $row->eventName
                                     , $row->price
                             );
+                            $count++;
                         }
-                        printf("<tr><td colspan='4'>%d record(s) returned .</td></tr>", $result->num_rows);
+                        printf("<tr><td colspan='4' style='text-align:left'>%d record(s) returned .</td></tr>", $result->num_rows);
 
                         $result->free();
                         $con->close();
                     } else {
-                        echo '<tr><td colspan="3" style="text-align:center"> No Payment has been made yet.</td></tr>';
+                        echo '<tr><td colspan="3" style="text-align:left"> No Payment has been made yet.</td></tr>';
                     }
                     ?>
-
+                </tbody>
                 </table>
+                </div>
             </form>
+        </div>
         </div>
 
         <p>&nbsp;</p>
