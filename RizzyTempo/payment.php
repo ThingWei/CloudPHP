@@ -190,7 +190,7 @@ if (isset($_POST["submit"])) {
         // Clear cart
         $con->query("DELETE FROM cart WHERE user_email = '$useremail'");
         $con->close();
-        echo "<script>alert('Payment successful!'); window.location.href='receipt.php?eventName=" . urlencode($eventName) . "';</script>";
+        echo "<script>alert('Payment successful!'); window.location.href='orderHistory.php';</script>";
     }
 }
 
@@ -381,10 +381,10 @@ $con->close();
                     <label>Exp year</label>
                     <select name="expYear" class="yearBox" required>
                         <option value="" >Year</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
                         <option value="2025">2025</option>
                         <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
                     </select>
                     </label>
 
