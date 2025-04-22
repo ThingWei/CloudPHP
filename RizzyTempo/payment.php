@@ -113,18 +113,84 @@ if (isset($_POST["submit"])) {
 
         while ($row = $result->fetch_assoc()) {
             $eventName = $row['eventName'];
-            $price = $row['price'] * $row['quantity'];
+            $price = $row['price'];
+            $quantity = $row['quantity'];
+
+            while ($quantity > 0) {
             $insertStmt->bind_param("ssds", $useremail, $eventName, $price, $cardNumber);
             $insertStmt->execute();
+            $quantity--;
+            }
         }
 
         $insertStmt->close();
-        $stmt->close();
 
+        $checkNum = "SELECT * FROM receipt";
+
+            //ask coonection to run sql query 
+            $resultR = $con->query($checkNum);
+
+            if ($result->num_rows > 0) {
+                //record found
+                //why while loop? while i can still access the record
+                //we will retreive 
+                //fetch_object() - take record 1 by 1 from $result 
+
+                $totalReceiptNum = $resultR->num_rows;
+
+                $resultR->free();
+            }
+
+        // insert into receipt table
+        $checkCart = "
+            SELECT 
+            c.eventName, 
+            e.productPrice AS price,
+            c.quantity
+            FROM cart c
+            JOIN event e ON c.eventName = e.eventName
+            WHERE c.user_email = '$useremail'
+        ";
+        $result = $con->query($checkCart);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_object()) {
+                // Cart is not empty, proceed with the insert
+                $prodname = $row->eventName;
+                $price = $row->price;
+                $quantity = $row->quantity;
+                $claimStatus = 'TO BE CLAIMED';
+                $receiptID = $totalReceiptNum + 1; // Assuming receiptID is auto-incremented
+
+                $insertReceiptSQL = "INSERT INTO receipt (receiptID, email, eventName, price, quantity, claimStatus) VALUES (?, ?, ?, ?, ?, ?)";
+                $insertReceiptStmt = $con->prepare($insertReceiptSQL);
+                $insertReceiptStmt->bind_param("issdis", $receiptID, $useremail, $prodname, $price, $quantity, $claimStatus);
+                $insertReceiptStmt->execute();
+                $totalReceiptNum++;
+
+                $row = $result->fetch_object();
+                if ($row !== null) {
+                    $prodname = $row->eventName;
+                    $price = $row->price;
+                    $quantity = $row->quantity;
+                    $claimStatus = 'TO BE CLAIMED';
+                    $receiptID = $totalReceiptNum + 1; // Assuming receiptID is auto-incremented
+
+                    $insertReceiptSQL = "INSERT INTO receipt (receiptID, email, eventName, price, quantity, claimStatus) VALUES (?, ?, ?, ?, ?, ?)";
+                    $insertReceiptStmt = $con->prepare($insertReceiptSQL);
+                    $insertReceiptStmt->bind_param("issdis", $receiptID, $useremail, $prodname, $price, $quantity, $claimStatus);
+                    $insertReceiptStmt->execute();
+                    $totalReceiptNum++;
+                } else {
+                    break; // No more rows to process
+                }
+            }
+            $result->free();
+            $insertReceiptStmt->close();
+        }
         // Clear cart
         $con->query("DELETE FROM cart WHERE user_email = '$useremail'");
-
-        echo "<script>alert('Payment successful!'); window.location.href='receipt.php?eventName=" . urlencode($eventName) . "';</script>";
+        $con->close();
+        echo "<script>alert('Payment successful!'); window.location.href='orderHistory.php';</script>";
     }
 }
 
@@ -178,7 +244,6 @@ if (!isset($_SESSION['user_email'])) {
 $user_email = $_SESSION['user_email'];
 
 
-
 $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 if ($con->connect_error) {
@@ -189,10 +254,8 @@ $sql = "
     SELECT 
         c.cartID, 
         c.eventName,  
-        c.eventBanner, 
         c.quantity, 
-        e.productPrice AS price,
-        e.headline
+        e.productPrice AS price
     FROM cart c
     JOIN event e ON c.eventName = e.eventName
     WHERE c.user_email = ?
@@ -205,37 +268,44 @@ $result = $stmt->get_result();
 
 $total = 0;
 ?>
-
-<div class="container mt-5">
+<div style="border solid 1px #ccc; padding: 10px; border-radius: 20px; background-color: #f9f9f9;">
+<div style="max-height: 300px; overflow-y: scroll;">
     <?php if ($result->num_rows > 0): ?>
         <?php while ($row = $result->fetch_assoc()):
             $subtotal = $row['price'] * $row['quantity'];
             $total += $subtotal;
-        ?>
             
-                    <img src="<?= htmlspecialchars($row['eventBanner']) ?>" alt="Banner" style="width: 100px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 15px;">
-                    <div class="mb-4 ps-3">
-                    <h5 class="mb-0"><?= htmlspecialchars($row['eventName']) ?></h5>
-                <p><strong>Price:</strong> RM<?= number_format($row['price'], 2) ?></p>
-                <p><strong>Quantity:</strong> <?= $row['quantity'] ?></p>
-                <p><strong>Subtotal:</strong> RM<?= number_format($subtotal, 2) ?></p>
-            </div>
+        ?>     
+        <div class="shadow-sm" style="padding: 20px">
+            <h3 class="mb-0"><strong><?= htmlspecialchars($row['eventName']) ?></strong></h3>
+            <p class="m-0" style="padding: 5px"><strong>Price:</strong> RM<?= number_format($row['price'], 2) ?></p><br>
+            <p class="m-0" style="padding: 5px"><strong>Quantity:</strong> <?= $row['quantity'] ?></p><br>
+            <p class="m-0" style="padding: 5px"><strong>Subtotal:</strong> RM<?= number_format($subtotal, 2) ?></p>
+        </div>                    
                 
         <?php endwhile; ?>
     <?php else: ?>
         <div class="alert alert-info text-center">Your cart is empty.</div>
     <?php endif; ?>
 </div>
+</div>
+<?php if ($total > 0): 
+        echo '<div style="padding-top: 10px;">';
+        echo "<p><strong>Total: RM ".number_format($total, 2)."</strong</p>";
+        echo '</div>';
+else:
+        echo '<div style="padding-top: 10px;">';
+        echo "<p><strong>Total: RM0.00</strong></p>";
+        echo '</div>';
+    endif; 
+?>
 
 <?php
 $stmt->close();
 $con->close();
 ?>
 
-
-
-
-                        <div class="footer">
+                        <div class="footer" style="margin-top: 0;">
                             <p>Please double check your order!</p>
                         </div>
                     </div>
@@ -311,10 +381,10 @@ $con->close();
                     <label>Exp year</label>
                     <select name="expYear" class="yearBox" required>
                         <option value="" >Year</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
                         <option value="2025">2025</option>
                         <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
                     </select>
                     </label>
 
