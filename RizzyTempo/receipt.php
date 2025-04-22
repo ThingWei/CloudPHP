@@ -43,7 +43,6 @@ $result2->free();
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 100vh;
                 background: url(img/musicbg.jpg) no-repeat center;
                 background-size: cover;
                 width: 100%;
@@ -57,6 +56,7 @@ $result2->free();
                 max-width: 500px;
                 width: 100%;
                 position: relative;
+                margin: 50px 0 50px 0;
             }
             .receipt::before {
                 content: '';
@@ -98,6 +98,22 @@ $result2->free();
                 border: 0;
                 margin-top: 20px;
             }
+            .unclaimDiv {
+                margin: auto;
+                border: 2px solid red;
+                border-radius: 10px;
+                background-color: pink;
+                max-width: 200px;
+                margin-top: 5px;
+            }
+            .claimedDiv {
+                margin: auto;
+                border: 2px solid #00ab41;
+                border-radius: 10px;
+                background-color: #d1ffbd;
+                max-width: 200px;
+                margin-top: 5px;
+            }
         </style>
     </head>
     <body>
@@ -129,15 +145,22 @@ $result2->free();
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     
-                    echo "<img src='".htmlspecialchars($row['eventBanner'])."' alt='Banner' class='img-thumbnail' style='width: 120px; height: 75px; object-fit: cover;'>";
+                    echo "<img src='".htmlspecialchars($row['eventBanner'])."' alt='Banner' class='img-thumbnail' style='width: 170px; height: 100px; object-fit: cover;'>";
                     echo "<h3 class='mb-0' style='padding: 20px;'><strong>" .htmlspecialchars($row['eventName']). "</strong></h3>";
                     echo "<p><strong>Price:</strong> RM " .number_format($row['price'], 2). "</p>";
                     echo "<p><strong>Quantity:</strong> " .$row['quantity']. "</p>";
                     echo "<p><strong>Subtotal:</strong> RM " .number_format($row['price'] * $row['quantity'], 2). "</p>";
+                    echo "<p><strong>Purchased at:</strong> " .htmlspecialchars($row['added at']). "</p>";
                     if ($row['claimStatus'] === "TO BE CLAIMED"){
                         echo "<p style='color:red; margin:0'>" .htmlspecialchars($row['claimStatus']) ."</p>";
+                        echo "<div class='unclaimDiv' style='padding:5px;'>";
+                        echo "Please show this receipt to the receptionist and claim your item at TARUMT Main Foyer.";
+                        echo "</div>";
                     } else {
                         echo "<p style='color:green; margin:0'>" .htmlspecialchars($row['claimStatus']) ."</p>";
+                        echo "<div class='claimedDiv' style='padding:5px;'>";
+                        echo "Thanks for purchasing from us!<br>We hope to see you again soon!";
+                        echo "</div>";
                     }
                         
                 }
