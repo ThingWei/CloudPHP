@@ -10,7 +10,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); // e.g., "homeAdmin.php"
              aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="mslogo" src="img2/graduationcap.png">
-                    &nbsp; RT Music Society</h5>
+                    &nbsp; TARUMT Graduation Service</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
