@@ -30,9 +30,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); // e.g., "homeAdmin.php"
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2 <?= $currentPage == 'list-login.php' ? 'active text-white' : '' ?>" href="list-login.php">User List</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2 <?= $currentPage == 'listVolunteer.php' ? 'active text-white' : '' ?>" href="listVolunteer.php">Volunteer List</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2 <?= $currentPage == 'adminFeedback.php' ? 'active text-white' : '' ?>" href="adminFeedback.php">Feedback</a>
                     </li>

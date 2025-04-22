@@ -244,7 +244,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- <div class="container" style="max-width: 90%; margin: 0 auto;"> -->
         <!-- <div class="card shadow rounded" style="padding: 20px;"> -->
         <div style="width: 80%; text-align: center;">
-        <h1 style="padding-bottom: 15px;margin-top:10px;">List User</h1>
+        <h1 style="padding-bottom: 15px;margin-top:10px;">User List</h1>
                 <form action="" method="POST">
                 <div class="infotable">
                     <table class="table">
