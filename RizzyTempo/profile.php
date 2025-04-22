@@ -176,7 +176,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <br/>
         <div class="logout" style="margin-bottom:20px"><form method='post'><button type="submit" name="logout" class="btn btn-primary"
         style='display:block;margin-left: auto;margin-right: auto' 
-        onclick="alert('<?php echo htmlspecialchars($email); ?>, you have successfully logged out. \nThanks for using RT Music Society\'s website.\nWe hope to see you again soon.')" >
+        onclick="alert('<?php echo htmlspecialchars($email); ?>, you have successfully logged out. \nThanks for using TARUMT Graduation Service\'s website.\nWe hope to see you again soon.')" >
         Log Out</button></form></div>
 
 

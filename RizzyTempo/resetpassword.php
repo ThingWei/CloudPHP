@@ -116,7 +116,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         }
 
         .logo {
-            font-size: 70px;
+            font-size: 50px;
             margin-left: -10px;
             color: transparent;
             -webkit-text-stroke: 1px #fff;
@@ -363,14 +363,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <div class="content">
             <p>&nbsp;</p>
 
-            <h2 class="logo">RT Music Society</h2>
+            <h2 class="logo">TARUMT Graduation Service</h2>
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
             <div class="text-sci">
-                <h2><b>Welcome</b><br><span>to Join Our Music Society!</span></h2>
-                <p>Music can't live without you</p>
+                <h2><b>Welcome</b><br><span>to Our Graduation Service System!</span></h2>
+                
             </div>
         </div>
 

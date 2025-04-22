@@ -31,78 +31,86 @@ $description = isset($_GET["description"]) ? $_GET["description"] : "%";
         <link href="css/header.css" rel="stylesheet">
         <link href="css/footer.css" rel="stylesheet">
         <style>
+             .navbar {
+                box-sizing: content-box;
+            }
+
             body {
                 background-color: lightgray;
+                font-family: Arial,sans-serif;
                 background-size: cover;
                 width: 100%;
             }
 
-            .table {
-                margin: auto;
-                margin-top: 150px;
-                width: 90%;
+            .return {
+                border: 0;
+                width: 60px;
+                height: 60px;
+                background: transparent;
+                margin-left: 20px;
+            }
+
+            /* === Table Wrapper === */
+            .infotable {
+                overflow: auto;
+                white-space: nowrap;
+                margin: 0 auto 100px auto;
+                padding: 20px;
                 background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+
+            /* === Sort Header Pill === */
+            .sort-pill {
+                display: inline-block;
+                background-color: #f8f9fa;
+                padding: 8px 16px;
                 border-radius: 20px;
-                overflow: hidden;
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+                cursor: pointer;
             }
 
-            th, td {
-                vertical-align: middle !important;
-                text-align: center;
-                padding: 12px;
-            }
-
-            th a {
+            .sort-pill a {
                 text-decoration: none;
-                color: #007bff;
-                transition: 0.2s ease-in-out;
-                font-weight: bold;
+                color: #000;
+                font-weight: 500;
             }
 
-            th a:hover {
-                color: #0056b3;
-                text-decoration: underline;
+            .sort-pill:hover {
+                transform: scale(1.07);
+                background-color: #e0e0e0;
             }
 
-            tr:hover {
-                background-color: #f0f8ff;
+            /* tr hover */
+            table tbody tr:hover {
+                background-color: #f9f9f9;
                 transform: scale(1.01);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
                 transition: all 0.2s ease-in-out;
+                cursor:default;
             }
 
-            input[type='checkbox'] {
+            /*Checkbox cursor*/
+            input[type="checkbox"] {
                 cursor: pointer;
                 transform: scale(1.2);
-                accent-color: #007bff;
+                accent-color: #009970; /* Custom checkbox color (modern browsers) */
             }
 
-            .management-heading {
-                font-size: 32px;
-                padding: 20px;
-                font-weight: bold;
-                background-color: #009970;
-                color: white;
-                border-top-left-radius: 20px;
-                border-top-right-radius: 20px;
-            }
-
-            .button-container {
-                text-align: left;
-                padding: 15px 30px;
-            }
-
-            input[type="submit"] {
+            /* === Delete Checked Button === */
+            input[type="submit"][name="btnDelete"] {
+                margin-top: 20px;
+                padding: 10px 20px;
                 background-color: #dc3545;
                 color: white;
                 border: none;
-                padding: 10px 25px;
+                border-radius: 10px;
                 font-size: 16px;
-                border-radius: 20px;
-                transition: 0.3s ease;
+                transition: all 0.2s ease-in-out;
             }
 
-            input[type="submit"]:hover {
+            input[type="submit"][name="btnDelete"]:hover {
                 background-color: #c82333;
                 transform: scale(1.05);
             }
@@ -119,7 +127,7 @@ $description = isset($_GET["description"]) ? $_GET["description"] : "%";
         <?php
         require_once 'helper.php';
 
-// Check if the form has been submitted
+        // Check if the form has been submitted
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btnDelete"])) {
             // Check if any checkboxes are checked
             if (isset($_POST['chkDelete']) && is_array($_POST['chkDelete'])) {
@@ -162,77 +170,108 @@ $description = isset($_GET["description"]) ? $_GET["description"] : "%";
             }
         }
         ?>
-        <form action="" method="POST">
+        <div class="d-flex justify-content-center">
+            <div style="width: 60%; text-align: center;">
+                <h1 style="padding-bottom: 15px;margin-top:150px;">Feedback Details Management</h1>
+                <form action='' method='POST'>
+                    <div class="infotable">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <?php
+                                    // Display table headers
+                                    foreach ($header as $key => $value) {
+                                        if ($key == $sort) {
 
-            <table class="table" style="width:900px;justify-content:center;">
+                                    //     $sortIcon = ($key == $sort) ? (($order == 'ASC') ? 'asc.png' : 'desc.png') : '';
+                                    //     $newOrder = ($key == $sort && $order == 'ASC') ? 'DESC' : 'ASC';
 
-                <thead>
-                    <tr>
-                        <th colspan="6" class="management-heading" style="font-size:35px;text-align:center;">Feedback Details Management</th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <?php
-// Display table headers
-                        foreach ($header as $key => $value) {
-                            $sortIcon = ($key == $sort) ? (($order == 'ASC') ? 'asc.png' : 'desc.png') : '';
-                            $newOrder = ($key == $sort && $order == 'ASC') ? 'DESC' : 'ASC';
-                            printf("<th scope='col'><a href='?sort=%s&order=%s&description=%s'>%s</a> <img src='img/%s'/></th>",
-                                    htmlspecialchars($key), htmlspecialchars($newOrder), htmlspecialchars($description), htmlspecialchars($value), htmlspecialchars($sortIcon));
-                        }
-                        ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-// Connect to the database
-                    $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                                         
+                                    //     printf("<th scope='col'>
+                                    //     <div class='sort-pill'>
+                                    //     <a href='?sort=%s&order=%s&description=%s'>%s</a> 
+                                    //     <img src='img/%s' style='width: 14px; height: 14px; margin-left: 5px;'/>
+                                    //     </div>
+                                    //     </th>",
+                                    //             htmlspecialchars($key), htmlspecialchars($newOrder), htmlspecialchars($description), htmlspecialchars($value), htmlspecialchars($sortIcon));
+                                    //     }else{
+                                    //         printf("<th scope='col'>
+                                    //             <div class='sort-pill'>
+                                    //                 <a href='?sort=%s&order=ASC&email=%s'>%s</a>
+                                    //             </div>
+                                    //             </th>", $key, $description, $value);
+                                    //     }
 
-                    if ($con->connect_error) {
-                        die("Connection failed: " . $con->connect_error);
-                    }
+                                    printf("<th scope='col'>
+                                                <div class='sort-pill'>
+                                                    <a href='?sort=%s&order=%s&description=%s'>%s</a>
+                                                    <img src='img/%s' style='width: 14px; height: 14px; margin-left: 5px;'/>
+                                                </div>
+                                                </th>", $key, ($order == 'ASC') ? 'DESC' : 'ASC',
+                                                $description,
+                                                $value,
+                                                ($order == 'ASC') ? 'asc.png' : 'desc.png');
+                                                
+                                                
+                                        } else {
+                                            printf("<th scope='col'>
+                                                <div class='sort-pill'>
+                                                    <a href='?sort=%s&order=ASC&description=%s'>%s</a>
+                                                </div>
+                                                </th>", $key, $description, $value);
+                                        }
+                                    }
+                                    ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                // Connect to the database
+                                $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-// Prepare and execute SQL statement
-                    $sql = "SELECT * FROM feedback WHERE description LIKE ? ORDER BY $sort $order";
-                    $stmt = $con->prepare($sql);
-                    $stmt->bind_param("s", $description);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
+                                if ($con->connect_error) {
+                                    die("Connection failed: " . $con->connect_error);
+                                }
 
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_object()) {
-                            printf("<tr>
-                            <td><input type='checkbox' name='chkDelete[]' value='%s' /></td>
-                            <td>%s</td>
-                            <td>%s</td>
-                            <td>%s</td>
-                            <td>%s</td>
-                            </tr>",
-                                    htmlspecialchars($row->rating), htmlspecialchars($row->rating), htmlspecialchars($row->username),
-                                    htmlspecialchars($row->email), htmlspecialchars($row->description));
-                        }
+                                // Prepare and execute SQL statement
+                                $sql = "SELECT * FROM feedback WHERE description LIKE ? ORDER BY $sort $order";
+                                $stmt = $con->prepare($sql);
+                                $stmt->bind_param("s", $description);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
 
-                        printf('<tr><td colspan="6">%d record(s) returned.</td></tr>', $result->num_rows);
-                    } else {
-                        echo "<tr><td colspan='6'>No records found.</td></tr>";
-                    }
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_object()) {
+                                        printf("<tr>
+                                        <td><input type='checkbox' name='chkDelete[]' value='%s' /></td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        </tr>",
+                                                htmlspecialchars($row->rating), htmlspecialchars($row->rating), htmlspecialchars($row->username),
+                                                htmlspecialchars($row->email), htmlspecialchars($row->description));
+                                    }
 
-// Close connections
-                    $result->free();
-                    $stmt->close();
-                    $con->close();
-                    ?>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="6" class="button-container">
-                            <input type="submit" value="Delete Checked" name="btnDelete" onclick="return confirm('Are you sure you want to delete the selected records?');" />
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-            <br/>
-        </form>
+                                    printf('<tr><td colspan="6" style=text-align:left >%d record(s) returned.</td></tr>', $result->num_rows);
+                                } else {
+                                    echo "<tr><td colspan='6' style=text-align:left>No records found.</td></tr>";
+                                }
+
+                                // Close connections
+                                $result->free();
+                                $stmt->close();
+                                $con->close();
+                                ?>
+                            </tbody>
+                        </table>
+                        <input type="submit" value="Delete Checked" name="btnDelete" onclick="return confirm('Are you sure you want to delete the selected records?');" />
+                    </div>
+                    <br/>
+                </form>
+            </div>
+        </div>
 
         <!-- Footer -->
         <?php 

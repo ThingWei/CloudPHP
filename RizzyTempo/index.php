@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to RT Music Society</title>
+    <title>Welcome to TARUMT Graduation Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="css/header.css" rel="stylesheet">
@@ -157,7 +157,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <a class="nav-link mx-lg-2" aria-current="page" href="loginSignUp.php">Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" aria-current="page" href="loginSignUp.php">Purchased Tickets</a>
+                                <a class="nav-link mx-lg-2" aria-current="page" href="loginSignUp.php">Order History</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mx-lg-2" href="loginSignUp.php">About Us</a>
@@ -187,7 +187,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </div>
 
     <div class="background-container">
-        <h1 style="text-align:center;font-size:45px;text-decoration:underline;margin-top:50px;">About Us<br></h1>
+        <h1 style="text-align:center;font-size:45px;margin-top:50px;">About Us<br></h1>
         <p style="font-size:20px;text-align:center;margin-top:20px;">
             At TAR UMT Graduation Services, we’re here to help you celebrate your big day.<br>
             We offer beautiful graduation flowers, gift bundles, and plush toys – perfect for marking this special moment. <br>
@@ -196,7 +196,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </p>
         <br/>
 
-        <h1 style="text-align:center;text-decoration: underline;font-size:45px;">Graduation Items</h1>
+        <h1 style="text-align:center;font-size:45px;">Graduation Items</h1>
 
         <div class="gallery-container" style="margin:20px;">
             <div class="gallery" style="border-radius: 15px">
@@ -272,7 +272,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <ul class="footnav">
                         <li><a href="loginSignUp.php">Home</a></li>
                         <li><a href="loginSignUp.php">Products</a></li>
-                        <li><a href="loginSignUp.php">Purchased Tickets</a></li>
+                        <li><a href="loginSignUp.php">Order History</a></li>
                         <li><a href="loginSignUp.php">About Us</a></li>
                         <li><a href="loginSignUp.php">Feedback</a></li>
                         <li><a href="loginSignUp.php">FAQ</a></li>
