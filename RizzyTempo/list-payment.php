@@ -164,7 +164,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         ?>
         <div class = "d-flex justify-content-center">
         <div style="width: 60%; text-align: center;">
-        <h1 style="padding-bottom: 15px;margin-top:10px;">Ticket Sales Record</h1>
+        <h1 style="padding-bottom: 15px;margin-top:10px;">Payment List</h1>
                 <form action='' method='POST'>
                     <div class="infotable">
                         <table class="table">
