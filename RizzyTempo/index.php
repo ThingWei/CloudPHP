@@ -160,7 +160,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <a class="nav-link mx-lg-2" aria-current="page" href="loginSignUp.php">Order History</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="aboutus.php">About Us</a>
+                                <a class="nav-link mx-lg-2" href="loginSignUp.php">About Us hahahaha</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mx-lg-2" href="loginSignUp.php">Feedback</a>
