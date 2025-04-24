@@ -24,6 +24,7 @@
                         <ul class="footnav" style='padding:0'>
                             <li><a href="homeAdmin.php">Dashboard</a></li>
                             <li><a href="eventsAdmin.php">Products</a></li>
+                            <li><a href="adminCheckStatus.php">Claim Status</a></li>
                             <li><a href="createEvent.php">Create Products</a></li>
                             <li><a href="list-payment.php">Payment List</a></li>
                             <li><a href="list-login.php">User List</a></li>
