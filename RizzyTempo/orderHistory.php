@@ -30,6 +30,7 @@ $sql = "
     FROM receipt r
     JOIN event e ON r.eventName = e.eventName
     WHERE r.email = ?
+    ORDER BY r.claimStatus DESC
 ";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);

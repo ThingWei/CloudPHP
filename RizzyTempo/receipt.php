@@ -150,7 +150,7 @@ $result2->free();
                     echo "<p><strong>Price:</strong> RM " .number_format($row['price'], 2). "</p>";
                     echo "<p><strong>Quantity:</strong> " .$row['quantity']. "</p>";
                     echo "<p><strong>Subtotal:</strong> RM " .number_format($row['price'] * $row['quantity'], 2). "</p>";
-                    echo "<p><strong>Purchased at:</strong> " .htmlspecialchars($row['added at']). "</p>";
+                    echo "<p><strong>Purchased at:</strong> " .htmlspecialchars($row['added_at']). "</p>";
                     if ($row['claimStatus'] === "TO BE CLAIMED"){
                         echo "<p style='color:red; margin:0'>" .htmlspecialchars($row['claimStatus']) ."</p>";
                         echo "<div class='unclaimDiv' style='padding:5px;'>";

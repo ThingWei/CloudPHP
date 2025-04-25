@@ -105,7 +105,7 @@ $stmt->close();
                                 </div>
 
                                 <div class="text-center">
-                                <a href="statusChange.php"><button type="submit" class="btn btn-outline-primary me-2">View User's Purchase</button></a>
+                                <a href="statusChange.php?email=<?= htmlspecialchars($item['email']) ?>"><button type="submit" class="btn btn-outline-primary me-2">View User's Purchase</button></a>
                                 </div>
                             </div>
                         </div>
