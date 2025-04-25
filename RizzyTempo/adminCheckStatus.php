@@ -66,14 +66,6 @@ $stmt->close();
                 height: 20px;
             }
 
-            .custom-card:hover {
-                .content_text {
-                    margin: auto;
-                    width: 70%;
-                    border-radius: 10px;
-                    background: rgba(255, 255, 255, 0.7);
-                }
-            }
         </style>
             </head>
             <body class="bg-light">
@@ -96,7 +88,6 @@ $stmt->close();
                         <div class="card shadow-sm">
                             <div class="card-body d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="d-flex align-items-center" style="min-width: 300px;">
-                                    
                                     <div>
                                         <h5 class="card-title mb-1"><?= htmlspecialchars($item['username']) ?></h5>
                                         <p class="mb-0 text-muted"><?= htmlspecialchars($item['email']) ?></p>
@@ -115,6 +106,7 @@ $stmt->close();
 
                                 <div class="text-center">
                                 <a href="statusChange.php"><button type="submit" class="btn btn-outline-primary me-2">View User's Purchase</button></a>
+                                </div>
                             </div>
                         </div>
                     </div>
