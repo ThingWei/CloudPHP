@@ -88,6 +88,57 @@ if (!isset($_SESSION['admin_email'])) {
                 justify-content: center;
                 margin-top: 20px; /* optional spacing */
             }
+            /* === Delete Checked Button === */
+            .action-delete {
+                font-size: 14px;
+                padding: 6px 14px;
+                border: none;
+                background-color:rgb(235, 0, 0);
+                color: white;
+                border-radius: 15px;
+                transition: all 0.3s ease-in-out;
+                margin-right: 5px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .action-delete:hover {
+                background-color:rgb(200, 0, 0);
+                transform: scale(1.05);
+            }
+            .action-create {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #00b383;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                transition: all 0.2s ease-in-out;
+            }
+            .action-create:hover {
+                background-color:#009970;
+                transform: scale(1.05);
+            }
+            input[type="button"][name="btnCancel"] {
+                margin-top: 20px;
+                margin-left: 20px;
+                padding: 10px 20px ;
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                transition: all 0.2s ease-in-out;
+            }
+
+            input[type="button"][name="btnDCancel"]:hover {
+                background-color: #c82333;
+                transform: scale(1.05);
+            }
+            input[type="radio"]:hover {
+                cursor: pointer;
+                transform: scale(1.5);
+            }
         </style>
 
     </head>
@@ -240,10 +291,9 @@ if (!isset($_SESSION['admin_email'])) {
                         <input type="password" style="margin-left: 100px;" name="password2" class="input-field" value="<?php echo isset($password2) ? $password2 : ""; ?>"/>
                     </div>
 
-                    <br/>
                     <div class="changeBtn">
-                    <input type="submit" value="Create User" name="btnCreate" class="btn btn-primary input-button" />
-                        <input type="button" value="Cancel" name="btnCancel" class="btn btn-primary input-button" onclick="location = 'list-login.php'"/>
+                    <input type="submit" value="Create User" name="btnCreate" class="action-create"/>&nbsp;
+                        <input type="button" value="Cancel" name="btnCancel" class="action-delete" onclick="location = 'list-login.php'"/>
                     </div>
                 </div>
             </div>
