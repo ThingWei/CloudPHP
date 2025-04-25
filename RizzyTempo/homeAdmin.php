@@ -44,6 +44,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 width: 20px;
                 height: 20px;
             }
+            .card:hover {
+                background-color: #f9f9f9;
+                transform: scale(1.01);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                transition: all 0.2s ease-in-out;
+                cursor:default;
+            }
         </style>
         <!-- Material Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">

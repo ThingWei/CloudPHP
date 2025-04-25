@@ -83,8 +83,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         .createbtn:hover{
             background-color: #00b383;
+            transform: scale(1.05);
+        }
+        .deletebtn{
+            background-color:rgb(235, 0, 0);
+            border: none;
+            border-radius: 16px;
+            padding: 5px;
+            color: white;
+            transition: 0.3s background-color;
         }
 
+        .deletebtn:hover{
+            background-color:rgb(200, 0, 0);
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -117,10 +130,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         if ($result->num_rows > 0) {
             // Record found
             echo '<div id="container">';
-            echo '<h1 style="margin: auto; text-align: center; padding-bottom: 20px;text-decoration:underline;">Active Products</h1>';
+            echo '<h1 style="margin: auto; text-align: center; padding-bottom: 20px;">Active Products</h1>';
             echo '<div class="d-flex justify-content-center">
         <a href="createEvent.php"><button class="createbtn">Create Product</button></a> &nbsp;&nbsp;
-        <button id="toggleDelete" class="createbtn">Delete Product</button>
+        <button id="toggleDelete" class="deletebtn">Delete Product</button>
         </div>
         <br></br>';
         echo '<div class="container">';

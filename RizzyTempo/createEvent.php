@@ -41,7 +41,45 @@ if (!isset($_SESSION['admin_email'])) {
                 background-color: #00b383;
                 border: 0;
             }
+            .createbtn{
+            background-color:rgb(0, 202, 148);
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            color: white;
+            transition: 0.3s background-color;
+        }
 
+        .createbtn:hover{
+            background-color: #009970;
+            transform: scale(1.05);
+        }
+        .deletebtn{
+            background-color:rgb(235, 0, 0);
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            color: white;
+            transition: 0.3s background-color;
+        }
+
+        .deletebtn:hover{
+            background-color:rgb(185, 15, 15);
+            transform: scale(1.05);
+        }
+        .backbtn{
+            background-color:rgb(168, 168, 168);
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            color: white;
+            transition: 0.3s background-color;
+        }
+
+        .backbtn:hover{
+            background-color:rgb(102, 102, 102);
+            transform: scale(1.05);
+        }
         </style>
     </head>
 
@@ -154,8 +192,9 @@ if (isEventNameDuplicate($eventname, $con)) {
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sn-8 col-nd-6 m-auto">
+                    <h1 class="d-flex justify-content-center" style="padding-top: 20px;">Create New Product</h1>
                     <div class="card">
-                        <h2 class="d-flex justify-content-center" style="padding-top: 20px;">Create New Product</h2>
+                        
                         <hr>
                         <div class="card-body">
                             <form action="" method="post">
@@ -201,10 +240,10 @@ if (isEventNameDuplicate($eventname, $con)) {
 </select>
                                 <div class="text-center mt-3">
                                     <br>
-                                    <button type="submit" name="btnSubmit" class="btn btn-primary">Create</button>
-                                    <button type="reset" name="btnReset" class="btn btn-primary"
+                                    <button type="submit" name="btnSubmit" class="createbtn">Create</button>
+                                    <button type="reset" name="btnReset" class="deletebtn"
                                             onclick='location = "createEvent.php"'>Reset</button>
-                                    <button type="button" name="btnBack" class="btn btn-primary"
+                                    <button type="button" name="btnBack" class="backbtn"
                                             onclick='window.location.href = "eventsAdmin.php"'>Back</button>
                                 </div>
                             </form>
