@@ -45,6 +45,7 @@ if (!isset($_SESSION['admin_email'])) {
                     font-size: 22px;
                 }
             }
+            
         </style>
     </head>
 

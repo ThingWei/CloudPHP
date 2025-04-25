@@ -92,6 +92,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 justify-content: center;
                 margin-top: 20px; /* optional spacing */
             }
+            .btnModify {
+                font-size: 20px;
+                padding: 6px 14px;
+                border: none;
+                background-color:rgb(0, 132, 255);
+                color: white;
+                border-radius: 15px;
+                transition: all 0.3s ease-in-out;
+                margin-right: 5px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .btnModify:hover {
+                background-color:rgb(10, 86, 173);
+                transform: scale(1.05);
+            }
+            .btnCancel {
+                font-size: 20px;
+                padding: 6px 14px;
+                border: none;
+                background-color:rgb(235, 0, 0);
+                color: white;
+                border-radius: 15px;
+                transition: all 0.3s ease-in-out;
+                margin-right: 5px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .btnCancel:hover {
+                background-color:rgb(200, 0, 0);
+                transform: scale(1.05);
+            }
+            input[type="radio"]:hover {
+                cursor: pointer;
+                transform: scale(1.2);
+                
+            }
         </style>
     </head>
     <body>
@@ -275,8 +312,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <br/>
                     <div class="changeBtn">
-                        <input type="submit" value="modify" name="btnModify" class="btn btn-primary input-button" />
-                        <input type="button" value="Cancel" name="btnCancel" class="btn btn-primary input-button" onclick="location = 'profile.php'"/>
+                        <input type="submit" value="Modify" name="btnModify" class="btnModify" />
+                        <input type="button" value="Cancel" name="btnCancel" class="btnCancel" onclick="location = 'profile.php'"/>
                     </div>
                 </div>
             </div>

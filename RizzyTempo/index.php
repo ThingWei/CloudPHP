@@ -23,6 +23,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             background-size: cover;
             width: 100%;
             height: 100%;
+            
         }
 
         h1, h2, h3, p {
@@ -33,10 +34,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         body, html {
             height: 100%;
         }
-
+       
         .background-container {
             position: relative;
-            background: url('img2/background.png') no-repeat center center fixed;
+            background: url('img2/background.png') no-repeat center center fixed ;
             background-size: cover;
             min-height: 100vh;
         }
@@ -54,11 +55,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             position: relative;
             z-index: 2;
             color: white; /* Makes text readable on dark overlay */
+        
         }
 
         .img {
             width: 20px;
             height: 20px;
+            
         }
 
         .background-image {
@@ -202,7 +205,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="gallery" style="border-radius: 15px">
                     <a href="event.php">
                         <img src="img/flowers.jpg" alt="event1" width="600" height="400"
-                            style="border-top-left-radius: 15px;border-top-right-radius: 15px">
+                             style="border-top-left-radius: 15px;border-top-right-radius: 15px">
                     </a>
                     <div class="desc">Flowers</div>
                 </div>

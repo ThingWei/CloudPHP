@@ -80,6 +80,14 @@ if (!isset($_SESSION['admin_email'])) {
             background-color:rgb(102, 102, 102);
             transform: scale(1.05);
         }
+        /* tr hover */
+        .lab:hover {
+                background-color: #f9f9f9;
+                transform: scale(1.01);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                transition: all 0.2s ease-in-out;
+                cursor:default;
+            }
         </style>
     </head>
 
@@ -198,7 +206,7 @@ if (isEventNameDuplicate($eventname, $con)) {
                         <hr>
                         <div class="card-body">
                             <form action="" method="post">
-                                <label for="eventName">Product Name:</label>
+                                <label for="eventName" class="lab">Product Name:</label>
                                 <input style="margin-bottom: 1rem !important;" type="text" name="eventName"
                                        class="form-control py-2" placeholder="e.g Flower Bouquet">
                                 <label for="headline">Product headline:</label>

@@ -134,6 +134,58 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                 justify-content: center;
                 margin-top: 20px; /* optional spacing */
             }
+            /*Change btn*/ 
+            .btnChange {
+                font-size: 14px;
+                padding: 6px 14px;
+                border: none;
+                background-color:rgb(0, 132, 255);
+                color: white;
+                border-radius: 15px;
+                transition: all 0.3s ease-in-out;
+                margin-right: 5px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            
+            .btnChange:hover {
+                background-color:rgb(10, 86, 173);
+                transform: scale(1.05);
+            }
+            /*Logout btn*/ 
+            .btnLogout {
+                font-size: 14px;
+                padding: 6px 14px;
+                border: none;
+                background-color:rgb(235, 0, 0);
+                color: white;
+                border-radius: 15px;
+                transition: all 0.3s ease-in-out;
+                margin-right: 5px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            
+            .btnLogout:hover {
+                background-color:rgb(200, 0, 0);
+                transform: scale(1.05);
+            }
+            input[type="button"][name="btnLogout"] {
+                margin-top: 20px;
+                margin-left: 20px;
+                padding: 10px 20px ;
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                transition: all 0.2s ease-in-out;
+            }
+
+            input[type="button"][name="btnLogout"]:hover {
+                background-color: #c82333;
+                transform: scale(1.05);
+            }
         </style>
     <body>
         <!-- Navbar -->
@@ -166,7 +218,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                 </div>
                 <br/>
                 <div class="changeBtn">
-                    <input type="button" class="btn btn-primary" value="Change User Details" onclick="document.location.href = 'updateUserDets.php?id=<?php echo $name ?>'">
+                    <input type="button" class="btnChange" value="Change User Details" onclick="document.location.href = 'updateUserDets.php?id=<?php echo $name ?>'">
                 </div>
             </div>
             
@@ -174,7 +226,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         </form>
 
         <br/>
-        <div class="logout" style="margin-bottom:20px"><form method='post'><button type="submit" name="logout" class="btn btn-primary"
+        <div class="logout" style="margin-bottom:20px"><form method='post'><button type="submit" name="logout" class="btnLogout"
         style='display:block;margin-left: auto;margin-right: auto' 
         onclick="alert('<?php echo htmlspecialchars($email); ?>, you have successfully logged out. \nThanks for using TARUMT Graduation Service\'s website.\nWe hope to see you again soon.')" >
         Log Out</button></form></div>
