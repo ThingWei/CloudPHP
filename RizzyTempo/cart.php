@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_email'])) {
 $host = 'localhost';
 $db = 'music_society';
 $user = 'root';
-$pass = ''; // Update with your actual password
+$pass = 'secure_password'; // Update with your actual password
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
