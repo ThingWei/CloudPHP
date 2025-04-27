@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once 'helper.php';
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 $rand = rand(9999, 1000);
