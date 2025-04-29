@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once 'helper.php';
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 // Check if the user is logged in
 if (!isset($_SESSION['admin_email'])) {
     header('Location: index.php');
