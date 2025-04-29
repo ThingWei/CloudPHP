@@ -6,7 +6,8 @@ if (!isset($_SESSION['admin_email'])) {
     header("Location: login.php");
     exit();
 }
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if ($conn->connect_error) {
