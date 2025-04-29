@@ -105,8 +105,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <form method="POST" action="cart.php" class="w-50">
                                 <input type="hidden" name="eventName" value="' . htmlspecialchars($row->eventName) . '">
 
-    <input type="hidden" name="price" value="<?= $price ?>">
-    <input type="hidden" name="eventBanner" value="' . htmlspecialchars($row->eventBanner) . '">
+                                <input type="hidden" name="price" value="<?= $price ?>">
+                                <input type="hidden" name="eventBanner" value="' . htmlspecialchars($row->eventBanner) . '">
     
                                 <input type="hidden" name="quantity" value="1">
                                 <button type="submit" name="add_to_cart" class="btn btn-outline-success w-100">
