@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2025 at 01:40 PM
+-- Generation Time: Apr 29, 2025 at 09:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -161,7 +161,7 @@ CREATE TABLE `receipt` (
   `eventName` varchar(50) NOT NULL,
   `price` decimal(7,2) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT 1,
-  `added at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `added_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `claimStatus` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -169,10 +169,10 @@ CREATE TABLE `receipt` (
 -- Dumping data for table `receipt`
 --
 
-INSERT INTO `receipt` (`receiptID`, `email`, `eventName`, `price`, `quantity`, `added at`, `claimStatus`) VALUES
-(1, 'wenghin@gmail.com', 'badge', 299.90, 2, '2025-04-22 08:28:00', 'TO BE CLAIMED'),
+INSERT INTO `receipt` (`receiptID`, `email`, `eventName`, `price`, `quantity`, `added_at`, `claimStatus`) VALUES
+(1, 'wenghin@gmail.com', 'badge', 299.90, 2, '2025-04-25 04:35:27', 'TO BE CLAIMED'),
 (2, 'wenghin@gmail.com', 'oiled diddy', 999.99, 1, '2025-04-22 08:27:11', 'CLAIMED'),
-(3, 'wenghin@gmail.com', 'teddy', 49.90, 4, '2025-04-22 08:28:00', 'TO BE CLAIMED'),
+(3, 'wenghin@gmail.com', 'teddy', 49.90, 4, '2025-04-25 04:36:12', 'CLAIMED'),
 (4, 'wenghin@gmail.com', 'test1', 1000.00, 2, '2025-04-22 08:27:19', 'CLAIMED'),
 (5, 'wenghin@gmail.com', 'oiled diddy', 999.99, 1, '2025-04-22 09:25:34', 'TO BE CLAIMED'),
 (6, 'wenghin@gmail.com', 'teddy', 49.90, 5, '2025-04-22 09:28:11', 'TO BE CLAIMED'),
