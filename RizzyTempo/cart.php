@@ -7,12 +7,7 @@ if (!isset($_SESSION['user_email'])) {
     exit();
 }
 
-$host = 'localhost';
-$db = 'music_society';
-$user = 'root';
-$pass = 'secure_password'; // Update with your actual password
-
-$conn = new mysqli($host, $user, $pass, $db);
+$con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
