@@ -142,14 +142,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                                     $price = $row->productPrice;
                                     echo "<h4 class='text-success fw-semibold'>RM $price</h4>";
 
-                                    // Buy Now
-                                    echo "<form action='payment.php' method='GET' class='mb-3'>";
-                                    echo "<input type='hidden' name='eventName' value='" . htmlspecialchars($eventName) . "'>";
-                                    echo "<button type='submit' class='btn btn-primary w-100'>Buy Now</button>";
-                                    echo "</form>";
-
                                     // Add to Cart
-                                    echo '<form method="POST" action="cart.php">';
+                                    echo '<form method="POST" action="cart.php" class="w-50">';
                                     echo '<input type="hidden" name="eventName" value="' . htmlspecialchars($eventName) . '">';
                                     echo '<input type="hidden" name="price" value="' . htmlspecialchars($price) . '">';
                                     echo '<input type="hidden" name="eventBanner" value="' . htmlspecialchars($eventBanner) . '">';
