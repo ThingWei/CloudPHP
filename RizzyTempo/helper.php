@@ -5,8 +5,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
  */
 
-define("DB_HOST", "localhost");
-define("DB_USER", "root");
+define("DB_HOST", "testdb.clhav0iikabc.us-east-1.rds.amazonaws.com");
+define("DB_USER", "admin");
 define("DB_PASS", "secure_password");
 define("DB_NAME", "music_society");
 
